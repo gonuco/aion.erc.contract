@@ -1,0 +1,3 @@
+controllerAddress=0xa83b361b5b868fc289d586c3a1d3712d8075d8f8
+ledgerAddress=0x43ac93ca1533f31e82ae941b6f477096cf9a28e6
+tokenAddress=0x354059c8c025b0bb359d8a9a6afaf1e550b2ea4b
