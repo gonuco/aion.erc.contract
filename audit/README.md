@@ -37,8 +37,8 @@ TODO
 
 * [x] [code-review/Owned.md](code-review/Owned.md)
   * [x] contract Owned 
-* [ ] [code-review/SafeMath.md](code-review/SafeMath.md)
-  * [ ] contract SafeMath 
+* [x] [code-review/SafeMath.md](code-review/SafeMath.md)
+  * [x] contract SafeMath 
 * [ ] [code-review/Finalizable.md](code-review/Finalizable.md)
   * [ ] contract Finalizable is Owned 
 * [ ] [code-review/ControllerEventDefinitions.md](code-review/ControllerEventDefinitions.md)
