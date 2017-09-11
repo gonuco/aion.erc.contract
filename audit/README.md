@@ -34,6 +34,7 @@ This audit has been conducted on Nuco's source code in commit
   See [example](https://github.com/bokkypoobah/GimliTokenContractAudit/blob/master/sol/Ownable.sol#L6-L32). It would also be good to add
   `newOwner = 0x0;` after a successful change in ownership. This will help improve the process and traceability of the ownership changes
 * **LOW IMPORTANCE** Consider renaming `Pausable.unpause()` to `Pausable.unPause()`
+* **LOW IMPORTANCE** Consider emitting an event log in `TokenReceivable.claimTokens(...)`
 
 <br />
 
@@ -55,10 +56,10 @@ This audit has been conducted on Nuco's source code in commit
   * [x] contract EventDefinitions 
 * [x] [code-review/ControllerEventDefinitions.md](code-review/ControllerEventDefinitions.md)
   * [x] contract ControllerEventDefinitions 
+* [x] [code-review/TokenReceivable.md](code-review/TokenReceivable.md)
+  * [x] contract TokenReceivable is Owned 
 * [ ] [code-review/Ledger.md](code-review/Ledger.md)
   * [ ] contract Ledger is Owned, SafeMath, Finalizable 
-* [ ] [code-review/TokenReceivable.md](code-review/TokenReceivable.md)
-  * [ ] contract TokenReceivable is Owned 
 * [ ] [code-review/Token.md](code-review/Token.md)
   * [ ] contract Token is Finalizable, TokenReceivable, SafeMath, EventDefinitions, Pausable 
 * [ ] [code-review/Controller.md](code-review/Controller.md)
