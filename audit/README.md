@@ -39,14 +39,10 @@ TODO
   * [x] contract Owned 
 * [x] [code-review/SafeMath.md](code-review/SafeMath.md)
   * [x] contract SafeMath 
-* [ ] [code-review/Finalizable.md](code-review/Finalizable.md)
-  * [ ] contract Finalizable is Owned 
-* [ ] [code-review/ControllerEventDefinitions.md](code-review/ControllerEventDefinitions.md)
-  * [ ] contract ControllerEventDefinitions 
-* [ ] [code-review/Controller.md](code-review/Controller.md)
-  * [ ] contract Controller is Owned, Finalizable, ControllerEventDefinitions 
-* [ ] [code-review/IToken.md](code-review/IToken.md)
-  * [ ] contract IToken 
+* [x] [code-review/Finalizable.md](code-review/Finalizable.md)
+  * [x] contract Finalizable is Owned 
+* [x] [code-review/IToken.md](code-review/IToken.md)
+  * [x] contract IToken 
 * [ ] [code-review/Ledger.md](code-review/Ledger.md)
   * [ ] contract Ledger is Owned, SafeMath, Finalizable 
 * [ ] [code-review/Pausable.md](code-review/Pausable.md)
@@ -57,6 +53,10 @@ TODO
   * [ ] contract EventDefinitions 
 * [ ] [code-review/Token.md](code-review/Token.md)
   * [ ] contract Token is Finalizable, TokenReceivable, SafeMath, EventDefinitions, Pausable 
+* [x] [code-review/ControllerEventDefinitions.md](code-review/ControllerEventDefinitions.md)
+  * [x] contract ControllerEventDefinitions 
+* [ ] [code-review/Controller.md](code-review/Controller.md)
+  * [ ] contract Controller is Owned, Finalizable, ControllerEventDefinitions 
 
 <br />
 
