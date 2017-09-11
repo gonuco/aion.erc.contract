@@ -2,7 +2,12 @@
 
 ## Summary
 
-TODO
+[Nuco](https://nuco.io/) is developing a token contract for it's [Aion network](https://aion.network/).
+
+Bok Consulting Pty Ltd was commissioned to perform an audit on the Ethereum smart contracts for Nuco's Aion token.
+
+This audit has been conducted on Nuco's source code in commit
+[4c2dcc9](https://github.com/gonuco/aion.erc.contract/commit/4c2dcc92b4ba404211deb3bf0559eaa8d43b2e84).
 
 <br />
 
@@ -46,16 +51,16 @@ TODO
   * [x] contract Pausable is Owned 
 * [x] [code-review/IToken.md](code-review/IToken.md)
   * [x] contract IToken 
+* [x] [code-review/EventDefinitions.md](code-review/EventDefinitions.md)
+  * [x] contract EventDefinitions 
+* [x] [code-review/ControllerEventDefinitions.md](code-review/ControllerEventDefinitions.md)
+  * [x] contract ControllerEventDefinitions 
 * [ ] [code-review/Ledger.md](code-review/Ledger.md)
   * [ ] contract Ledger is Owned, SafeMath, Finalizable 
 * [ ] [code-review/TokenReceivable.md](code-review/TokenReceivable.md)
   * [ ] contract TokenReceivable is Owned 
-* [ ] [code-review/EventDefinitions.md](code-review/EventDefinitions.md)
-  * [ ] contract EventDefinitions 
 * [ ] [code-review/Token.md](code-review/Token.md)
   * [ ] contract Token is Finalizable, TokenReceivable, SafeMath, EventDefinitions, Pausable 
-* [x] [code-review/ControllerEventDefinitions.md](code-review/ControllerEventDefinitions.md)
-  * [x] contract ControllerEventDefinitions 
 * [ ] [code-review/Controller.md](code-review/Controller.md)
   * [ ] contract Controller is Owned, Finalizable, ControllerEventDefinitions 
 
