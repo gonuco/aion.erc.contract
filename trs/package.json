@@ -1,0 +1,21 @@
+{
+  "name": "trs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "dependencies": {
+    "solidity-coverage": "^0.2.2"
+  },
+  "devDependencies": {
+    "big-integer": "^1.6.25"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC"
+}
