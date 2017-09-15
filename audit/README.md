@@ -7,7 +7,9 @@
 Bok Consulting Pty Ltd was commissioned to perform an audit on the Ethereum smart contracts for Nuco's Aion token.
 
 This audit has been conducted on Nuco's source code in commit
-[4c2dcc9](https://github.com/gonuco/aion.erc.contract/commit/4c2dcc92b4ba404211deb3bf0559eaa8d43b2e84).
+[4c2dcc9](https://github.com/gonuco/aion.erc.contract/commit/4c2dcc92b4ba404211deb3bf0559eaa8d43b2e84),
+[17cfee9](https://github.com/gonuco/aion.erc.contract/commit/17cfee99792ba31f63e541445e8d6878a169e9c8) and
+[09632c2](https://github.com/gonuco/aion.erc.contract/commit/09632c24a322daa37c112c1d6349faa10888cc45).
 
 <br />
 
@@ -42,28 +44,43 @@ This audit has been conducted on Nuco's source code in commit
 
 ## Code Review
 
-* [x] [code-review/Owned.md](code-review/Owned.md)
+Files from [../token/contracts](../token/contracts):
+
+* [x] [code-review-token/Owned.md](code-review-token/Owned.md)
   * [x] contract Owned 
-* [x] [code-review/SafeMath.md](code-review/SafeMath.md)
+* [x] [code-review-token/SafeMath.md](code-review-token/SafeMath.md)
   * [x] contract SafeMath 
-* [x] [code-review/Finalizable.md](code-review/Finalizable.md)
+* [x] [code-review-token/Finalizable.md](code-review-token/Finalizable.md)
   * [x] contract Finalizable is Owned 
-* [x] [code-review/Pausable.md](code-review/Pausable.md)
+* [x] [code-review-token/Pausable.md](code-review-token/Pausable.md)
   * [x] contract Pausable is Owned 
-* [x] [code-review/IToken.md](code-review/IToken.md)
+* [x] [code-review-token/IToken.md](code-review-token/IToken.md)
   * [x] contract IToken 
-* [x] [code-review/EventDefinitions.md](code-review/EventDefinitions.md)
+* [x] [code-review-token/EventDefinitions.md](code-review-token/EventDefinitions.md)
   * [x] contract EventDefinitions 
-* [x] [code-review/ControllerEventDefinitions.md](code-review/ControllerEventDefinitions.md)
+* [x] [code-review-token/ControllerEventDefinitions.md](code-review-token/ControllerEventDefinitions.md)
   * [x] contract ControllerEventDefinitions 
-* [x] [code-review/TokenReceivable.md](code-review/TokenReceivable.md)
+* [x] [code-review-token/TokenReceivable.md](code-review-token/TokenReceivable.md)
   * [x] contract TokenReceivable is Owned 
-* [ ] [code-review/Ledger.md](code-review/Ledger.md)
+* [ ] [code-review-token/Ledger.md](code-review-token/Ledger.md)
   * [ ] contract Ledger is Owned, SafeMath, Finalizable 
-* [ ] [code-review/Token.md](code-review/Token.md)
+* [ ] [code-review-token/Token.md](code-review-token/Token.md)
   * [ ] contract Token is Finalizable, TokenReceivable, SafeMath, EventDefinitions, Pausable 
-* [ ] [code-review/Controller.md](code-review/Controller.md)
+* [ ] [code-review-token/Controller.md](code-review-token/Controller.md)
   * [ ] contract Controller is Owned, Finalizable, ControllerEventDefinitions 
+
+Files from [../sales/contracts](../sales/contracts):
+
+* [ ] [code-review-sales/Receiver.md](code-review-sales/Receiver.md)
+  * [ ] contract Receiver 
+* [ ] [code-review-sales/Sale.md](code-review-sales/Sale.md)
+  * [ ] contract Sale 
+
+Files from [../trs/contracts](../trs/contracts):
+
+* [ ] [code-review-trs/Savings.md](code-review-trs/Savings.md)
+  * [ ] contract Token 
+  * [ ] contract Savings 
 
 <br />
 
@@ -71,7 +88,21 @@ This audit has been conducted on Nuco's source code in commit
 
 The following contracts are for testing and the testing framework:
 
-* [ ] [code-review/Migrations.md](code-review/Migrations.md)
+Files from [../token/contracts](../token/contracts):
+
+* [ ] [code-review-token/Migrations.md](code-review-token/Migrations.md)
   * [ ] contract Migrations 
-* [ ] [code-review/DummyToken.md](code-review/DummyToken.md)
+* [ ] [code-review-token/DummyToken.md](code-review-token/DummyToken.md)
   * [ ] contract DummyToken 
+
+Files from [../sales/contracts](../sales/contracts):
+
+* [ ] [code-review-sales/Migrations.md](code-review-sales/Migrations.md)
+  * [ ] contract Migrations 
+* [ ] [code-review-sales/Token.md](code-review-sales/Token.md)
+  * [ ] contract Token 
+
+Files from [../trs/contracts](../trs/contracts):
+
+* [ ] [code-review-trs/Migrations.md](code-review-trs/Migrations.md)
+  * [ ] contract Migrations 

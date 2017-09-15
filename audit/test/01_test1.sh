@@ -10,8 +10,11 @@ MODE=${1:-test}
 GETHATTACHPOINT=`grep ^IPCFILE= settings.txt | sed "s/^.*=//"`
 PASSWORD=`grep ^PASSWORD= settings.txt | sed "s/^.*=//"`
 
-CONTRACTSDIR=`grep ^CONTRACTSDIR= settings.txt | sed "s/^.*=//"`
+TOKENCONTRACTSDIR=`grep ^TOKENCONTRACTSDIR= settings.txt | sed "s/^.*=//"`
+SALESCONTRACTSDIR=`grep ^SALESCONTRACTSDIR= settings.txt | sed "s/^.*=//"`
+TRSCONTRACTSDIR=`grep ^TRSCONTRACTSDIR= settings.txt | sed "s/^.*=//"`
 
+# --- Tokens ---
 CONTROLLERSOL=`grep ^CONTROLLERSOL= settings.txt | sed "s/^.*=//"`
 CONTROLLERJS=`grep ^CONTROLLERJS= settings.txt | sed "s/^.*=//"`
 
@@ -20,6 +23,17 @@ LEDGERJS=`grep ^LEDGERJS= settings.txt | sed "s/^.*=//"`
 
 TOKENSOL=`grep ^TOKENSOL= settings.txt | sed "s/^.*=//"`
 TOKENJS=`grep ^TOKENJS= settings.txt | sed "s/^.*=//"`
+
+# --- Sales ---
+RECEIVERSOL=`grep ^RECEIVERSOL= settings.txt | sed "s/^.*=//"`
+RECEIVERJS=`grep ^RECEIVERJS= settings.txt | sed "s/^.*=//"`
+
+SALESOL=`grep ^SALESOL= settings.txt | sed "s/^.*=//"`
+SALEJS=`grep ^SALEJS= settings.txt | sed "s/^.*=//"`
+
+# --- Trs ---
+SAVINGSSOL=`grep ^SAVINGSSOL= settings.txt | sed "s/^.*=//"`
+SAVINGSJS=`grep ^SAVINGSJS= settings.txt | sed "s/^.*=//"`
 
 DEPLOYMENTDATA=`grep ^DEPLOYMENTDATA= settings.txt | sed "s/^.*=//"`
 
@@ -40,62 +54,95 @@ STARTTIME_S=`date -r $STARTTIME -u`
 ENDTIME=`echo "$CURRENTTIME+60*3" | bc`
 ENDTIME_S=`date -r $ENDTIME -u`
 
-printf "MODE            = '$MODE'\n" | tee $TEST1OUTPUT
-printf "GETHATTACHPOINT = '$GETHATTACHPOINT'\n" | tee -a $TEST1OUTPUT
-printf "PASSWORD        = '$PASSWORD'\n" | tee -a $TEST1OUTPUT
-printf "CONTRACTSDIR    = '$CONTRACTSDIR'\n" | tee -a $TEST1OUTPUT
-printf "CONTROLLERSOL   = '$CONTROLLERSOL'\n" | tee -a $TEST1OUTPUT
-printf "CONTROLLERJS    = '$CONTROLLERJS'\n" | tee -a $TEST1OUTPUT
-printf "LEDGERSOL       = '$LEDGERSOL'\n" | tee -a $TEST1OUTPUT
-printf "LEDGERJS        = '$LEDGERJS'\n" | tee -a $TEST1OUTPUT
-printf "TOKENSOL        = '$TOKENSOL'\n" | tee -a $TEST1OUTPUT
-printf "TOKENJS         = '$TOKENJS'\n" | tee -a $TEST1OUTPUT
-printf "DEPLOYMENTDATA  = '$DEPLOYMENTDATA'\n" | tee -a $TEST1OUTPUT
-printf "TEST1OUTPUT     = '$TEST1OUTPUT'\n" | tee -a $TEST1OUTPUT
-printf "TEST1RESULTS    = '$TEST1RESULTS'\n" | tee -a $TEST1OUTPUT
-printf "CURRENTTIME     = '$CURRENTTIME' '$CURRENTTIMES'\n" | tee -a $TEST1OUTPUT
-printf "STARTTIME       = '$STARTTIME' '$STARTTIME_S'\n" | tee -a $TEST1OUTPUT
-printf "ENDTIME         = '$ENDTIME' '$ENDTIME_S'\n" | tee -a $TEST1OUTPUT
+printf "MODE              = '$MODE'\n" | tee $TEST1OUTPUT
+printf "GETHATTACHPOINT   = '$GETHATTACHPOINT'\n" | tee -a $TEST1OUTPUT
+printf "PASSWORD          = '$PASSWORD'\n" | tee -a $TEST1OUTPUT
+printf "TOKENCONTRACTSDIR = '$TOKENCONTRACTSDIR'\n" | tee -a $TEST1OUTPUT
+printf "SALESCONTRACTSDIR = '$SALESCONTRACTSDIR'\n" | tee -a $TEST1OUTPUT
+printf "TRSCONTRACTSDIR   = '$TRSCONTRACTSDIR'\n" | tee -a $TEST1OUTPUT
+printf "--- Token --- \n" | tee -a $TEST1OUTPUT
+printf "CONTROLLERSOL     = '$CONTROLLERSOL'\n" | tee -a $TEST1OUTPUT
+printf "CONTROLLERJS      = '$CONTROLLERJS'\n" | tee -a $TEST1OUTPUT
+printf "LEDGERSOL         = '$LEDGERSOL'\n" | tee -a $TEST1OUTPUT
+printf "LEDGERJS          = '$LEDGERJS'\n" | tee -a $TEST1OUTPUT
+printf "TOKENSOL          = '$TOKENSOL'\n" | tee -a $TEST1OUTPUT
+printf "TOKENJS           = '$TOKENJS'\n" | tee -a $TEST1OUTPUT
+printf "--- Sales --- \n" | tee -a $TEST1OUTPUT
+printf "RECEIVERSOL       = '$RECEIVERSOL'\n" | tee -a $TEST1OUTPUT
+printf "RECEIVERJS        = '$RECEIVERJS'\n" | tee -a $TEST1OUTPUT
+printf "SALESOL           = '$SALESOL'\n" | tee -a $TEST1OUTPUT
+printf "SALEJS            = '$SALEJS'\n" | tee -a $TEST1OUTPUT
+printf "--- Trs --- \n" | tee -a $TEST1OUTPUT
+printf "SAVINGSSOL        = '$SAVINGSSOL'\n" | tee -a $TEST1OUTPUT
+printf "SAVINGSJS         = '$SAVINGSJS'\n" | tee -a $TEST1OUTPUT
+printf "--- End --- \n" | tee -a $TEST1OUTPUT
+printf "DEPLOYMENTDATA    = '$DEPLOYMENTDATA'\n" | tee -a $TEST1OUTPUT
+printf "TEST1OUTPUT       = '$TEST1OUTPUT'\n" | tee -a $TEST1OUTPUT
+printf "TEST1RESULTS      = '$TEST1RESULTS'\n" | tee -a $TEST1OUTPUT
+printf "CURRENTTIME       = '$CURRENTTIME' '$CURRENTTIMES'\n" | tee -a $TEST1OUTPUT
+printf "STARTTIME         = '$STARTTIME' '$STARTTIME_S'\n" | tee -a $TEST1OUTPUT
+printf "ENDTIME           = '$ENDTIME' '$ENDTIME_S'\n" | tee -a $TEST1OUTPUT
 
 # Make copy of SOL file and modify start and end times ---
-`cp $CONTRACTSDIR/$CONTROLLERSOL .`
-`cp $CONTRACTSDIR/$LEDGERSOL .`
-`cp $CONTRACTSDIR/$TOKENSOL .`
-`cp $CONTRACTSDIR/ControllerEventDefinitions.sol .`
-`cp $CONTRACTSDIR/EventDefinitions.sol .`
-`cp $CONTRACTSDIR/Finalizable.sol .`
-`cp $CONTRACTSDIR/IToken.sol .`
-`cp $CONTRACTSDIR/Owned.sol .`
-`cp $CONTRACTSDIR/Pausable.sol .`
-`cp $CONTRACTSDIR/SafeMath.sol .`
-`cp $CONTRACTSDIR/TokenReceivable.sol .`
+`cp $TOKENCONTRACTSDIR/$CONTROLLERSOL .`
+`cp $TOKENCONTRACTSDIR/$LEDGERSOL .`
+`cp $TOKENCONTRACTSDIR/$TOKENSOL .`
+`cp $TOKENCONTRACTSDIR/ControllerEventDefinitions.sol .`
+`cp $TOKENCONTRACTSDIR/EventDefinitions.sol .`
+`cp $TOKENCONTRACTSDIR/Finalizable.sol .`
+`cp $TOKENCONTRACTSDIR/IToken.sol .`
+`cp $TOKENCONTRACTSDIR/Owned.sol .`
+`cp $TOKENCONTRACTSDIR/Pausable.sol .`
+`cp $TOKENCONTRACTSDIR/SafeMath.sol .`
+`cp $TOKENCONTRACTSDIR/TokenReceivable.sol .`
+`cp $SALESCONTRACTSDIR/$RECEIVERSOL .`
+`cp $SALESCONTRACTSDIR/$SALESOL .`
+`cp $TRSCONTRACTSDIR/$SAVINGSSOL .`
 
 # --- Modify dates ---
 #`perl -pi -e "s/STARTDATE \= 1498741200;.*$/STARTDATE \= $STARTTIME; \/\/ $STARTTIME_S/" $DAOCASINOTOKENTEMPSOL`
 #`perl -pi -e "s/ENDDATE \= STARTDATE \+ 28 days;.*$/ENDDATE \= STARTDATE \+ 5 minutes;/" $DAOCASINOTOKENTEMPSOL`
 #`perl -pi -e "s/CAP \= 84417 ether;.*$/CAP \= 100 ether;/" $DAOCASINOTOKENTEMPSOL`
 
-DIFFS1=`diff $CONTRACTSDIR/$CONTROLLERSOL $CONTROLLERSOL`
-echo "--- Differences $CONTRACTSDIR/$CONTROLLERSOL $CONTROLLERSOL ---" | tee -a $TEST1OUTPUT
+DIFFS1=`diff $TOKENCONTRACTSDIR/$CONTROLLERSOL $CONTROLLERSOL`
+echo "--- Differences $TOKENCONTRACTSDIR/$CONTROLLERSOL $CONTROLLERSOL ---" | tee -a $TEST1OUTPUT
 echo "$DIFFS1" | tee -a $TEST1OUTPUT
 
-DIFFS1=`diff $CONTRACTSDIR/$LEDGERSOL $LEDGERSOL`
-echo "--- Differences $CONTRACTSDIR/$LEDGERSOL $LEDGERSOL ---" | tee -a $TEST1OUTPUT
+DIFFS1=`diff $TOKENCONTRACTSDIR/$LEDGERSOL $LEDGERSOL`
+echo "--- Differences $TOKENCONTRACTSDIR/$LEDGERSOL $LEDGERSOL ---" | tee -a $TEST1OUTPUT
 echo "$DIFFS1" | tee -a $TEST1OUTPUT
 
-DIFFS1=`diff $CONTRACTSDIR/$TOKENSOL $TOKENSOL`
-echo "--- Differences $CONTRACTSDIR/$TOKENSOL $TOKENSOL ---" | tee -a $TEST1OUTPUT
+DIFFS1=`diff $TOKENCONTRACTSDIR/$TOKENSOL $TOKENSOL`
+echo "--- Differences $TOKENCONTRACTSDIR/$TOKENSOL $TOKENSOL ---" | tee -a $TEST1OUTPUT
+echo "$DIFFS1" | tee -a $TEST1OUTPUT
+
+DIFFS1=`diff $SALESCONTRACTSDIR/$RECEIVERSOL $RECEIVERSOL`
+echo "--- Differences $SALESCONTRACTSDIR/$RECEIVERSOL $RECEIVERSOL ---" | tee -a $TEST1OUTPUT
+echo "$DIFFS1" | tee -a $TEST1OUTPUT
+
+DIFFS1=`diff $SALESCONTRACTSDIR/$SALESOL $SALESOL`
+echo "--- Differences $SALESCONTRACTSDIR/$SALESOL $SALESOL ---" | tee -a $TEST1OUTPUT
+echo "$DIFFS1" | tee -a $TEST1OUTPUT
+
+DIFFS1=`diff $TRSCONTRACTSDIR/$SAVINGSSOL $SAVINGSSOL`
+echo "--- Differences $TRSCONTRACTSDIR/$SAVINGSSOL $SAVINGSSOL ---" | tee -a $TEST1OUTPUT
 echo "$DIFFS1" | tee -a $TEST1OUTPUT
 
 echo "var controllerOutput=`solc --optimize --combined-json abi,bin,interface $CONTROLLERSOL`;" > $CONTROLLERJS
 echo "var ledgerOutput=`solc --optimize --combined-json abi,bin,interface $LEDGERSOL`;" > $LEDGERJS
 echo "var tokenOutput=`solc --optimize --combined-json abi,bin,interface $TOKENSOL`;" > $TOKENJS
+echo "var receiverOutput=`solc --optimize --combined-json abi,bin,interface $RECEIVERSOL`;" > $RECEIVERJS
+echo "var salesOutput=`solc --optimize --combined-json abi,bin,interface $SALESOL`;" > $SALEJS
+echo "var savingsOutput=`solc --optimize --combined-json abi,bin,interface $SAVINGSSOL`;" > $SAVINGSJS
 
 
 geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee -a $TEST1OUTPUT
 loadScript("$CONTROLLERJS");
 loadScript("$LEDGERJS");
 loadScript("$TOKENJS");
+loadScript("$RECEIVERJS");
+loadScript("$SALEJS");
+loadScript("$SAVINGSJS");
 loadScript("functions.js");
 
 var controllerAbi = JSON.parse(controllerOutput.contracts["$CONTROLLERSOL:Controller"].abi);
@@ -105,12 +152,25 @@ var ledgerBin = "0x" + ledgerOutput.contracts["$LEDGERSOL:Ledger"].bin;
 var tokenAbi = JSON.parse(tokenOutput.contracts["$TOKENSOL:Token"].abi);
 var tokenBin = "0x" + tokenOutput.contracts["$TOKENSOL:Token"].bin;
 
+var receiverAbi = JSON.parse(receiverOutput.contracts["$RECEIVERSOL:Receiver"].abi);
+var receiverBin = "0x" + receiverOutput.contracts["$RECEIVERSOL:Receiver"].bin;
+var salesAbi = JSON.parse(salesOutput.contracts["$SALESOL:Sale"].abi);
+var salesBin = "0x" + salesOutput.contracts["$SALESOL:Sale"].bin;
+var savingsAbi = JSON.parse(savingsOutput.contracts["$SAVINGSSOL:Savings"].abi);
+var savingsBin = "0x" + savingsOutput.contracts["$SAVINGSSOL:Savings"].bin;
+
 // console.log("DATA: controllerAbi=" + JSON.stringify(controllerAbi));
 // console.log("DATA: controllerBin=" + controllerBin);
 // console.log("DATA: ledgerAbi=" + JSON.stringify(ledgerAbi));
 // console.log("DATA: ledgerBin=" + ledgerBin);
 // console.log("DATA: tokenAbi=" + JSON.stringify(tokenAbi));
 // console.log("DATA: tokenBin=" + tokenBin);
+// console.log("DATA: receiverAbi=" + JSON.stringify(receiverAbi));
+// console.log("DATA: receiverBin=" + receiverBin);
+// console.log("DATA: salesAbi=" + JSON.stringify(salesAbi));
+// console.log("DATA: salesBin=" + salesBin);
+// console.log("DATA: savingsAbi=" + JSON.stringify(savingsAbi));
+// console.log("DATA: savingsBin=" + savingsBin);
 
 unlockAccounts("$PASSWORD");
 printBalances();

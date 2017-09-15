@@ -1,8 +1,11 @@
 IPCFILE=ipc:./testchain/geth.ipc
 PASSWORD=testtest
 
-CONTRACTSDIR=../../token/contracts
+TOKENCONTRACTSDIR=../../token/contracts
+SALESCONTRACTSDIR=../../sales/contracts
+TRSCONTRACTSDIR=../../trs/contracts
 
+# --- Tokens ---
 CONTROLLERSOL=Controller.sol
 CONTROLLERJS=Controller.js
 
@@ -11,6 +14,17 @@ LEDGERJS=Ledger.js
 
 TOKENSOL=Token.sol
 TOKENJS=Token.js
+
+# --- Sales ---
+RECEIVERSOL=Receiver.sol
+RECEIVERJS=Receiver.js
+
+SALESOL=Sale.sol
+SALEJS=Sale.js
+
+# --- Trs ---
+SAVINGSSOL=Savings.sol
+SAVINGSJS=Savings.js
 
 DEPLOYMENTDATA=deploymentData.txt
 
