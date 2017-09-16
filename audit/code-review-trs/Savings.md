@@ -9,6 +9,7 @@ Source file [../../trs/contracts/Savings.sol](../../trs/contracts/Savings.sol).
 ```javascript
 // Copyright New Alchemy Limited, 2017. All rights reserved.
 
+// BK Ok - Consider updating
 pragma solidity >=0.4.10;
 
 contract Token {

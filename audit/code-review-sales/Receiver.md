@@ -8,6 +8,7 @@ Source file [../../sales/contracts/Receiver.sol](../../sales/contracts/Receiver.
 
 ```javascript
 // Copyright New Alchemy Limited, 2017. All rights reserved.
+// BK Ok - Consider updating
 pragma solidity >=0.4.10;
 
 import './Token.sol';
@@ -19,6 +20,7 @@ contract Receiver {
     event EndSale();
     event EtherIn(address from, uint amount);
 
+    // BK Ok - Owned
     address public owner;    // contract owner
     address public newOwner; // new contract owner for two-way ownership handshake
     string public notice;    // arbitrary public notice text

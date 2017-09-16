@@ -37,6 +37,9 @@ This audit has been conducted on Nuco's source code in commit
   `newOwner = 0x0;` after a successful change in ownership. This will help improve the process and traceability of the ownership changes
 * **LOW IMPORTANCE** Consider renaming `Pausable.unpause()` to `Pausable.unPause()`
 * **LOW IMPORTANCE** Consider emitting an event log in `TokenReceivable.claimTokens(...)`
+* **LOW IMPORTANCE** The **token/Owned** mechanics are mixed into **sales/Receiver**, **sales/Sale** and **trs/Savings**.
+  Consider inheriting from **token/Owned** to simplify the code and separating functionality instead of reimplementing
+  the functionality in each of **sales/Receiver**, **sales/Sale** and **trs/Savings**
 
 <br />
 

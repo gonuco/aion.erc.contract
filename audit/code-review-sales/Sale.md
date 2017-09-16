@@ -8,18 +8,24 @@ Source file [../../sales/contracts/Sale.sol](../../sales/contracts/Sale.sol).
 
 ```javascript
 // Copyright New Alchemy Limited, 2017. All rights reserved.
+// BK Ok - Consider updating
 pragma solidity >=0.4.10;
 
+// BK Next 2 Ok
 import './Token.sol';
 import './Receiver.sol';
 
+// BK Ok
 contract Sale {
     // once the balance of this contract exceeds the
     // soft-cap, the sale should stay open for no more
     // than this amount of time
+    // BK Ok
     uint public constant SOFTCAP_TIME = 4 hours;
 
+    // BK Ok - Owned
     address public owner;    // contract owner
+    // BK Ok - Owned
     address public newOwner; // new contract owner for two-way ownership handshake
     string public notice;    // arbitrary public notice text
     uint public start;       // start time of sale
@@ -33,11 +39,15 @@ contract Sale {
     Receiver public r2;
 
     function Sale() {
+        // BK Ok - Owned
         owner = msg.sender;
     }
 
+    // BK Ok - Owned
     modifier onlyOwner() {
+        // BK Ok
         require(msg.sender == owner);
+        // BK Ok
         _;
     }
 
@@ -95,14 +105,20 @@ contract Sale {
     }
 
     // 1st half of ownership change
+    // BK Ok - Owned
     function changeOwner(address next) onlyOwner {
+        // BK Ok
         newOwner = next;
     }
 
     // 2nd half of ownership change
+    // BK Ok - Owned
     function acceptOwnership() {
+        // BK Ok
         require(msg.sender == newOwner);
+        // BK Ok
         owner = msg.sender;
+        // BK Ok
         newOwner = 0;
     }
 
