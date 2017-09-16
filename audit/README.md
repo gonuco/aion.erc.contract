@@ -34,12 +34,15 @@ This audit has been conducted on Nuco's source code in commit
   files to `pragma solidity >=0.4.15;` for people only reading your published source code (.e.g. from EtherScan.io)
 * **LOW IMPORTANCE** Consider making `Owned.newOwner` public and for the `acceptOwnership(...)` function to emit an event.
   See [example](https://github.com/bokkypoobah/GimliTokenContractAudit/blob/master/sol/Ownable.sol#L6-L32). It would also be good to add
-  `newOwner = 0x0;` after a successful change in ownership. This will help improve the process and traceability of the ownership changes
+  `newOwner = 0x0;` after a successful change in ownership. This will help improve the process and traceability of the ownership changes.
+  The same applies to the dispersed *Owned* code in *sales/Receiver*, *sales/Sale* and *trs/Savings*
 * **LOW IMPORTANCE** Consider renaming `Pausable.unpause()` to `Pausable.unPause()`
 * **LOW IMPORTANCE** Consider emitting an event log in `TokenReceivable.claimTokens(...)`
-* **LOW IMPORTANCE** The **token/Owned** mechanics are mixed into **sales/Receiver**, **sales/Sale** and **trs/Savings**.
-  Consider inheriting from **token/Owned** to simplify the code and separating functionality instead of reimplementing
-  the functionality in each of **sales/Receiver**, **sales/Sale** and **trs/Savings**
+* **LOW IMPORTANCE** The *token/Owned* functionality is mixed into *sales/Receiver*, *sales/Sale* and *trs/Savings*.
+  Consider inheriting from *token/Owned* to simplify the code and separating functionality instead of reimplementing
+  the functionality in each of *sales/Receiver*, *sales/Sale* and *trs/Savings*
+* **LOW IMPORTANCE** Subtraction from the source account and allocance should be executed before the addition to the
+  destination account
 
 <br />
 

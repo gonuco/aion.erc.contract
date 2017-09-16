@@ -9,8 +9,10 @@ Source file [../../token/contracts/Controller.sol](../../token/contracts/Control
 ```javascript
 // Copyright New Alchemy Limited, 2017. All rights reserved.
 
+// BK Ok - Consider updating
 pragma solidity >=0.4.10;
 
+// BK Next 5 Ok
 import './Owned.sol';
 import './Finalizable.sol';
 import './Ledger.sol';
@@ -28,22 +30,31 @@ import './ControllerEventDefinitions.sol';
  * The controller must be linked to a Token and Ledger to become functional.
  * 
  */
+// BK Ok
 contract Controller is Owned, Finalizable, ControllerEventDefinitions {
+    // BK Ok
     Ledger public ledger;
+    // BK Ok
     Token public token;
+    // BK Ok
     address public burnAddress;
 
+    // BK Ok - Constructor
     function Controller() {
     }
 
     // functions below this line are onlyOwner
 
 
+    // BK Ok - Only owner can execute
     function setToken(address _token) onlyOwner {
+        // BK Ok
         token = Token(_token);
     }
 
+    // BK Ok - Only owner can execute
     function setLedger(address _ledger) onlyOwner {
+        // BK Ok
         ledger = Ledger(_ledger);
     }
 
@@ -57,6 +68,7 @@ contract Controller is Owned, Finalizable, ControllerEventDefinitions {
      * @param       _address    desired address
      *
      */
+    // BK Ok - Only Owner can execute
     function setBurnAddress(address _address) onlyOwner {
         burnAddress = _address;
         ledger.setBurnAddress(_address);

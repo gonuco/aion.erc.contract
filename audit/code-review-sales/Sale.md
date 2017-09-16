@@ -120,6 +120,7 @@ contract Sale {
         owner = msg.sender;
         // BK Ok
         newOwner = 0;
+        // BK NOTE - Should emit an event log like `event OwnershipTransferred(address indexed _from, address indexed _to);`
     }
 
     // put some text in the contract

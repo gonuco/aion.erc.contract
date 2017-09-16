@@ -9,8 +9,10 @@ Source file [../../token/contracts/Token.sol](../../token/contracts/Token.sol).
 ```javascript
 // Copyright New Alchemy Limited, 2017. All rights reserved.
 
+// BK Ok - Consider updating
 pragma solidity >=0.4.10;
 
+// BK Next 6 Ok
 import './SafeMath.sol';
 import './TokenReceivable.sol';
 import './Finalizable.sol';

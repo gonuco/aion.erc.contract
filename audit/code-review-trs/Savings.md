@@ -37,7 +37,9 @@ contract Savings {
 
 	event Deposit(address indexed who, uint amount);
 
+    // BK Ok - Owned
 	address public owner;
+    // BK Ok - Owned
 	address public newOwner;
 
 	bool public locked;
@@ -60,21 +62,31 @@ contract Savings {
 	function Savings() {
 		assert(t0special > 0);
 		assert(periods > 0);
+		// BK Ok - Owned
 		owner = msg.sender;
 	}
 
+    // BK Ok - Owned
 	modifier onlyOwner() {
+	    // BK Ok
 		require(msg.sender == owner);
+		// BK Ok
 		_;
 	}
 
+    // BK Ok - Owned
 	function changeOwner(address addr) onlyOwner {
+	    // BK Ok
 		newOwner = addr;
 	}
 
+    // BK Ok - Owned
 	function acceptOwnership() {
+	    // BK Ok
 		require(msg.sender == newOwner);
+		// BK Ok
 		owner = newOwner;
+        // BK NOTE - Should emit an event log like `event OwnershipTransferred(address indexed _from, address indexed _to);`
 	}
 
 	function setToken(address tok) onlyOwner {

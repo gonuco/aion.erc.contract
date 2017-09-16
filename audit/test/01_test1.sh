@@ -51,7 +51,7 @@ else
   STARTTIME=`echo "$CURRENTTIME+75" | bc`
 fi
 STARTTIME_S=`date -r $STARTTIME -u`
-ENDTIME=`echo "$CURRENTTIME+60*3" | bc`
+ENDTIME=`echo "$CURRENTTIME+60*5" | bc`
 ENDTIME_S=`date -r $ENDTIME -u`
 
 printf "MODE              = '$MODE'\n" | tee $TEST1OUTPUT
@@ -100,7 +100,7 @@ printf "ENDTIME           = '$ENDTIME' '$ENDTIME_S'\n" | tee -a $TEST1OUTPUT
 `cp $TRSCONTRACTSDIR/$SAVINGSSOL .`
 
 # --- Modify dates ---
-#`perl -pi -e "s/STARTDATE \= 1498741200;.*$/STARTDATE \= $STARTTIME; \/\/ $STARTTIME_S/" $DAOCASINOTOKENTEMPSOL`
+`perl -pi -e "s/SOFTCAP_TIME \= 4 hours;/SOFTCAP_TIME \= 33 seconds;/" $SALESOL`
 #`perl -pi -e "s/ENDDATE \= STARTDATE \+ 28 days;.*$/ENDDATE \= STARTDATE \+ 5 minutes;/" $DAOCASINOTOKENTEMPSOL`
 #`perl -pi -e "s/CAP \= 84417 ether;.*$/CAP \= 100 ether;/" $DAOCASINOTOKENTEMPSOL`
 
@@ -132,7 +132,7 @@ echo "var controllerOutput=`solc --optimize --combined-json abi,bin,interface $C
 echo "var ledgerOutput=`solc --optimize --combined-json abi,bin,interface $LEDGERSOL`;" > $LEDGERJS
 echo "var tokenOutput=`solc --optimize --combined-json abi,bin,interface $TOKENSOL`;" > $TOKENJS
 echo "var receiverOutput=`solc --optimize --combined-json abi,bin,interface $RECEIVERSOL`;" > $RECEIVERJS
-echo "var salesOutput=`solc --optimize --combined-json abi,bin,interface $SALESOL`;" > $SALEJS
+echo "var saleOutput=`solc --optimize --combined-json abi,bin,interface $SALESOL`;" > $SALEJS
 echo "var savingsOutput=`solc --optimize --combined-json abi,bin,interface $SAVINGSSOL`;" > $SAVINGSJS
 
 
@@ -154,8 +154,8 @@ var tokenBin = "0x" + tokenOutput.contracts["$TOKENSOL:Token"].bin;
 
 var receiverAbi = JSON.parse(receiverOutput.contracts["$RECEIVERSOL:Receiver"].abi);
 var receiverBin = "0x" + receiverOutput.contracts["$RECEIVERSOL:Receiver"].bin;
-var salesAbi = JSON.parse(salesOutput.contracts["$SALESOL:Sale"].abi);
-var salesBin = "0x" + salesOutput.contracts["$SALESOL:Sale"].bin;
+var saleAbi = JSON.parse(saleOutput.contracts["$SALESOL:Sale"].abi);
+var saleBin = "0x" + saleOutput.contracts["$SALESOL:Sale"].bin;
 var savingsAbi = JSON.parse(savingsOutput.contracts["$SAVINGSSOL:Savings"].abi);
 var savingsBin = "0x" + savingsOutput.contracts["$SAVINGSSOL:Savings"].bin;
 
@@ -182,7 +182,7 @@ var controllerMessage = "Deploy Controller Contract";
 // -----------------------------------------------------------------------------
 console.log("RESULT: " + controllerMessage);
 var controllerContract = web3.eth.contract(controllerAbi);
-console.log(JSON.stringify(controllerContract));
+// console.log(JSON.stringify(controllerContract));
 var controllerTx = null;
 var controllerAddress = null;
 
@@ -190,7 +190,7 @@ var controller = controllerContract.new({from: contractOwnerAccount, data: contr
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
-        dctTx = contract.transactionHash;
+        controllerTx = contract.transactionHash;
       } else {
         controllerAddress = contract.address;
         addAccount(controllerAddress, "Controller Contract");
@@ -206,7 +206,7 @@ var ledgerMessage = "Deploy Ledger Contract";
 // -----------------------------------------------------------------------------
 console.log("RESULT: " + ledgerMessage);
 var ledgerContract = web3.eth.contract(ledgerAbi);
-console.log(JSON.stringify(ledgerContract));
+// console.log(JSON.stringify(ledgerContract));
 var ledgerTx = null;
 var ledgerAddress = null;
 
@@ -214,7 +214,7 @@ var ledger = ledgerContract.new({from: contractOwnerAccount, data: ledgerBin, ga
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
-        dctTx = contract.transactionHash;
+        ledgerTx = contract.transactionHash;
       } else {
         ledgerAddress = contract.address;
         addAccount(ledgerAddress, "Ledger Contract");
@@ -230,7 +230,7 @@ var tokenMessage = "Deploy Token Contract";
 // -----------------------------------------------------------------------------
 console.log("RESULT: " + tokenMessage);
 var tokenContract = web3.eth.contract(tokenAbi);
-console.log(JSON.stringify(tokenContract));
+// console.log(JSON.stringify(tokenContract));
 var tokenTx = null;
 var tokenAddress = null;
 
@@ -238,12 +238,132 @@ var token = tokenContract.new({from: contractOwnerAccount, data: tokenBin, gas: 
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
-        dctTx = contract.transactionHash;
+        tokenTx = contract.transactionHash;
       } else {
         tokenAddress = contract.address;
         addAccount(tokenAddress, "Token Contract");
         addTokenContractAddressAndAbi(tokenAddress, tokenAbi);
         console.log("DATA: tokenAddress=" + tokenAddress);
+      }
+    }
+  }
+);
+
+// -----------------------------------------------------------------------------
+var receiver0Message = "Deploy Receiver0 Contract";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + receiver0Message);
+var receiver0Contract = web3.eth.contract(receiverAbi);
+// console.log(JSON.stringify(receiver0Contract));
+var receiver0Tx = null;
+var receiver0Address = null;
+
+var receiver0 = receiver0Contract.new({from: contractOwnerAccount, data: receiverBin, gas: 6000000},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        receiver0Tx = contract.transactionHash;
+      } else {
+        receiver0Address = contract.address;
+        addAccount(receiver0Address, "Receiver0 Contract");
+        addReceiverContractAbi(receiverAbi);
+        console.log("DATA: receiver0Address=" + receiver0Address);
+      }
+    }
+  }
+);
+
+// -----------------------------------------------------------------------------
+var receiver1Message = "Deploy Receiver1 Contract";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + receiver1Message);
+var receiver1Contract = web3.eth.contract(receiverAbi);
+// console.log(JSON.stringify(receiver1Contract));
+var receiver1Tx = null;
+var receiver1Address = null;
+
+var receiver1 = receiver1Contract.new({from: contractOwnerAccount, data: receiverBin, gas: 6000000},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        receiver1Tx = contract.transactionHash;
+      } else {
+        receiver1Address = contract.address;
+        addAccount(receiver1Address, "Receiver1 Contract");
+        addReceiverContractAbi(receiverAbi);
+        console.log("DATA: receiver1Address=" + receiver1Address);
+      }
+    }
+  }
+);
+
+// -----------------------------------------------------------------------------
+var receiver2Message = "Deploy Receiver2 Contract";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + receiver2Message);
+var receiver2Contract = web3.eth.contract(receiverAbi);
+// console.log(JSON.stringify(receiver2Contract));
+var receiver2Tx = null;
+var receiver2Address = null;
+
+var receiver2 = receiver2Contract.new({from: contractOwnerAccount, data: receiverBin, gas: 6000000},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        receiver2Tx = contract.transactionHash;
+      } else {
+        receiver2Address = contract.address;
+        addAccount(receiver2Address, "Receiver2 Contract");
+        // addReceiverContractAbi(receiverAbi);
+        console.log("DATA: receiver2Address=" + receiver2Address);
+      }
+    }
+  }
+);
+
+// -----------------------------------------------------------------------------
+var saleMessage = "Deploy Sale Contract";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + saleMessage);
+var saleContract = web3.eth.contract(saleAbi);
+// console.log(JSON.stringify(saleContract));
+var saleTx = null;
+var saleAddress = null;
+
+var sale = saleContract.new({from: contractOwnerAccount, data: saleBin, gas: 6000000},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        saleTx = contract.transactionHash;
+      } else {
+        saleAddress = contract.address;
+        addAccount(saleAddress, "Sale Contract");
+        addSaleContractAddressAndAbi(saleAddress, saleAbi);
+        console.log("DATA: saleAddress=" + saleAddress);
+      }
+    }
+  }
+);
+
+// -----------------------------------------------------------------------------
+var savingsMessage = "Deploy Savings Contract";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + savingsMessage);
+var savingsContract = web3.eth.contract(savingsAbi);
+// console.log(JSON.stringify(savingsContract));
+var savingsTx = null;
+var savingsAddress = null;
+
+var savings = savingsContract.new({from: contractOwnerAccount, data: savingsBin, gas: 6000000},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        savingsTx = contract.transactionHash;
+      } else {
+        savingsAddress = contract.address;
+        addAccount(savingsAddress, "Savings Contract");
+        // addTokenContractAddressAndAbi(savingsAddress, savingsAbi);
+        console.log("DATA: savingsAddress=" + savingsAddress);
       }
     }
   }
@@ -268,6 +388,111 @@ printTxData("tokenAddress=" + tokenAddress, tokenTx);
 printBalances();
 failIfGasEqualsGasUsed(tokenTx, tokenMessage);
 printTokenContractDetails();
+console.log("RESULT: ");
+
+printTxData("receiver0Address=" + receiver0Address, receiver0Tx);
+printTxData("receiver1Address=" + receiver1Address, receiver1Tx);
+printTxData("receiver2Address=" + receiver2Address, receiver2Tx);
+printBalances();
+failIfGasEqualsGasUsed(receiver0Tx, receiver0Message);
+failIfGasEqualsGasUsed(receiver1Tx, receiver1Message);
+failIfGasEqualsGasUsed(receiver2Tx, receiver2Message);
+printReceiverContractDetails(receiver0Address, "Receiver0");
+printReceiverContractDetails(receiver1Address, "Receiver1");
+printReceiverContractDetails(receiver2Address, "Receiver2");
+console.log("RESULT: ");
+
+printTxData("saleAddress=" + saleAddress, saleTx);
+printBalances();
+failIfGasEqualsGasUsed(saleTx, saleMessage);
+printSaleContractDetails();
+console.log("RESULT: ");
+
+printTxData("savingsAddress=" + savingsAddress, savingsTx);
+printBalances();
+failIfGasEqualsGasUsed(savingsTx, savingsMessage);
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+
+// -----------------------------------------------------------------------------
+var stitchReceiversAndSaleMessage = "Stitch Receivers And Sale Contracts";
+var _start = $STARTTIME;
+var _end = $ENDTIME;
+var _cap = web3.toWei(100, "ether");
+var _softcap = web3.toWei(50, "ether");
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + stitchReceiversAndSaleMessage);
+var stitchReceiversAndSaleMessage1Tx = receiver0.setSale(saleAddress, {from: contractOwnerAccount, gas: 400000});
+var stitchReceiversAndSaleMessage2Tx = receiver1.setSale(saleAddress, {from: contractOwnerAccount, gas: 400000});
+var stitchReceiversAndSaleMessage3Tx = receiver2.setSale(saleAddress, {from: contractOwnerAccount, gas: 400000});
+var stitchReceiversAndSaleMessage4Tx = sale.setReceivers(receiver0Address, receiver1Address, receiver2Address, 
+  {from: contractOwnerAccount, gas: 400000});
+var stitchReceiversAndSaleMessage5Tx = sale.init(_start, _end, _cap, _softcap, {from: contractOwnerAccount, gas: 400000});
+while (txpool.status.pending > 0) {
+}
+printTxData("stitchReceiversAndSaleMessage1Tx", stitchReceiversAndSaleMessage1Tx);
+printTxData("stitchReceiversAndSaleMessage2Tx", stitchReceiversAndSaleMessage2Tx);
+printTxData("stitchReceiversAndSaleMessage3Tx", stitchReceiversAndSaleMessage3Tx);
+printTxData("stitchReceiversAndSaleMessage4Tx", stitchReceiversAndSaleMessage4Tx);
+printTxData("stitchReceiversAndSaleMessage5Tx", stitchReceiversAndSaleMessage5Tx);
+printBalances();
+failIfGasEqualsGasUsed(stitchReceiversAndSaleMessage1Tx, stitchReceiversAndSaleMessage + " - receiver0.setSale(sale)");
+failIfGasEqualsGasUsed(stitchReceiversAndSaleMessage2Tx, stitchReceiversAndSaleMessage + " - receiver1.setSale(sale)");
+failIfGasEqualsGasUsed(stitchReceiversAndSaleMessage3Tx, stitchReceiversAndSaleMessage + " - receiver2.setSale(sale)");
+failIfGasEqualsGasUsed(stitchReceiversAndSaleMessage4Tx, stitchReceiversAndSaleMessage + " - sale.setReceivers(receiver*)");
+failIfGasEqualsGasUsed(stitchReceiversAndSaleMessage5Tx, stitchReceiversAndSaleMessage + " - sale.init(*)");
+printReceiverContractDetails(receiver0Address, "Receiver0");
+printReceiverContractDetails(receiver1Address, "Receiver1");
+printReceiverContractDetails(receiver2Address, "Receiver2");
+printSaleContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+// Wait for crowdsale start
+// -----------------------------------------------------------------------------
+var startTime = sale.start();
+var startTimeDate = new Date(startTime * 1000);
+console.log("RESULT: Waiting until startTime at " + startTime + " " + startTimeDate + " currentDate=" + new Date());
+while ((new Date()).getTime() <= startTimeDate.getTime()) {
+}
+console.log("RESULT: Waited until startTime at " + startTime + " " + startTimeDate + " currentDate=" + new Date());
+
+
+// -----------------------------------------------------------------------------
+var validContribution1Message = "Send Valid Contribution - 40 ETH From Account3, 50 ETH From Account6";
+console.log("RESULT: " + validContribution1Message);
+var sendValidContribution1Tx = eth.sendTransaction({from: account3, to: receiver0Address, gas: 400000, value: web3.toWei("40", "ether")});
+var sendValidContribution2Tx = eth.sendTransaction({from: account4, to: receiver1Address, gas: 400000, value: web3.toWei("50", "ether")});
+while (txpool.status.pending > 0) {
+}
+printTxData("sendValidContribution1Tx", sendValidContribution1Tx);
+printTxData("sendValidContribution2Tx", sendValidContribution2Tx);
+printBalances();
+failIfGasEqualsGasUsed(sendValidContribution1Tx, validContribution1Message);
+failIfGasEqualsGasUsed(sendValidContribution2Tx, validContribution1Message);
+printReceiverContractDetails(receiver0Address, "Receiver0");
+printReceiverContractDetails(receiver1Address, "Receiver1");
+printReceiverContractDetails(receiver2Address, "Receiver2");
+printSaleContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var validContribution2Message = "Blow The Cap";
+console.log("RESULT: " + validContribution2Message);
+var sendValidContribution3Tx = eth.sendTransaction({from: account5, to: receiver0Address, gas: 400000, value: web3.toWei("4000000", "ether")});
+while (txpool.status.pending > 0) {
+}
+printTxData("sendValidContribution3Tx", sendValidContribution3Tx);
+printBalances();
+failIfGasEqualsGasUsed(sendValidContribution3Tx, validContribution2Message);
+printReceiverContractDetails(receiver0Address, "Receiver0");
+printReceiverContractDetails(receiver1Address, "Receiver1");
+printReceiverContractDetails(receiver2Address, "Receiver2");
+printSaleContractDetails();
 console.log("RESULT: ");
 
 

@@ -8,7 +8,7 @@ contract Sale {
     // once the balance of this contract exceeds the
     // soft-cap, the sale should stay open for no more
     // than this amount of time
-    uint public constant SOFTCAP_TIME = 4 hours;
+    uint public constant SOFTCAP_TIME = 33 seconds;
 
     address public owner;    // contract owner
     address public newOwner; // new contract owner for two-way ownership handshake

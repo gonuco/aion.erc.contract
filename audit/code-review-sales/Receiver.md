@@ -22,17 +22,22 @@ contract Receiver {
 
     // BK Ok - Owned
     address public owner;    // contract owner
+    // BK Ok - Owned
     address public newOwner; // new contract owner for two-way ownership handshake
     string public notice;    // arbitrary public notice text
 
     Sale public sale;
 
     function Receiver() {
+        // BK Ok - Owned
         owner = msg.sender;
     }
 
+    // BK Ok - Owned
     modifier onlyOwner() {
+        // BK Ok
         require(msg.sender == owner);
+        // BK Ok
         _;
     }
 
@@ -62,15 +67,22 @@ contract Receiver {
     }
 
     // 1st half of ownership change
+    // BK Ok - Owned
     function changeOwner(address next) onlyOwner {
+        // BK Ok
         newOwner = next;
     }
 
     // 2nd half of ownership change
+    // BK Ok - Owned
     function acceptOwnership() {
+        // BK Ok
         require(msg.sender == newOwner);
+        // BK Ok
         owner = msg.sender;
+        // BK Ok
         newOwner = 0;
+        // BK NOTE - Should emit an event log like `event OwnershipTransferred(address indexed _from, address indexed _to);`
     }
 
     // put some text in the contract
