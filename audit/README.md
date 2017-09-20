@@ -77,10 +77,10 @@ Files from [../token/contracts](../token/contracts):
 
 Files from [../sales/contracts](../sales/contracts):
 
-* [ ] [code-review-sales/Receiver.md](code-review-sales/Receiver.md)
-  * [ ] contract Receiver 
-* [ ] [code-review-sales/Sale.md](code-review-sales/Sale.md)
-  * [ ] contract Sale 
+* [x] [code-review-sales/Receiver.md](code-review-sales/Receiver.md)
+  * [x] contract Receiver 
+* [x] [code-review-sales/Sale.md](code-review-sales/Sale.md)
+  * [x] contract Sale 
 
 Files from [../trs/contracts](../trs/contracts):
 

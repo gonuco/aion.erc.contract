@@ -11,11 +11,14 @@ Source file [../../sales/contracts/Receiver.sol](../../sales/contracts/Receiver.
 // BK Ok - Consider updating
 pragma solidity >=0.4.10;
 
+// BK Next 2 Ok
 import './Token.sol';
 import './Sale.sol';
 
 // Receiver is the contract that takes contributions
+// BK Ok
 contract Receiver {
+    // BK Next 3 Ok
     event StartSale();
     event EndSale();
     event EtherIn(address from, uint amount);
@@ -24,10 +27,13 @@ contract Receiver {
     address public owner;    // contract owner
     // BK Ok - Owned
     address public newOwner; // new contract owner for two-way ownership handshake
+    // BK Ok
     string public notice;    // arbitrary public notice text
 
+    // BK Ok
     Sale public sale;
 
+    // BK Ok
     function Receiver() {
         // BK Ok - Owned
         owner = msg.sender;
@@ -41,28 +47,40 @@ contract Receiver {
         _;
     }
 
+    // BK Ok
     modifier onlySale() {
+        // BK Ok
         require(msg.sender == address(sale));
+        // BK Ok
         _;
     }
 
+    // BK Ok - Constant function
     function live() constant returns(bool) {
+        // BK Ok
         return sale.live();
     }
 
     // callback from sale contract when the sale begins
+    // BK Ok - Emitting event only
     function start() onlySale {
+        // BK Ok
         StartSale();
     }
 
     // callback from sale contract when sale ends
+    // BK Ok - Emitting event only
     function end() onlySale {
+        // BK Ok
         EndSale();
     }
 
+    // BK Ok
     function () payable {
         // forward everything to the sale contract
+        // BK Ok - Log event
         EtherIn(msg.sender, msg.value);
+        // BK Ok - Transferring ETH to trusted contract
         require(sale.call.value(msg.value)());
     }
 
@@ -86,12 +104,16 @@ contract Receiver {
     }
 
     // put some text in the contract
+    // BK Ok - Only owner can execute
     function setNotice(string note) onlyOwner {
+        // BK Ok
         notice = note;
     }
 
     // set the target sale address
+    // BK Ok - Only owner can execute
     function setSale(address s) onlyOwner {
+        // BK Ok
         sale = Sale(s);
     }
 
@@ -100,14 +122,20 @@ contract Receiver {
     // withdrawal methods.
 
     // withdraw tokens to owner
+    // BK Ok - Only owner can call
     function withdrawToken(address token) onlyOwner {
+        // BK Ok
         Token t = Token(token);
+        // BK Ok
         require(t.transfer(msg.sender, t.balanceOf(this)));
     }
 
     // refund early/late tokens
+    // BK Ok - Only owner can call
     function refundToken(address token, address sender, uint amount) onlyOwner {
+        // BK Ok
         Token t = Token(token);
+        // BK Ok
         require(t.transfer(sender, amount));
     }
 }

@@ -463,6 +463,7 @@ console.log("RESULT: Waited until startTime at " + startTime + " " + startTimeDa
 
 // -----------------------------------------------------------------------------
 var validContribution1Message = "Send Valid Contribution - 40 ETH From Account3, 50 ETH From Account6";
+// -----------------------------------------------------------------------------
 console.log("RESULT: " + validContribution1Message);
 var sendValidContribution1Tx = eth.sendTransaction({from: account3, to: receiver0Address, gas: 400000, value: web3.toWei("40", "ether")});
 var sendValidContribution2Tx = eth.sendTransaction({from: account4, to: receiver1Address, gas: 400000, value: web3.toWei("50", "ether")});
@@ -482,6 +483,7 @@ console.log("RESULT: ");
 
 // -----------------------------------------------------------------------------
 var validContribution2Message = "Blow The Cap";
+// -----------------------------------------------------------------------------
 console.log("RESULT: " + validContribution2Message);
 var sendValidContribution3Tx = eth.sendTransaction({from: account5, to: receiver0Address, gas: 400000, value: web3.toWei("4000000", "ether")});
 while (txpool.status.pending > 0) {
@@ -489,6 +491,40 @@ while (txpool.status.pending > 0) {
 printTxData("sendValidContribution3Tx", sendValidContribution3Tx);
 printBalances();
 failIfGasEqualsGasUsed(sendValidContribution3Tx, validContribution2Message);
+printReceiverContractDetails(receiver0Address, "Receiver0");
+printReceiverContractDetails(receiver1Address, "Receiver1");
+printReceiverContractDetails(receiver2Address, "Receiver2");
+printSaleContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var withdrawSomeMessage = "Withdraw Some";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + withdrawSomeMessage);
+var withdrawSomeTx = sale.withdrawSome(web3.toWei(123, "ether"), {from: contractOwnerAccount, gas: 400000});
+while (txpool.status.pending > 0) {
+}
+printTxData("withdrawSomeTx", withdrawSomeTx);
+printBalances();
+failIfGasEqualsGasUsed(withdrawSomeTx, withdrawSomeMessage);
+printReceiverContractDetails(receiver0Address, "Receiver0");
+printReceiverContractDetails(receiver1Address, "Receiver1");
+printReceiverContractDetails(receiver2Address, "Receiver2");
+printSaleContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var withdrawMessage = "Withdraw";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + withdrawMessage);
+var withdrawTx = sale.withdraw({from: contractOwnerAccount, gas: 400000});
+while (txpool.status.pending > 0) {
+}
+printTxData("withdrawTx", withdrawTx);
+printBalances();
+failIfGasEqualsGasUsed(withdrawTx, withdrawMessage);
 printReceiverContractDetails(receiver0Address, "Receiver0");
 printReceiverContractDetails(receiver1Address, "Receiver1");
 printReceiverContractDetails(receiver2Address, "Receiver2");

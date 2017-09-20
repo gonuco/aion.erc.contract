@@ -376,8 +376,8 @@ function printSaleContractDetails() {
     console.log("RESULT: sale.notice=" + contract.notice());
     console.log("RESULT: sale.start=" + contract.start() + " " + new Date(contract.start() * 1000).toUTCString());
     console.log("RESULT: sale.end=" + contract.end() + " " + new Date(contract.end() * 1000).toUTCString());
-    console.log("RESULT: sale.cap=" + contract.cap());
-    console.log("RESULT: sale.softcap=" + contract.softcap());
+    console.log("RESULT: sale.cap=" + contract.cap() + " " + contract.cap().shift(-18));
+    console.log("RESULT: sale.softcap=" + contract.softcap() + " " + contract.softcap().shift(-18));
     console.log("RESULT: sale.live=" + contract.live());
     console.log("RESULT: sale.r0=" + contract.r0());
     console.log("RESULT: sale.r1=" + contract.r1());
