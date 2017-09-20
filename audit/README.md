@@ -89,7 +89,10 @@ contribute funds to any of the 3 receivers and the funds will be collected in th
   `withdrawSome()` or `withdraw()`. While the logic in *sales/Sale* is simple and seems be secure, this is a bespoke
   contract with little amount of review and testing conducted. Consider transferring ethers contributed to the contract
   immediately to a multisig or hardware wallet as these are more thoroughly tested wallets, to further reduce the risk
-  of any potential vulnerabilities in these contracts.
+  of any potential vulnerabilities in these contracts
+*  **LOW IMPORTANCE** *trs/Savings* locks tokens based on block numbers. The actual time when accounts can withdraw their tokens
+  can vary a lot, depending on the time between blocks. Use the Unix timestamp and `block.timestamp` instead of `block.number` and the
+  withdrawal schedule will be predictable
 
 <br />
 
