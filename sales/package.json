@@ -11,6 +11,9 @@
   },
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "erc-utils": "file:../utils"
+  },
   "devDependencies": {
     "chai": "^4.1.2"
   }

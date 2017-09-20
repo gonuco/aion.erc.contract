@@ -13,6 +13,4 @@ Current setup is tested using the following configuration:
 
 ## Testing
 
-To do unit testing, simply open one of the project folders run ``testrpc`` then navigate to the token folder and run the truffle tests through ``truffle test``. This document will be updated as more complex environment tests are added.
-
-NOTE: truffle tests under testrpc are failing when ran as a batch, please run each test suite individually.
+To do unit testing first run ``npm install`` in each directory (to install the local modules), run ``testrpc`` and finally navigate to the token folder and run the truffle tests through ``truffle test``. This document will be updated as more complex environment tests are added.

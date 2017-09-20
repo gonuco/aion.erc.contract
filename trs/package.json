@@ -8,10 +8,8 @@
     "test": "test"
   },
   "dependencies": {
-    "solidity-coverage": "^0.2.2"
-  },
-  "devDependencies": {
-    "big-integer": "^1.6.25"
+    "solidity-coverage": "^0.2.2",
+    "erc-utils": "file:../utils"
   },
   "scripts": {
     "test": "mocha"

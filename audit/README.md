@@ -8,8 +8,9 @@ Bok Consulting Pty Ltd was commissioned to perform an audit on the Ethereum smar
 
 This audit has been conducted on Nuco's source code in commit
 [4c2dcc9](https://github.com/gonuco/aion.erc.contract/commit/4c2dcc92b4ba404211deb3bf0559eaa8d43b2e84),
-[17cfee9](https://github.com/gonuco/aion.erc.contract/commit/17cfee99792ba31f63e541445e8d6878a169e9c8) and
-[09632c2](https://github.com/gonuco/aion.erc.contract/commit/09632c24a322daa37c112c1d6349faa10888cc45).
+[17cfee9](https://github.com/gonuco/aion.erc.contract/commit/17cfee99792ba31f63e541445e8d6878a169e9c8),
+[09632c2](https://github.com/gonuco/aion.erc.contract/commit/09632c24a322daa37c112c1d6349faa10888cc45) and
+[c64525e](https://github.com/gonuco/aion.erc.contract/commit/c64525ee9f071a15e1cbe14f51390cddc3dda90a).
 
 <br />
 
