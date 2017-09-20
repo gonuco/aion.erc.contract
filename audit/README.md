@@ -43,6 +43,11 @@ This audit has been conducted on Nuco's source code in commit
   the functionality in each of *sales/Receiver*, *sales/Sale* and *trs/Savings*
 * **LOW IMPORTANCE** Subtraction from the source account and allocance should be executed before the addition to the
   destination account
+* **MEDIUM IMPORTANCE** *sales/Sale* currently accumulates any contributed ethers in the contract until the owner calls
+  `withdrawSome()` or `withdraw()`. While the logic in *sales/Sale* is simple and seems be secure, this is a bespoke
+  contract with little amount of review and testing conducted. Consider transferring ethers contributed to the contract
+  immediately to a multisig or hardware wallet as these are more thoroughly tested wallets, to further reduce the risk
+  of any potential vulnerabilities in these contracts.
 
 <br />
 
