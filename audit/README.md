@@ -158,7 +158,7 @@ matches the audited source code, and that the deployment parameters are correctl
 The following functions were tested using the script [test/01_test1.sh](test/01_test1.sh) with the summary results saved
 in [test/test1results.txt](test/test1results.txt) and the detailed output saved in [test/test1output.txt](test/test1output.txt):
 
-* [x] Deploy *sales/Sale* and three *sales/Receiver* contracts
+* [x] Deploy the *sales/Sale* and three *sales/Receiver* contracts
 * [x] Link the *sales/Sale* and three *sales/Receiver* contracts together
 * [x] Contribute to one *sales/Receiver* contract
 * [x] `withdrawSome(...)` and `withdraw(...)` the ethers from the *sales/Sale* contract
@@ -169,7 +169,10 @@ in [test/test1results.txt](test/test1results.txt) and the detailed output saved 
 The following functions were tested using the script [test/02_test2.sh](test/02_test2.sh) with the summary results saved
 in [test/test2results.txt](test/test2results.txt) and the detailed output saved in [test/test2output.txt](test/test2output.txt):
 
-* [ ] Test the token contract
+* [x] Deploy the *token/Controller*, *token/Token* and *token/Ledger* contracts
+* [x] Link the *token/Controller*, *token/Token* and *token/Ledger* contracts together
+* [x] Mint tokens
+* [x] `transfer(...)` and `transferFrom(...)` tokens
 
 <br />
 
