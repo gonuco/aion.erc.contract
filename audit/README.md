@@ -93,6 +93,24 @@ contribute funds to any of the 3 receivers and the funds will be collected in th
 *  **LOW IMPORTANCE** *trs/Savings* locks tokens based on block numbers. The actual time when accounts can withdraw their tokens
   can vary a lot, depending on the time between blocks. Use the Unix timestamp and `block.timestamp` instead of `block.number` and the
   withdrawal schedule will be predictable
+* **LOW IMPORTANCE** There are a few warnings emitted by the compiler as listed below. These warnings can be removed by commenting
+  out the parameter names, like `function claimByProof(address /* _claimer */, bytes32[] /* data */, bytes32[] /* proofs */, uint256 /* number */)`:
+
+      Controller.sol:165:27: Warning: Unused local variable
+          function claimByProof(address _claimer, bytes32[] data, bytes32[] proofs, uint256 number)
+                                ^--------------^
+      Controller.sol:165:45: Warning: Unused local variable
+          function claimByProof(address _claimer, bytes32[] data, bytes32[] proofs, uint256 number)
+                                                  ^------------^
+      Controller.sol:165:61: Warning: Unused local variable
+          function claimByProof(address _claimer, bytes32[] data, bytes32[] proofs, uint256 number)
+                                                                  ^--------------^
+      Controller.sol:165:79: Warning: Unused local variable
+          function claimByProof(address _claimer, bytes32[] data, bytes32[] proofs, uint256 number)
+                                                                                    ^------------^
+      Controller.sol:183:20: Warning: Unused local variable
+          function claim(address _claimer) onlyToken returns (bool success) {
+                         ^--------------^
 
 <br />
 
