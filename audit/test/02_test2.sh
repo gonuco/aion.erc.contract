@@ -362,7 +362,7 @@ var savings = savingsContract.new({from: contractOwnerAccount, data: savingsBin,
       } else {
         savingsAddress = contract.address;
         addAccount(savingsAddress, "Savings Contract");
-        // addTokenContractAddressAndAbi(savingsAddress, savingsAbi);
+        addSavingsContractAddressAndAbi(savingsAddress, savingsAbi);
         console.log("DATA: savingsAddress=" + savingsAddress);
       }
     }
@@ -411,7 +411,7 @@ console.log("RESULT: ");
 printTxData("savingsAddress=" + savingsAddress, savingsTx);
 printBalances();
 failIfGasEqualsGasUsed(savingsTx, savingsMessage);
-printTokenContractDetails();
+printSavingsContractDetails();
 console.log("RESULT: ");
 
 
@@ -447,10 +447,10 @@ console.log("RESULT: ");
 
 // -----------------------------------------------------------------------------
 var mintMessage = "Mint Tokens";
-var v1 = account3 + "000000000011111111111111";
-var v2 = account4 + "000000000011111111111111";
-// > new BigNumber("11111111111111", 16).shift(-8)
-// 48038396.02528529
+var v1 = account3 + "000000000003f28cb71571c7";
+var v2 = account4 + "000000000003f28cb71571c7";
+// > new BigNumber("1111111111111111").toString(16)
+// "3f28cb71571c7"
 // -----------------------------------------------------------------------------
 console.log("RESULT: " + mintMessage);
 var mint1Tx = ledger.multiMint(0, [v1, v2], {from: contractOwnerAccount, gas: 400000});
@@ -458,7 +458,7 @@ while (txpool.status.pending > 0) {
 }
 printTxData("mint1Tx", mint1Tx);
 printBalances();
-failIfGasEqualsGasUsed(mint1Tx, mintMessage + " - ac3 + ac4 48038396.02528529 tokens");
+failIfGasEqualsGasUsed(mint1Tx, mintMessage + " - ac3 + ac4 11111111.11111111 tokens");
 printControllerContractDetails();
 printLedgerContractDetails();
 printTokenContractDetails();

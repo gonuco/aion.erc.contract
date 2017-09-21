@@ -197,7 +197,7 @@ function printControllerContractDetails() {
     console.log("RESULT: controller.token=" + contract.token());
     console.log("RESULT: controller.burnAddress=" + contract.burnAddress());
     console.log("RESULT: finalizable.finalized=" + contract.finalized());
-    console.log("RESULT: controller.totalSupply=" + contract.totalSupply());
+    console.log("RESULT: controller.totalSupply=" + contract.totalSupply().shift(-8));
 
     var latestBlock = eth.blockNumber;
     var i;
@@ -231,7 +231,7 @@ function printLedgerContractDetails() {
     var contract = eth.contract(ledgerContractAbi).at(ledgerContractAddress);
     console.log("RESULT: ledger.owner=" + contract.owner());
     console.log("RESULT: ledger.controller=" + contract.controller());
-    console.log("RESULT: ledger.totalSupply=" + contract.totalSupply());
+    console.log("RESULT: ledger.totalSupply=" + contract.totalSupply().shift(-8));
     console.log("RESULT: ledger.mintingNonce=" + contract.mintingNonce());
     console.log("RESULT: ledger.mintingStopped=" + contract.mintingStopped());
     console.log("RESULT: ledger.burnAddress=" + contract.burnAddress());
@@ -257,7 +257,7 @@ function printTokenContractDetails() {
     console.log("RESULT: token.motd=" + contract.motd());
     console.log("RESULT: token.burnAddress=" + contract.burnAddress());
     console.log("RESULT: token.burnable=" + contract.burnable());
-    console.log("RESULT: token.totalSupply=" + contract.totalSupply().shift(-18));
+    console.log("RESULT: token.totalSupply=" + contract.totalSupply().shift(-8));
     console.log("RESULT: finalizable.finalized=" + contract.finalized());
     console.log("RESULT: pausable.paused=" + contract.paused());
 
@@ -385,5 +385,56 @@ function printSaleContractDetails() {
 
     var latestBlock = eth.blockNumber;
     saleFromBlock = latestBlock + 1;
+  }
+}
+
+
+//-----------------------------------------------------------------------------
+// Savings Contract
+//-----------------------------------------------------------------------------
+var savingsContractAddress = null;
+var savingsContractAbi = null;
+
+function addSavingsContractAddressAndAbi(address, abi) {
+  savingsContractAddress = address;
+  savingsContractAbi = abi;
+}
+
+var savingsFromBlock = 0;
+function printSavingsContractDetails() {
+  console.log("RESULT: savingsContractAddress=" + savingsContractAddress);
+  if (savingsContractAddress  != null && savingsContractAbi != null) {
+    var contract = eth.contract(savingsContractAbi).at(savingsContractAddress);
+    console.log("RESULT: savings.periods=" + contract.periods());
+    console.log("RESULT: savings.t0special=" + contract.t0special());
+    console.log("RESULT: savings.interval=" + contract.interval());
+    console.log("RESULT: savings.owner=" + contract.owner());
+    console.log("RESULT: savings.newOwner=" + contract.newOwner());
+    console.log("RESULT: savings.locked=" + contract.locked());
+    console.log("RESULT: savings.startblock=" + contract.startblock());
+    console.log("RESULT: savings.token=" + contract.token());
+    console.log("RESULT: savings.totalfv=" + contract.totalfv() + " " + contract.totalfv().shift(-8));
+    console.log("RESULT: savings.total=" + contract.total() + " " + contract.total().shift(-8));
+    console.log("RESULT: savings.mintingNonce=" + contract.mintingNonce());
+
+    console.log("RESULT: savings.start=" + contract.start() + " " + new Date(contract.start() * 1000).toUTCString());
+    console.log("RESULT: savings.end=" + contract.end() + " " + new Date(contract.end() * 1000).toUTCString());
+    console.log("RESULT: savings.cap=" + contract.cap() + " " + contract.cap().shift(-18));
+    console.log("RESULT: savings.softcap=" + contract.softcap() + " " + contract.softcap().shift(-18));
+    console.log("RESULT: savings.live=" + contract.live());
+    console.log("RESULT: savings.r0=" + contract.r0());
+    console.log("RESULT: savings.r1=" + contract.r1());
+
+    var latestBlock = eth.blockNumber;
+    var i;
+
+    var depositEvent = contract.Deposit({}, { fromBlock: saleFromBlock, toBlock: latestBlock });
+    i = 0;
+    depositEvent.watch(function (error, result) {
+      console.log("RESULT: Deposit " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    depositEvent.stopWatching();
+
+    savingsFromBlock = latestBlock + 1;
   }
 }

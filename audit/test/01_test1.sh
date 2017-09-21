@@ -362,7 +362,7 @@ var savings = savingsContract.new({from: contractOwnerAccount, data: savingsBin,
       } else {
         savingsAddress = contract.address;
         addAccount(savingsAddress, "Savings Contract");
-        // addTokenContractAddressAndAbi(savingsAddress, savingsAbi);
+        addSavingsContractAddressAndAbi(savingsAddress, savingsAbi);
         console.log("DATA: savingsAddress=" + savingsAddress);
       }
     }
@@ -411,7 +411,7 @@ console.log("RESULT: ");
 printTxData("savingsAddress=" + savingsAddress, savingsTx);
 printBalances();
 failIfGasEqualsGasUsed(savingsTx, savingsMessage);
-printTokenContractDetails();
+printSavingsContractDetails();
 console.log("RESULT: ");
 
 
