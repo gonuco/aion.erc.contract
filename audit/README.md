@@ -87,8 +87,8 @@ contribute funds to any of the 3 receivers and the funds will be collected in th
 * **LOW IMPORTANCE** The *token/Owned* functionality is mixed into *sales/Receiver*, *sales/Sale* and *trs/Savings*.
   Consider inheriting from *token/Owned* to simplify the code and separating functionality instead of reimplementing
   the functionality in each of *sales/Receiver*, *sales/Sale* and *trs/Savings*
-* **LOW IMPORTANCE** Subtraction from the source account and allocance should be executed before the addition to the
-  destination account
+* **LOW IMPORTANCE** Subtraction from the source account and allowance should be executed before the addition to the
+  destination account, in *token/Ledger*
 * **MEDIUM IMPORTANCE** *sales/Sale* currently accumulates any contributed ethers in the contract until the owner calls
   `withdrawSome()` or `withdraw()`. While the logic in *sales/Sale* is simple and seems be secure, this is a bespoke
   contract with little amount of review and testing conducted. Consider transferring ethers contributed to the contract
@@ -97,6 +97,7 @@ contribute funds to any of the 3 receivers and the funds will be collected in th
 *  **LOW IMPORTANCE** *trs/Savings* locks tokens based on block numbers. The actual time when accounts can withdraw their tokens
   can vary a lot, depending on the time between blocks. Use the Unix timestamp and `block.timestamp` instead of `block.number` and the
   withdrawal schedule will be predictable
+
 * **LOW IMPORTANCE** There are a few warnings emitted by the compiler as listed below. These warnings can be removed by commenting
   out the parameter names, like `function claimByProof(address /* _claimer */, bytes32[] /* data */, bytes32[] /* proofs */, uint256 /* number */)`:
 
@@ -115,6 +116,8 @@ contribute funds to any of the 3 receivers and the funds will be collected in th
       Controller.sol:183:20: Warning: Unused local variable
           function claim(address _claimer) onlyToken returns (bool success) {
                          ^--------------^
+
+* **LOW IMPORTANCE** The constants `periods`, `t0special` and `interval` should have uppercase names, e.g. `PERIODS` - in *trs/Savings*
 
 <br />
 
@@ -235,12 +238,12 @@ Files from [../token/contracts](../token/contracts):
   * [x] contract ControllerEventDefinitions 
 * [x] [code-review-token/TokenReceivable.md](code-review-token/TokenReceivable.md)
   * [x] contract TokenReceivable is Owned 
-* [ ] [code-review-token/Ledger.md](code-review-token/Ledger.md)
-  * [ ] contract Ledger is Owned, SafeMath, Finalizable 
-* [ ] [code-review-token/Token.md](code-review-token/Token.md)
-  * [ ] contract Token is Finalizable, TokenReceivable, SafeMath, EventDefinitions, Pausable 
-* [ ] [code-review-token/Controller.md](code-review-token/Controller.md)
-  * [ ] contract Controller is Owned, Finalizable, ControllerEventDefinitions 
+* [x] [code-review-token/Ledger.md](code-review-token/Ledger.md)
+  * [x] contract Ledger is Owned, SafeMath, Finalizable 
+* [x] [code-review-token/Token.md](code-review-token/Token.md)
+  * [x] contract Token is Finalizable, TokenReceivable, SafeMath, EventDefinitions, Pausable 
+* [x] [code-review-token/Controller.md](code-review-token/Controller.md)
+  * [x] contract Controller is Owned, Finalizable, ControllerEventDefinitions 
 
 Files from [../sales/contracts](../sales/contracts):
 

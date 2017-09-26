@@ -157,7 +157,7 @@ contract Ledger is Owned, SafeMath, Finalizable {
         // BK Ok - Insufficient allowance
         if (allowed < _value) return false;
 
-        // BK NOTE - The addition statement should be executed after the subtraction statmenets
+        // BK NOTE - The addition statement should be executed after the subtraction statements generally
         // BK Ok
         balanceOf[_to] = safeAdd(balanceOf[_to], _value);
         // BK Ok

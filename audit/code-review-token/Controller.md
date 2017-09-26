@@ -75,25 +75,37 @@ contract Controller is Owned, Finalizable, ControllerEventDefinitions {
         token.setBurnAddress(_address);
     }
 
+    // BK Ok
     modifier onlyToken() {
+        // BK Ok
         require(msg.sender == address(token));
+        // BK Ok
         _;
     }
 
+    // BK Ok
     modifier onlyLedger() {
+        // BK Ok
         require(msg.sender == address(ledger));
+        // BK Ok
         _;
     }
 
+    // BK Ok - Constant function
     function totalSupply() constant returns (uint) {
+        // BK Ok
         return ledger.totalSupply();
     }
 
+    // BK Ok - Constant function
     function balanceOf(address _a) constant returns (uint) {
+        // BK Ok
         return ledger.balanceOf(_a);
     }
 
+    // BK Ok - Constant function
     function allowance(address _owner, address _spender) constant returns (uint) {
+        // BK Ok
         return ledger.allowance(_owner, _spender);
     }
 
@@ -102,29 +114,41 @@ contract Controller is Owned, Finalizable, ControllerEventDefinitions {
     // let the ledger send transfer events (the most obvious case
     // is when we mint directly to the ledger and need the Transfer()
     // events to appear in the token)
+    // BK Ok - Only ledger can execute
     function ledgerTransfer(address from, address to, uint val) onlyLedger {
+        // BK Ok
         token.controllerTransfer(from, to, val);
     }
 
     // functions below this line are onlyToken
 
+    // BK Ok - Only token can execute
     function transfer(address _from, address _to, uint _value) onlyToken returns (bool success) {
+        // BK Ok
         return ledger.transfer(_from, _to, _value);
     }
 
+    // BK Ok - Only token can execute
     function transferFrom(address _spender, address _from, address _to, uint _value) onlyToken returns (bool success) {
+        // BK Ok
         return ledger.transferFrom(_spender, _from, _to, _value);
     }
 
+    // BK Ok - Only token can execute
     function approve(address _owner, address _spender, uint _value) onlyToken returns (bool success) {
+        // BK Ok
         return ledger.approve(_owner, _spender, _value);
     }
 
+    // BK Ok - Only token can execute
     function increaseApproval (address _owner, address _spender, uint _addedValue) onlyToken returns (bool success) {
+        // BK Ok
         return ledger.increaseApproval(_owner, _spender, _addedValue);
     }
 
+    // BK Ok - Only token can execute
     function decreaseApproval (address _owner, address _spender, uint _subtractedValue) onlyToken returns (bool success) {
+        // BK Ok
         return ledger.decreaseApproval(_owner, _spender, _subtractedValue);
     }
 
@@ -136,14 +160,18 @@ contract Controller is Owned, Finalizable, ControllerEventDefinitions {
     /**
      * @dev        Enables burning on the token contract
      */
+    // BK Ok - Only owner can execute
     function enableBurning() onlyOwner {
+        // BK Ok
         token.enableBurning();
     }
 
     /**
      * @dev        Disables burning on the token contract
      */
+    // BK Ok - Only token can execute
     function disableBurning() onlyOwner {
+        // BK Ok
         token.disableBurning();
     }
 
@@ -158,12 +186,18 @@ contract Controller is Owned, Finalizable, ControllerEventDefinitions {
      * 
      * @return      success     operation successful or not.
      */ 
+    // BK Ok - Only token can execute
     function burn(address _from, bytes32 _to, uint _amount) onlyToken returns (bool success) {
+        // BK Ok
         if (ledger.transfer(_from, burnAddress, _amount)) {
+            // BK Ok - Log event
             ControllerBurn(_from, _to, _amount);
+            // BK Ok
             token.controllerBurn(_from, _to, _amount);
+            // BK Ok
             return true;
         }
+        // BK Ok
         return false;
     }
 
@@ -183,9 +217,11 @@ contract Controller is Owned, Finalizable, ControllerEventDefinitions {
      * @return      success     operation successful or not.
      * 
      */
+    // BK Ok - Only token can execute
     function claimByProof(address _claimer, bytes32[] data, bytes32[] proofs, uint256 number)
         onlyToken
         returns (bool success) {
+        // BK Ok
         return false;
     }
 
@@ -201,7 +237,9 @@ contract Controller is Owned, Finalizable, ControllerEventDefinitions {
      * 
      * @return      success     operation successful or not.
      */
+    // BK Ok - Only token can execute
     function claim(address _claimer) onlyToken returns (bool success) {
+        // BK Ok
         return false;
     }
 }

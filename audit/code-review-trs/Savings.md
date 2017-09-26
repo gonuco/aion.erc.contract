@@ -12,7 +12,9 @@ Source file [../../trs/contracts/Savings.sol](../../trs/contracts/Savings.sol).
 // BK Ok - Consider updating
 pragma solidity >=0.4.10;
 
+// BK Ok
 contract Token {
+    // BK Next 3 Ok
 	function transferFrom(address from, address to, uint amount) returns(bool);
 	function transfer(address to, uint amount) returns(bool);
 	function balanceOf(address addr) constant returns(uint);
@@ -26,15 +28,23 @@ contract Token {
 // DO NOT SEND TOKENS TO THIS CONTRACT. Use the deposit() or depositTo() method.
 // As an exception, tokens sent to this contract before locking are the
 // bonus tokens that are distributed.
+// BK Ok
 contract Savings {
-	// periods is the raw number of withdrawal periods
+	// periods is the raw number of withdrawal periods	
+    // BK NOTE - Should use `PERIODS` instead of `periods`
+    // BK Ok
 	uint constant public periods = 36;
 	// t0multiple is the numerator that determines what fraction
 	// of total distributions is distributed in the first period,
 	// where that fraction is (t0multiple / periods)
+    // BK NOTE - Should use `T0SPECIAL` instead of `t0special`
+    // BK Ok
 	uint constant public t0special = 12;
+    // BK NOTE - Should use `INTERVAL` instead of `interval`
+	// BK Ok
 	uint constant public interval = 10;  // block interval (FIXME: pick a number)
 
+    // BK Ok
 	event Deposit(address indexed who, uint amount);
 
     // BK Ok - Owned
@@ -42,25 +52,34 @@ contract Savings {
     // BK Ok - Owned
 	address public newOwner;
 
+    // BK Next 2 Ok
 	bool public locked;
 	uint public startblock;
 
+    // BK Ok
 	Token public token;
 
 	// face value deposited by an address before locking
+	// BK Ok
 	mapping (address => uint) public deposited;
 
 	// total face value deposited; sum of deposited
+	// BK Ok
 	uint public totalfv;
 
 	// total tokens owned by the contract after locking
+	// BK Ok
 	uint public total;
 
 	// number of times each address has withdrawn
+	// BK Ok
 	mapping (address => uint8) public withdrawals;
 
+    // BK Ok - Constructor
 	function Savings() {
+	    // BK Ok
 		assert(t0special > 0);
+		// BK Ok
 		assert(periods > 0);
 		// BK Ok - Owned
 		owner = msg.sender;
@@ -89,13 +108,17 @@ contract Savings {
         // BK NOTE - Should emit an event log like `event OwnershipTransferred(address indexed _from, address indexed _to);`
 	}
 
+    // BK Ok - Only owner can execute
 	function setToken(address tok) onlyOwner {
+	    // BK Ok
 		token = Token(tok);
 	}
 
 	// lock is called by the owner to lock the savings
 	// contract so that no more deposits may be made
+	// BK Ok - Only owner can execute
 	function lock() onlyOwner {
+	    // BK Ok
 		locked = true;
 	}
 
@@ -103,20 +126,29 @@ contract Savings {
 	// it should be called after lock() once all
 	// of the bonus tokens are sent to this contract
 	// and multiMint has been called.
+	// BK Ok - Only owner can execute
 	function start(uint blockDelta) onlyOwner {
+	    // BK Ok
 		assert(locked && startblock == 0);
+		// BK Ok
 		startblock = block.number + blockDelta;
+		// BK Ok
 		total = token.balanceOf(this);
 	}
 
 	// if someone accidentally transfers tokens to this contract,
 	// the owner can return them as long as distribution hasn't started
+	// BK Ok - Only owner can call this before start block to withdraw tokens from this contract
 	function sendTokens(address addr, uint amount) onlyOwner {
+	    // BK Ok
 		require(startblock == 0);
+		// BK Ok
 		token.transfer(addr, amount);
 	}
 
+    // BK Ok - Cannot send ETH
 	function () {
+	    // BK Ok
 		revert();
 	}
 
@@ -139,26 +171,40 @@ contract Savings {
 	//
 	// the despositor must have approve()'d the tokens
 	// to be transferred by this contract
+	// BK Ok - Anyone can call this to deposit tokens
 	function deposit(uint tokens) {
+	    // BK Ok
 		depositTo(msg.sender, tokens);
 	}
 
 
 	// deposit tokens to be redeemed by another address
+	// BK Ok - Anyone can call this to deposit tokens
 	function depositTo(address beneficiary, uint tokens) {
+	    // BK Ok
 		require(!locked);
+		// BK Ok
 		require(token.transferFrom(msg.sender, this, tokens));
+		// BK Ok
 	    deposited[beneficiary] += tokens;
+	    // BK Ok
 		totalfv += tokens;
+		// BK Ok
 		Deposit(beneficiary, tokens);
 	}
 
 	// convenience function for owner: deposit on behalf of many
+	// BK Ok - Only owner can call this
 	function bulkDepositTo(uint256[] bits) onlyOwner {
+	    // BK Ok
 		uint256 lomask = (1 << 96) - 1;
+		// BK Ok
 		for (uint i=0; i<bits.length; i++) {
+		    // BK Ok
 			address a = address(bits[i]>>96);
+			// BK Ok
 			uint val = bits[i]&lomask;
+			// BK Ok
 			depositTo(a, val);
 		}
 	}
@@ -166,7 +212,9 @@ contract Savings {
 	// withdraw withdraws tokens to the sender
 	//
 	// withdraw can be called at most once per redemption period
+	// BK Ok
 	function withdraw() returns(bool) {
+	    // BK Ok
 		return withdrawTo(msg.sender);
 	}
 
@@ -228,8 +276,11 @@ contract Savings {
 	}
 
 	// force withdrawal to many addresses
+	// BK Ok - Anyone can call
 	function bulkWithdraw(address[] addrs) {
+	    // BK Ok
 		for (uint i=0; i<addrs.length; i++)
+		    // BK Ok
 			withdrawTo(addrs[i]);
 	}
 
@@ -239,19 +290,32 @@ contract Savings {
 	// Note: the function signature here is known to New Alchemy's
 	// tooling, which is why it is arguably misnamed.
 	uint public mintingNonce;
+	// BK Ok - Only owner can execute
 	function multiMint(uint nonce, uint256[] bits) onlyOwner {
+	    // BK Ok
 		require(startblock == 0); // we should not have started disbursement yet
+		// BK Ok
 		if (nonce != mintingNonce) return;
+		// BK Ok
 		mintingNonce += 1;
+		// BK Ok
 		uint256 lomask = (1 << 96) - 1;
+		// BK Ok
 		uint sum = 0;
+		// BK Ok
 		for (uint i=0; i<bits.length; i++) {
+		    // BK Ok
 			address a = address(bits[i]>>96);
+            // BK Ok
 			uint value = bits[i]&lomask;
+            // BK Ok
 			deposited[a] += value;
+            // BK Ok
 			sum += value;
+            // BK Ok - Log event
 			Deposit(a, value);
 		}
+		// BK Ok
 		totalfv += sum;
 	}
 
