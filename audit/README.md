@@ -11,8 +11,9 @@ Bok Consulting Pty Ltd was commissioned to perform an audit on the Ethereum smar
 This audit has been conducted on Nuco's source code in commit
 [4c2dcc9](https://github.com/gonuco/aion.erc.contract/commit/4c2dcc92b4ba404211deb3bf0559eaa8d43b2e84),
 [17cfee9](https://github.com/gonuco/aion.erc.contract/commit/17cfee99792ba31f63e541445e8d6878a169e9c8),
-[09632c2](https://github.com/gonuco/aion.erc.contract/commit/09632c24a322daa37c112c1d6349faa10888cc45) and
-[c64525e](https://github.com/gonuco/aion.erc.contract/commit/c64525ee9f071a15e1cbe14f51390cddc3dda90a).
+[09632c2](https://github.com/gonuco/aion.erc.contract/commit/09632c24a322daa37c112c1d6349faa10888cc45),
+[c64525e](https://github.com/gonuco/aion.erc.contract/commit/c64525ee9f071a15e1cbe14f51390cddc3dda90a) and
+[c3e7469](https://github.com/gonuco/aion.erc.contract/commit/c3e7469bacfa60e0acf0328adb5246e88c5ed94f).
 
 Note that the crowdsale contract will collect funds but will not issue tokens immediately. Nuco has an application
 that will collect the crowdsale contract contribution events and will use this to generate the token balances in
@@ -72,6 +73,9 @@ contribute funds to any of the 3 receivers and the funds will be collected in th
 
 * **LOW IMPORTANCE** Consider whether the code to check for the [Short Address Attack](https://blog.coinfabrik.com/smart-contract-short-address-attack-mitigation-failure/)
   is required. Here's [OpenZeppelin's Short Address Attack removal](https://github.com/OpenZeppelin/zeppelin-solidity/commit/e33d9bb41be136f12bc734aef1aa6fffbf54fa40)
+
+  * [x] Removed in [c3e7469](https://github.com/gonuco/aion.erc.contract/commit/c3e7469bacfa60e0acf0328adb5246e88c5ed94f)
+
 * **LOW IMPORTANCE** As stated in your main [README.md](../README.md), your target Solidity version is 0.4.15 . Consider updating your Solidity
   files to `pragma solidity >=0.4.15;` for people only reading your published source code (.e.g. from EtherScan.io)
 * **LOW IMPORTANCE** Consider making `Owned.newOwner` public and for the `acceptOwnership(...)` function to emit an event.
