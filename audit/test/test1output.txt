@@ -19,9 +19,9 @@ SAVINGSJS         = 'Savings.js'
 DEPLOYMENTDATA    = 'deploymentData.txt'
 TEST1OUTPUT       = 'test1output.txt'
 TEST1RESULTS      = 'test1results.txt'
-CURRENTTIME       = '1505972771' 'Thu 21 Sep 2017 05:46:11 UTC'
-STARTTIME         = '1505972846' 'Thu 21 Sep 2017 05:47:26 UTC'
-ENDTIME           = '1505973071' 'Thu 21 Sep 2017 05:51:11 UTC'
+CURRENTTIME       = '1506616458' 'Thu 28 Sep 2017 16:34:18 UTC'
+STARTTIME         = '1506616533' 'Thu 28 Sep 2017 16:35:33 UTC'
+ENDTIME           = '1506616758' 'Thu 28 Sep 2017 16:39:18 UTC'
 --- Differences ../../token/contracts/Controller.sol Controller.sol ---
 
 --- Differences ../../token/contracts/Ledger.sol Ledger.sol ---
@@ -420,13 +420,13 @@ DATA: receiver1Address=0xf4441f10804b35b13bad1e664e32237773276253
 DATA: receiver2Address=0x57930444aa5c1e758c1407ded001a8f36aa80b1d
 DATA: saleAddress=0x936e75a404fc4ea6aba4d9c3b20ea67abab3188a
 DATA: savingsAddress=0xb8c31f47dfba40162326aba12cd577ae5cb2ce99
-RESULT: controllerAddress=0x90d8927407c79c4a28ee879b821c76fc9bcc2688 gas=6000000 gasUsed=1242933 costETH=0.022372794 costUSD=8.51038710966 @ ETH/USD=380.39 gasPrice=18000000000 block=2 txIx=0 txId=0x378cf35503204c023ad47cdb74a37eeff1fdb1b859a3769bf05646dfc2894474
+RESULT: controllerAddress=0x90d8927407c79c4a28ee879b821c76fc9bcc2688 gas=6000000 gasUsed=1242997 costETH=0.022373946 costUSD=8.51082531894 @ ETH/USD=380.39 gasPrice=18000000000 block=2 txIx=0 txId=0xb75c7797fb01ba0407f782b59ae996da4a24e6433a139568286111942a43fca7
 undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange                          Token Name
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       10.151707024000000000           0.00000000 Account #0 - Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.151707024000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       10.151348644000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.151348644000000000           0.00000000 Account #1 - Contract Owner
 RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.00000000 Account #3
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.00000000 Account #4
@@ -464,13 +464,13 @@ RESULT:
 undefined
 > 
 > 
-RESULT: ledgerAddress=0x0e946b999033257976aa5cbe0e3530618ca1582d gas=6000000 gasUsed=1130456 costETH=0.020348208 costUSD=7.74025484112 @ ETH/USD=380.39 gasPrice=18000000000 block=2 txIx=1 txId=0x1a188bb25c361495faa8a2389e8c6c133e5fbddbb89b953148c73e68d08a76c7
+RESULT: ledgerAddress=0x0e946b999033257976aa5cbe0e3530618ca1582d gas=6000000 gasUsed=1130456 costETH=0.020348208 costUSD=7.74025484112 @ ETH/USD=380.39 gasPrice=18000000000 block=2 txIx=1 txId=0xd02fae3a54ed2e74ac44f4b39205edf7d5f6e11d51a1bc0804c27b79e091938f
 undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange                          Token Name
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       15.151707024000000000           0.00000000 Account #0 - Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.151707024000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       10.151348644000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.151348644000000000           0.00000000 Account #1 - Contract Owner
 RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.00000000 Account #3
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.00000000 Account #4
@@ -509,13 +509,13 @@ RESULT:
 undefined
 > 
 > 
-RESULT: tokenAddress=0xdf9f36fd5654d92e0844c78d2d2dd562404cd1ff gas=6000000 gasUsed=1953575 costETH=0.03516435 costUSD=13.3761670965 @ ETH/USD=380.39 gasPrice=18000000000 block=2 txIx=2 txId=0xff9d34a16847a8e24a0643bf18551156e71e80dec2c6e29bb342745547c2fb38
+RESULT: tokenAddress=0xdf9f36fd5654d92e0844c78d2d2dd562404cd1ff gas=6000000 gasUsed=1933601 costETH=0.034804818 costUSD=13.23940471902 @ ETH/USD=380.39 gasPrice=18000000000 block=2 txIx=2 txId=0x7e07b0deb04208dd183be6e04fe9b2d8451c90ed47a17dd2f344981f0839b6ee
 undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange                          Token Name
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       15.151707024000000000           0.00000000 Account #0 - Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.151707024000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       15.151348644000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.151348644000000000           0.00000000 Account #1 - Contract Owner
 RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.00000000 Account #3
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.00000000 Account #4
@@ -558,19 +558,19 @@ RESULT:
 undefined
 > 
 > 
-RESULT: receiver0Address=0xe6ada9beed6e24be4c0259383db61b52bfca85f3 gas=6000000 gasUsed=682620 costETH=0.01228716 costUSD=4.6739127924 @ ETH/USD=380.39 gasPrice=18000000000 block=2 txIx=3 txId=0xd5e256d630bd878d915fbe1ea107b0e9315ce04756f311b8ce1534c2dbc4f5e9
+RESULT: receiver0Address=0xe6ada9beed6e24be4c0259383db61b52bfca85f3 gas=6000000 gasUsed=682620 costETH=0.01228716 costUSD=4.6739127924 @ ETH/USD=380.39 gasPrice=18000000000 block=2 txIx=3 txId=0xb3d8f84796755ddf3053d4adf286d05e6af005f83b808e49691ead0c3c3a8738
 undefined
 > 
-RESULT: receiver1Address=0xf4441f10804b35b13bad1e664e32237773276253 gas=6000000 gasUsed=682620 costETH=0.01228716 costUSD=4.6739127924 @ ETH/USD=380.39 gasPrice=18000000000 block=2 txIx=4 txId=0xe451cec2406c50d9219d221bf421b0db8141eb37cba78b1e878c16640e378c9f
+RESULT: receiver1Address=0xf4441f10804b35b13bad1e664e32237773276253 gas=6000000 gasUsed=682620 costETH=0.01228716 costUSD=4.6739127924 @ ETH/USD=380.39 gasPrice=18000000000 block=2 txIx=4 txId=0x09f48251b2e4a72a4b4c096583fe95d2787f82919e84f42aab62c415c9554d77
 undefined
 > 
-RESULT: receiver2Address=0x57930444aa5c1e758c1407ded001a8f36aa80b1d gas=6000000 gasUsed=682620 costETH=0.01228716 costUSD=4.6739127924 @ ETH/USD=380.39 gasPrice=18000000000 block=2 txIx=5 txId=0x6e8424f29bf47fb186543466bd518e10e440bc7343ef37f17554ceddd23364cf
+RESULT: receiver2Address=0x57930444aa5c1e758c1407ded001a8f36aa80b1d gas=6000000 gasUsed=682620 costETH=0.01228716 costUSD=4.6739127924 @ ETH/USD=380.39 gasPrice=18000000000 block=2 txIx=5 txId=0x52b589ac19f575aae3799b37e5ca1f9ad3e099ac89c9924445f953343aa66101
 undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange                          Token Name
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       20.151707024000000000           0.00000000 Account #0 - Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.151707024000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       15.151348644000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.151348644000000000           0.00000000 Account #1 - Contract Owner
 RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.00000000 Account #3
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.00000000 Account #4
@@ -632,13 +632,13 @@ RESULT:
 undefined
 > 
 > 
-RESULT: saleAddress=0x936e75a404fc4ea6aba4d9c3b20ea67abab3188a gas=6000000 gasUsed=1005537 costETH=0.018099666 costUSD=6.88493194974 @ ETH/USD=380.39 gasPrice=18000000000 block=2 txIx=6 txId=0x1d591641e64d4e504aef9abd17d3f80a2f159ba527677f72be6f54d39ab752f7
+RESULT: saleAddress=0x936e75a404fc4ea6aba4d9c3b20ea67abab3188a gas=6000000 gasUsed=1005537 costETH=0.018099666 costUSD=6.88493194974 @ ETH/USD=380.39 gasPrice=18000000000 block=2 txIx=6 txId=0xca09781e722b14fb30c1bc2f0bd33ff4dd756f0dfa992d14cfe3646522293f54
 undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange                          Token Name
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       20.151707024000000000           0.00000000 Account #0 - Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.151707024000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       20.151348644000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.151348644000000000           0.00000000 Account #1 - Contract Owner
 RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.00000000 Account #3
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.00000000 Account #4
@@ -687,8 +687,8 @@ undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange                          Token Name
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       25.151707024000000000           0.00000000 Account #0 - Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.151707024000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       30.151348644000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.151348644000000000           0.00000000 Account #1 - Contract Owner
 RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.00000000 Account #3
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.00000000 Account #4
@@ -775,25 +775,25 @@ undefined
 ... 
 undefined
 > 
-RESULT: stitchReceiversAndSaleMessage1Tx gas=400000 gasUsed=43099 costETH=0.000775782 costUSD=0.29509971498 @ ETH/USD=380.39 gasPrice=18000000000 block=7 txIx=0 txId=0xa57c0d7326367d1f0807ad6578a93b8930f24e662782d1c3fd6cd5ac9e7b0e02
+RESULT: stitchReceiversAndSaleMessage1Tx gas=400000 gasUsed=43099 costETH=0.000775782 costUSD=0.29509971498 @ ETH/USD=380.39 gasPrice=18000000000 block=10 txIx=0 txId=0xa57c0d7326367d1f0807ad6578a93b8930f24e662782d1c3fd6cd5ac9e7b0e02
 undefined
 > 
-RESULT: stitchReceiversAndSaleMessage2Tx gas=400000 gasUsed=43099 costETH=0.000775782 costUSD=0.29509971498 @ ETH/USD=380.39 gasPrice=18000000000 block=7 txIx=1 txId=0x89f0ef2f5418d86553ca55987e47966daae47d3499ce0598477ffab4861b84a3
+RESULT: stitchReceiversAndSaleMessage2Tx gas=400000 gasUsed=43099 costETH=0.000775782 costUSD=0.29509971498 @ ETH/USD=380.39 gasPrice=18000000000 block=10 txIx=1 txId=0x89f0ef2f5418d86553ca55987e47966daae47d3499ce0598477ffab4861b84a3
 undefined
 > 
-RESULT: stitchReceiversAndSaleMessage3Tx gas=400000 gasUsed=43099 costETH=0.000775782 costUSD=0.29509971498 @ ETH/USD=380.39 gasPrice=18000000000 block=7 txIx=2 txId=0xbad5cde576c800f9218d988935f74fc92613b5537c44a0885ac75782c3f84fc4
+RESULT: stitchReceiversAndSaleMessage3Tx gas=400000 gasUsed=43099 costETH=0.000775782 costUSD=0.29509971498 @ ETH/USD=380.39 gasPrice=18000000000 block=10 txIx=2 txId=0xbad5cde576c800f9218d988935f74fc92613b5537c44a0885ac75782c3f84fc4
 undefined
 > 
-RESULT: stitchReceiversAndSaleMessage4Tx gas=400000 gasUsed=86249 costETH=0.001552482 costUSD=0.59054862798 @ ETH/USD=380.39 gasPrice=18000000000 block=7 txIx=3 txId=0x61cf9868d370bcaf177dab8b1b8d17bbcfca2a8f7f041636b1677f540a410584
+RESULT: stitchReceiversAndSaleMessage4Tx gas=400000 gasUsed=86249 costETH=0.001552482 costUSD=0.59054862798 @ ETH/USD=380.39 gasPrice=18000000000 block=10 txIx=3 txId=0x61cf9868d370bcaf177dab8b1b8d17bbcfca2a8f7f041636b1677f540a410584
 undefined
 > 
-RESULT: stitchReceiversAndSaleMessage5Tx gas=400000 gasUsed=103705 costETH=0.00186669 costUSD=0.7100702091 @ ETH/USD=380.39 gasPrice=18000000000 block=7 txIx=4 txId=0x5b5957d78563454a448afde146aaf6681d9a2403910f3c77ce0bc9dbdf84ce63
+RESULT: stitchReceiversAndSaleMessage5Tx gas=400000 gasUsed=103705 costETH=0.00186669 costUSD=0.7100702091 @ ETH/USD=380.39 gasPrice=18000000000 block=10 txIx=4 txId=0x4740b9f265715b1a5b79d7307a2f8bb5ceba5e6ac8d66f816f36fd4698af2617
 undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange                          Token Name
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       35.157453542000000000           0.00000000 Account #0 - Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.157453542000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       50.157095162000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.157095162000000000           0.00000000 Account #1 - Contract Owner
 RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.00000000 Account #3
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.00000000 Account #4
@@ -862,8 +862,8 @@ RESULT: sale.SOFTCAP_TIME=33
 RESULT: sale.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 RESULT: sale.newOwner=0x0000000000000000000000000000000000000000
 RESULT: sale.notice=
-RESULT: sale.start=1505972846 Thu, 21 Sep 2017 05:47:26 UTC
-RESULT: sale.end=1505973071 Thu, 21 Sep 2017 05:51:11 UTC
+RESULT: sale.start=1506616533 Thu, 28 Sep 2017 16:35:33 UTC
+RESULT: sale.end=1506616758 Thu, 28 Sep 2017 16:39:18 UTC
 RESULT: sale.cap=100000000000000000000 100
 RESULT: sale.softcap=50000000000000000000 50
 RESULT: sale.live=false
@@ -887,13 +887,13 @@ undefined
 > 
 undefined
 > 
-RESULT: Waiting until startTime at 1505972846 Thu, 21 Sep 2017 15:47:26 AEST currentDate=Thu, 21 Sep 2017 15:48:15 AEST
+RESULT: Waiting until startTime at 1506616533 Fri, 29 Sep 2017 02:35:33 AEST currentDate=Fri, 29 Sep 2017 02:36:17 AEST
 undefined
 > 
 ... 
 undefined
 > 
-RESULT: Waited until startTime at 1505972846 Thu, 21 Sep 2017 15:47:26 AEST currentDate=Thu, 21 Sep 2017 15:48:15 AEST
+RESULT: Waited until startTime at 1506616533 Fri, 29 Sep 2017 02:35:33 AEST currentDate=Fri, 29 Sep 2017 02:36:17 AEST
 undefined
 > 
 > 
@@ -922,8 +922,8 @@ undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange                          Token Name
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       60.158805972000000000           0.00000000 Account #0 - Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.157453542000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       60.158447592000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.157095162000000000           0.00000000 Account #1 - Contract Owner
 RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0      -40.000717120000000000           0.00000000 Account #3
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844      -50.000635310000000000           0.00000000 Account #4
@@ -988,8 +988,8 @@ RESULT: sale.SOFTCAP_TIME=33
 RESULT: sale.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 RESULT: sale.newOwner=0x0000000000000000000000000000000000000000
 RESULT: sale.notice=
-RESULT: sale.start=1505972846 Thu, 21 Sep 2017 05:47:26 UTC
-RESULT: sale.end=1505972928 Thu, 21 Sep 2017 05:48:48 UTC
+RESULT: sale.start=1506616533 Thu, 28 Sep 2017 16:35:33 UTC
+RESULT: sale.end=1506616610 Thu, 28 Sep 2017 16:36:50 UTC
 RESULT: sale.cap=100000000000000000000 100
 RESULT: sale.softcap=50000000000000000000 50
 RESULT: sale.live=true
@@ -1017,13 +1017,13 @@ undefined
 ... 
 undefined
 > 
-RESULT: sendValidContribution3Tx gas=400000 gasUsed=40104 costETH=0.000721872 costUSD=0.27459289008 @ ETH/USD=380.39 gasPrice=18000000000 block=16 txIx=0 txId=0xb5d2e7110b5c26bf69b35096188f732b4362aa9e1f08a1b02b06d0079dafca22
+RESULT: sendValidContribution3Tx gas=400000 gasUsed=40104 costETH=0.000721872 costUSD=0.27459289008 @ ETH/USD=380.39 gasPrice=18000000000 block=14 txIx=0 txId=0xb5d2e7110b5c26bf69b35096188f732b4362aa9e1f08a1b02b06d0079dafca22
 undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange                          Token Name
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       80.159527844000000000           0.00000000 Account #0 - Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.157453542000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       70.159169464000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.157095162000000000           0.00000000 Account #1 - Contract Owner
 RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0      -40.000717120000000000           0.00000000 Account #3
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844      -50.000635310000000000           0.00000000 Account #4
@@ -1055,8 +1055,8 @@ RESULT: receiver.newOwner=0x0000000000000000000000000000000000000000
 RESULT: receiver.notice=
 RESULT: receiver.sale=0x936e75a404fc4ea6aba4d9c3b20ea67abab3188a
 RESULT: receiver.live=false
-RESULT: EndSale 0 #16 {}
-RESULT: EtherIn 0 #16 {"amount":"4e+24","from":"0xa55a151eb00fded1634d27d1127b4be4627079ea"}
+RESULT: EndSale 0 #14 {}
+RESULT: EtherIn 0 #14 {"amount":"4e+24","from":"0xa55a151eb00fded1634d27d1127b4be4627079ea"}
 undefined
 > 
 RESULT: receiverContractAddress=0xf4441f10804b35b13bad1e664e32237773276253
@@ -1066,7 +1066,7 @@ RESULT: receiver.newOwner=0x0000000000000000000000000000000000000000
 RESULT: receiver.notice=
 RESULT: receiver.sale=0x936e75a404fc4ea6aba4d9c3b20ea67abab3188a
 RESULT: receiver.live=false
-RESULT: EndSale 0 #16 {}
+RESULT: EndSale 0 #14 {}
 undefined
 > 
 RESULT: receiverContractAddress=0x57930444aa5c1e758c1407ded001a8f36aa80b1d
@@ -1076,7 +1076,7 @@ RESULT: receiver.newOwner=0x0000000000000000000000000000000000000000
 RESULT: receiver.notice=
 RESULT: receiver.sale=0x936e75a404fc4ea6aba4d9c3b20ea67abab3188a
 RESULT: receiver.live=false
-RESULT: EndSale 0 #16 {}
+RESULT: EndSale 0 #14 {}
 undefined
 > 
 RESULT: saleContractAddress=0x936e75a404fc4ea6aba4d9c3b20ea67abab3188a
@@ -1084,8 +1084,8 @@ RESULT: sale.SOFTCAP_TIME=33
 RESULT: sale.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 RESULT: sale.newOwner=0x0000000000000000000000000000000000000000
 RESULT: sale.notice=
-RESULT: sale.start=1505972846 Thu, 21 Sep 2017 05:47:26 UTC
-RESULT: sale.end=1505972928 Thu, 21 Sep 2017 05:48:48 UTC
+RESULT: sale.start=1506616533 Thu, 28 Sep 2017 16:35:33 UTC
+RESULT: sale.end=1506616610 Thu, 28 Sep 2017 16:36:50 UTC
 RESULT: sale.cap=100000000000000000000 100
 RESULT: sale.softcap=50000000000000000000 50
 RESULT: sale.live=false
@@ -1113,13 +1113,13 @@ undefined
 ... 
 undefined
 > 
-RESULT: withdrawSomeTx gas=400000 gasUsed=29417 costETH=0.000529506 costUSD=0.20141878734 @ ETH/USD=380.39 gasPrice=18000000000 block=23 txIx=0 txId=0x034387eb654d6191718211cc21a8da5fa8bbae5217df2c8bd28def6b0a886cd0
+RESULT: withdrawSomeTx gas=400000 gasUsed=29417 costETH=0.000529506 costUSD=0.20141878734 @ ETH/USD=380.39 gasPrice=18000000000 block=18 txIx=0 txId=0x034387eb654d6191718211cc21a8da5fa8bbae5217df2c8bd28def6b0a886cd0
 undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange                          Token Name
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      115.160057350000000000           0.00000000 Account #0 - Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433      122.842016952000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       90.159698970000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433      122.842375332000000000           0.00000000 Account #1 - Contract Owner
 RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0      -40.000717120000000000           0.00000000 Account #3
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844      -50.000635310000000000           0.00000000 Account #4
@@ -1176,8 +1176,8 @@ RESULT: sale.SOFTCAP_TIME=33
 RESULT: sale.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 RESULT: sale.newOwner=0x0000000000000000000000000000000000000000
 RESULT: sale.notice=
-RESULT: sale.start=1505972846 Thu, 21 Sep 2017 05:47:26 UTC
-RESULT: sale.end=1505972928 Thu, 21 Sep 2017 05:48:48 UTC
+RESULT: sale.start=1506616533 Thu, 28 Sep 2017 16:35:33 UTC
+RESULT: sale.end=1506616610 Thu, 28 Sep 2017 16:36:50 UTC
 RESULT: sale.cap=100000000000000000000 100
 RESULT: sale.softcap=50000000000000000000 50
 RESULT: sale.live=false
@@ -1205,13 +1205,13 @@ undefined
 ... 
 undefined
 > 
-RESULT: withdrawTx gas=400000 gasUsed=28504 costETH=0.000513072 costUSD=0.19516745808 @ ETH/USD=380.39 gasPrice=18000000000 block=26 txIx=0 txId=0xe8990b10bb49ec66e91cbd20bb70a5960f7e00d1751bbe3c405f843f4a44769f
+RESULT: withdrawTx gas=400000 gasUsed=28504 costETH=0.000513072 costUSD=0.19516745808 @ ETH/USD=380.39 gasPrice=18000000000 block=20 txIx=0 txId=0xe8990b10bb49ec66e91cbd20bb70a5960f7e00d1751bbe3c405f843f4a44769f
 undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange                          Token Name
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      130.160570422000000000           0.00000000 Account #0 - Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433  4000089.841503880000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      100.160212042000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433  4000089.841862260000000000           0.00000000 Account #1 - Contract Owner
 RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0      -40.000717120000000000           0.00000000 Account #3
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844      -50.000635310000000000           0.00000000 Account #4
@@ -1268,8 +1268,8 @@ RESULT: sale.SOFTCAP_TIME=33
 RESULT: sale.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 RESULT: sale.newOwner=0x0000000000000000000000000000000000000000
 RESULT: sale.notice=
-RESULT: sale.start=1505972846 Thu, 21 Sep 2017 05:47:26 UTC
-RESULT: sale.end=1505972928 Thu, 21 Sep 2017 05:48:48 UTC
+RESULT: sale.start=1506616533 Thu, 28 Sep 2017 16:35:33 UTC
+RESULT: sale.end=1506616610 Thu, 28 Sep 2017 16:36:50 UTC
 RESULT: sale.cap=100000000000000000000 100
 RESULT: sale.softcap=50000000000000000000 50
 RESULT: sale.live=false

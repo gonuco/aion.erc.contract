@@ -1,5 +1,3 @@
-// Copyright New Alchemy Limited, 2017. All rights reserved.
-
 pragma solidity >=0.4.10;
 
 import './SafeMath.sol';
@@ -47,7 +45,7 @@ contract Token is Finalizable, TokenReceivable, SafeMath, EventDefinitions, Paus
         return controller.allowance(_owner, _spender);
     }
 
-    function transfer(address _to, uint _value) onlyPayloadSize(2) notPaused returns (bool success) {
+    function transfer(address _to, uint _value) notPaused returns (bool success) {
         if (controller.transfer(msg.sender, _to, _value)) {
             Transfer(msg.sender, _to, _value);
             return true;
@@ -55,7 +53,7 @@ contract Token is Finalizable, TokenReceivable, SafeMath, EventDefinitions, Paus
         return false;
     }
 
-    function transferFrom(address _from, address _to, uint _value) onlyPayloadSize(3) notPaused returns (bool success) {
+    function transferFrom(address _from, address _to, uint _value) notPaused returns (bool success) {
         if (controller.transferFrom(msg.sender, _from, _to, _value)) {
             Transfer(_from, _to, _value);
             return true;
@@ -63,7 +61,7 @@ contract Token is Finalizable, TokenReceivable, SafeMath, EventDefinitions, Paus
         return false;
     }
 
-    function approve(address _spender, uint _value) onlyPayloadSize(2) notPaused returns (bool success) {
+    function approve(address _spender, uint _value) notPaused returns (bool success) {
         // promote safe user behavior
         if (controller.approve(msg.sender, _spender, _value)) {
             Approval(msg.sender, _spender, _value);
@@ -72,7 +70,7 @@ contract Token is Finalizable, TokenReceivable, SafeMath, EventDefinitions, Paus
         return false;
     }
 
-    function increaseApproval (address _spender, uint _addedValue) onlyPayloadSize(2) notPaused returns (bool success) {
+    function increaseApproval (address _spender, uint _addedValue) notPaused returns (bool success) {
         if (controller.increaseApproval(msg.sender, _spender, _addedValue)) {
             uint newval = controller.allowance(msg.sender, _spender);
             Approval(msg.sender, _spender, newval);
@@ -81,7 +79,7 @@ contract Token is Finalizable, TokenReceivable, SafeMath, EventDefinitions, Paus
         return false;
     }
 
-    function decreaseApproval (address _spender, uint _subtractedValue) onlyPayloadSize(2) notPaused returns (bool success) {
+    function decreaseApproval (address _spender, uint _subtractedValue) notPaused returns (bool success) {
         if (controller.decreaseApproval(msg.sender, _spender, _subtractedValue)) {
             uint newval = controller.allowance(msg.sender, _spender);
             Approval(msg.sender, _spender, newval);
@@ -90,10 +88,10 @@ contract Token is Finalizable, TokenReceivable, SafeMath, EventDefinitions, Paus
         return false;
     }
 
-    modifier onlyPayloadSize(uint numwords) {
-        assert(msg.data.length >= numwords * 32 + 4);
-        _;
-    }
+    // modifier onlyPayloadSize(uint numwords) {
+    //     assert(msg.data.length >= numwords * 32 + 4);
+    //     _;
+    // }
 
     // functions below this line are onlyController
 

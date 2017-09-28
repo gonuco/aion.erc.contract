@@ -1,5 +1,6 @@
 # Aion Token Contract Audit
 
+Status: Still checking the *trs/Savings* contracts. Crowdsale and token contracts have been completed.
 <br />
 
 ## Summary
@@ -21,6 +22,8 @@ the token contract.
 
 No potential vulnerabilities have been identified in the crowdsale contract.
 
+`TODO` - CHECK the savings contract.
+
 <br />
 
 ### Crowdsale Mainnet Addresses
@@ -32,15 +35,35 @@ No potential vulnerabilities have been identified in the crowdsale contract.
 ### Crowdsale Contract
 
 The crowdsale contract consists of a single *sales/Sale* contract linked to 3 *sales/Receiver* contract. Participants
-contribute funds to any of the 3 receivers and the funds will be collected in the sale contract.
+contribute funds to any of the 3 receivers and the funds will be collected in the sale contract. Events for each contribution are logged
+and Nuco's application will generated the appropriate token balances in the token contract.
+
+When the total amount contributed exceeds the soft cap, the end date/time of the crowdsale is brought forward to
+`current time + SOFTCAP_TIME` (this constant is set to 4 hours in the contracts). Any amount of ethers can be contributed to the
+crowdsale contract in this period.
 
 <br />
 
 ### Token Contract
 
+The token contract is [ERC20 token standard](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20-token-standard.md)
+compliant with the following features:
+
+* `decimals` is correctly defined as `uint8` instead of `uint256`
+* `transfer(...)` and `transferFrom(...)` will return false if there is an error instead of throwing an error. A 0 value transfer will
+  return true
+* `transfer(...)` and `transferFrom(...)` have not been built with a check on the size of the data being passed. This check is
+  not an effective check anyway - refer to [Smart Contract Short Address Attack Mitigation Failure](https://blog.coinfabrik.com/smart-contract-short-address-attack-mitigation-failure/)
+* `approve(...)` does require that a non-zero approval limit be set to 0 before a new non-zero limit can be set. Refer to
+  [this](https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729) for further information
+
 <br />
 
 ### Savings Contract
+
+The savings contract has some slightly complex calculation to determine the amounts that an account can withdraw at different periods.
+These calculations are based on block numbers instead of Unix time as would be skewed by changes in block times. Due to the coming
+Ice Age (Difficulty Bomb) and switch to the Proof of Stake, time based on block times will be difficult to estimate.
 
 <br />
 
@@ -78,25 +101,48 @@ contribute funds to any of the 3 receivers and the funds will be collected in th
 
 * **LOW IMPORTANCE** As stated in your main [README.md](../README.md), your target Solidity version is 0.4.15 . Consider updating your Solidity
   files to `pragma solidity >=0.4.15;` for people only reading your published source code (.e.g. from EtherScan.io)
+  
+  * [x] Developer decided against implementing this item
+
 * **LOW IMPORTANCE** Consider making `Owned.newOwner` public and for the `acceptOwnership(...)` function to emit an event.
   See [example](https://github.com/bokkypoobah/GimliTokenContractAudit/blob/master/sol/Ownable.sol#L6-L32). It would also be good to add
   `newOwner = 0x0;` after a successful change in ownership. This will help improve the process and traceability of the ownership changes.
   The same applies to the dispersed *Owned* code in *sales/Receiver*, *sales/Sale* and *trs/Savings*
+
+  * [x] Developer decided against implementing this item
+
 * **LOW IMPORTANCE** Consider renaming `Pausable.unpause()` to `Pausable.unPause()`
+
+  * [x] Developer decided against implementing this item
+
 * **LOW IMPORTANCE** Consider emitting an event log in `TokenReceivable.claimTokens(...)`
+
+  * [x] Developer decided against implementing this item
+
 * **LOW IMPORTANCE** The *token/Owned* functionality is mixed into *sales/Receiver*, *sales/Sale* and *trs/Savings*.
   Consider inheriting from *token/Owned* to simplify the code and separating functionality instead of reimplementing
   the functionality in each of *sales/Receiver*, *sales/Sale* and *trs/Savings*
+
+  * [x] Developer decided against implementing this item
+
 * **LOW IMPORTANCE** Subtraction from the source account and allowance should be executed before the addition to the
   destination account, in *token/Ledger*
+
+  * [x] Developer decided against implementing this item
+
 * **MEDIUM IMPORTANCE** *sales/Sale* currently accumulates any contributed ethers in the contract until the owner calls
   `withdrawSome()` or `withdraw()`. While the logic in *sales/Sale* is simple and seems be secure, this is a bespoke
   contract with little amount of review and testing conducted. Consider transferring ethers contributed to the contract
   immediately to a multisig or hardware wallet as these are more thoroughly tested wallets, to further reduce the risk
   of any potential vulnerabilities in these contracts
+
+  * [x] Developer decided against implementing this item
+
 *  **LOW IMPORTANCE** *trs/Savings* locks tokens based on block numbers. The actual time when accounts can withdraw their tokens
   can vary a lot, depending on the time between blocks. Use the Unix timestamp and `block.timestamp` instead of `block.number` and the
   withdrawal schedule will be predictable
+
+  * [x] Developer decided against implementing this item
 
 * **LOW IMPORTANCE** There are a few warnings emitted by the compiler as listed below. These warnings can be removed by commenting
   out the parameter names, like `function claimByProof(address /* _claimer */, bytes32[] /* data */, bytes32[] /* proofs */, uint256 /* number */)`:
@@ -118,6 +164,8 @@ contribute funds to any of the 3 receivers and the funds will be collected in th
                          ^--------------^
 
 * **LOW IMPORTANCE** The constants `periods`, `t0special` and `interval` should have uppercase names, e.g. `PERIODS` - in *trs/Savings*
+* **LOW IMPORTANCE** The comments in *trs/Savings* refer to `t0multiple` but there is no variable with that name
+
 
 <br />
 
@@ -125,7 +173,9 @@ contribute funds to any of the 3 receivers and the funds will be collected in th
 
 ## Potential Vulnerabilities
 
-TODO: Check - No potential vulnerabilities have been identified in the crowdsale and token contract.
+No potential vulnerabilities have been identified in the crowdsale and token contract.
+
+`TODO` - CHECK the savings contract.
 
 <br />
 
@@ -255,7 +305,7 @@ Files from [../sales/contracts](../sales/contracts):
 Files from [../trs/contracts](../trs/contracts):
 
 * [ ] [code-review-trs/Savings.md](code-review-trs/Savings.md)
-  * [ ] contract Token 
+  * [x] contract Token 
   * [ ] contract Savings 
 
 <br />
@@ -282,3 +332,9 @@ Files from [../trs/contracts](../trs/contracts):
 
 * [ ] [code-review-trs/Migrations.md](code-review-trs/Migrations.md)
   * [ ] contract Migrations 
+
+<br />
+
+<br />
+
+(c) BokkyPooBah / Bok Consulting Pty Ltd for Cindicator - Sep 29 2017. The MIT Licence.
