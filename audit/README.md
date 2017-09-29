@@ -1,6 +1,7 @@
 # Aion Token Contract Audit
 
 Status: Still checking the *trs/Savings* contracts. Crowdsale and token contracts have been completed.
+
 <br />
 
 ## Summary
@@ -62,7 +63,7 @@ compliant with the following features:
 ### Savings Contract
 
 The savings contract has some slightly complex calculation to determine the amounts that an account can withdraw at different periods.
-These calculations are based on block numbers instead of Unix time as would be skewed by changes in block times. Due to the coming
+These calculations are based on block numbers instead of Unix time and would be skewed by changes in block times. Due to the coming
 Ice Age (Difficulty Bomb) and switch to the Proof of Stake, time based on block times will be difficult to estimate.
 
 <br />
@@ -163,9 +164,13 @@ Ice Age (Difficulty Bomb) and switch to the Proof of Stake, time based on block 
           function claim(address _claimer) onlyToken returns (bool success) {
                          ^--------------^
 
-* **LOW IMPORTANCE** The constants `periods`, `t0special` and `interval` should have uppercase names, e.g. `PERIODS` - in *trs/Savings*
-* **LOW IMPORTANCE** The comments in *trs/Savings* refer to `t0multiple` but there is no variable with that name
+  * [x] Developer decided against implementing this item
 
+* **LOW IMPORTANCE** The constants `periods`, `t0special` and `interval` should have uppercase names, e.g. `PERIODS` - in *trs/Savings*
+
+  * [x] Developer decided against implementing this item
+
+* **LOW IMPORTANCE** The comments in *trs/Savings* refer to `t0multiple` but there is no variable with that name
 
 <br />
 
