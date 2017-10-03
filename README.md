@@ -8,7 +8,7 @@ Current setup is tested using the following configuration:
 
 * EthereumJS TestRPC v4.1.0 (ganache-core: 1.1.1)
 * Truffle v3.4.9
-* Solidity v0.4.15+commit.bbb8e64f.Linux.g++
+* Solidity v0.4.17+commit.bdeb9e52.Linux.g++
 * Assuming ``pragma solidity >= 0.4.10``
 
 ## Testing

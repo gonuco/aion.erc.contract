@@ -1,4 +1,5 @@
 const BigNumber = require('bignumber.js');
+const fs = require('fs');
 
 let web3;
 // let the user set an active web3
@@ -28,6 +29,32 @@ const numberToAddress = (value) => {
     throw "value too large";
 
   return padLeft(s, 20);
+}
+
+const logCSV = (name, costs) => {
+  let out = "";
+  for (let i = 0; i < costs.length; i++) {
+    const c = costs[i];
+    out +=  c.name +
+            "," +
+            c.gasUsed.toString() + 
+            "," +
+            c.eth.low.toString() +
+            "," +
+            c.eth.medium.toString() +
+            "," +
+            c.eth.high.toString() +
+            "," +
+            c.cad.low.toString() +
+            "," +
+            c.cad.medium.toString() +
+            "," +
+            c.cad.high.toString() +
+            "\n";
+  }
+  fs.writeFile(name, out, (err) => {
+    // do nothing
+  });
 }
 
 /**
@@ -105,6 +132,14 @@ const deployMVC = async (Token, Controller, Ledger) => {
     l.setController(c.address)
   ]);
   return {token: t, controller: c, ledger: l};
+}
+
+const mint = async (accounts, value, ledger) => {
+  let mintList = [];
+  for (let i = 0; i < accounts.length; i++) {
+    mintList.push(addressValue(accounts[i], value));
+  }
+  await ledger.multiMint(0, mintList);
 }
 
 /**
@@ -221,11 +256,17 @@ const prices = async () => {
  */
 const cost = (txHash, price) => {
   const used = web3.eth.getTransactionReceipt(txHash);
-  
+  return gasCost(used.gasUsed, price);
+}
+
+/**
+ * Calculates the gas, given the gas used
+ */
+const gasCost = (gasUsed, price) => {
   const ethUsed = {
-    low: price.gas.low.times(used.gasUsed),
-    medium: price.gas.medium.times(used.gasUsed),
-    high: price.gas.high.times(used.gasUsed)
+    low: price.gas.low.times(gasUsed),
+    medium: price.gas.medium.times(gasUsed),
+    high: price.gas.high.times(gasUsed)
   };
 
   const cadUsed = {
@@ -235,7 +276,7 @@ const cost = (txHash, price) => {
   };
 
   return {
-    gasUsed: used.gasUsed,
+    gasUsed: gasUsed,
     eth: ethUsed,
     cad: cadUsed
   };
@@ -246,6 +287,8 @@ const cost = (txHash, price) => {
  */
 module.exports.addressValue = addressValue;
 module.exports.numberToAddress = numberToAddress;
+module.exports.mint = mint;
+module.exports.logCSV = logCSV;
 
 /**
  * Deployment related
@@ -262,4 +305,5 @@ module.exports.gasPrices = gasPrices;
 module.exports.request = getContent;
 module.exports.prices = prices;
 module.exports.cost = cost;
+module.exports.gasCost = gasCost;
 module.exports.setWeb3 = setWeb3;
