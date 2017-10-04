@@ -60,22 +60,22 @@ printf "PASSWORD          = '$PASSWORD'\n" | tee -a $TEST3OUTPUT
 printf "TOKENCONTRACTSDIR = '$TOKENCONTRACTSDIR'\n" | tee -a $TEST3OUTPUT
 printf "SALESCONTRACTSDIR = '$SALESCONTRACTSDIR'\n" | tee -a $TEST3OUTPUT
 printf "TRSCONTRACTSDIR   = '$TRSCONTRACTSDIR'\n" | tee -a $TEST3OUTPUT
-printf "--- Token --- \n" | tee -a $TEST3OUTPUT
+printf "\--- Token --- \n" | tee -a $TEST3OUTPUT
 printf "CONTROLLERSOL     = '$CONTROLLERSOL'\n" | tee -a $TEST3OUTPUT
 printf "CONTROLLERJS      = '$CONTROLLERJS'\n" | tee -a $TEST3OUTPUT
 printf "LEDGERSOL         = '$LEDGERSOL'\n" | tee -a $TEST3OUTPUT
 printf "LEDGERJS          = '$LEDGERJS'\n" | tee -a $TEST3OUTPUT
 printf "TOKENSOL          = '$TOKENSOL'\n" | tee -a $TEST3OUTPUT
 printf "TOKENJS           = '$TOKENJS'\n" | tee -a $TEST3OUTPUT
-printf "--- Sales --- \n" | tee -a $TEST3OUTPUT
+printf "\--- Sales --- \n" | tee -a $TEST3OUTPUT
 printf "RECEIVERSOL       = '$RECEIVERSOL'\n" | tee -a $TEST3OUTPUT
 printf "RECEIVERJS        = '$RECEIVERJS'\n" | tee -a $TEST3OUTPUT
 printf "SALESOL           = '$SALESOL'\n" | tee -a $TEST3OUTPUT
 printf "SALEJS            = '$SALEJS'\n" | tee -a $TEST3OUTPUT
-printf "--- Trs --- \n" | tee -a $TEST3OUTPUT
+printf "\--- Trs --- \n" | tee -a $TEST3OUTPUT
 printf "SAVINGSSOL        = '$SAVINGSSOL'\n" | tee -a $TEST3OUTPUT
 printf "SAVINGSJS         = '$SAVINGSJS'\n" | tee -a $TEST3OUTPUT
-printf "--- End --- \n" | tee -a $TEST3OUTPUT
+printf "\--- End --- \n" | tee -a $TEST3OUTPUT
 printf "DEPLOYMENTDATA    = '$DEPLOYMENTDATA'\n" | tee -a $TEST3OUTPUT
 printf "TEST3OUTPUT       = '$TEST3OUTPUT'\n" | tee -a $TEST3OUTPUT
 printf "TEST3RESULTS      = '$TEST3RESULTS'\n" | tee -a $TEST3OUTPUT
@@ -97,7 +97,7 @@ printf "ENDTIME           = '$ENDTIME' '$ENDTIME_S'\n" | tee -a $TEST3OUTPUT
 `cp $TOKENCONTRACTSDIR/TokenReceivable.sol .`
 `cp $SALESCONTRACTSDIR/$RECEIVERSOL .`
 `cp $SALESCONTRACTSDIR/$SALESOL .`
-`cp modifiedContracts/$SAVINGSSOL .`
+`cp $TRSCONTRACTSDIR/$SAVINGSSOL .`
 
 # --- Modify dates ---
 `perl -pi -e "s/SOFTCAP_TIME \= 4 hours;/SOFTCAP_TIME \= 33 seconds;/" $SALESOL`
@@ -128,12 +128,12 @@ DIFFS1=`diff $TRSCONTRACTSDIR/$SAVINGSSOL $SAVINGSSOL`
 echo "--- Differences $TRSCONTRACTSDIR/$SAVINGSSOL $SAVINGSSOL ---" | tee -a $TEST3OUTPUT
 echo "$DIFFS1" | tee -a $TEST3OUTPUT
 
-echo "var controllerOutput=`solc --optimize --combined-json abi,bin,interface $CONTROLLERSOL`;" > $CONTROLLERJS
-echo "var ledgerOutput=`solc --optimize --combined-json abi,bin,interface $LEDGERSOL`;" > $LEDGERJS
-echo "var tokenOutput=`solc --optimize --combined-json abi,bin,interface $TOKENSOL`;" > $TOKENJS
-echo "var receiverOutput=`solc --optimize --combined-json abi,bin,interface $RECEIVERSOL`;" > $RECEIVERJS
-echo "var saleOutput=`solc --optimize --combined-json abi,bin,interface $SALESOL`;" > $SALEJS
-echo "var savingsOutput=`solc --optimize --combined-json abi,bin,interface $SAVINGSSOL`;" > $SAVINGSJS
+echo "var controllerOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $CONTROLLERSOL`;" > $CONTROLLERJS
+echo "var ledgerOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $LEDGERSOL`;" > $LEDGERJS
+echo "var tokenOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $TOKENSOL`;" > $TOKENJS
+echo "var receiverOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $RECEIVERSOL`;" > $RECEIVERJS
+echo "var saleOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $SALESOL`;" > $SALEJS
+echo "var savingsOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $SAVINGSSOL`;" > $SAVINGSJS
 
 
 geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee -a $TEST3OUTPUT
@@ -472,6 +472,31 @@ failIfGasEqualsGasUsed(mint1Tx, mintMessage + " - ac3 + ac4 11111111.11111111 to
 printControllerContractDetails();
 printLedgerContractDetails();
 printTokenContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var depositIntoSavingsMessage = "Deposit Into Savings";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + depositIntoSavingsMessage);
+var depositIntoSavings1Tx = savings.setToken(tokenAddress, {from: contractOwnerAccount, gas: 100000});
+var depositIntoSavings2Tx = token.approve(savingsAddress, "100000000000000", {from: account3, gas: 100000});
+while (txpool.status.pending > 0) {
+}
+var depositIntoSavings3Tx = savings.deposit("100000000000000", {from: account3, gas: 100000});
+while (txpool.status.pending > 0) {
+}
+printTxData("depositIntoSavings1Tx", depositIntoSavings1Tx);
+printTxData("depositIntoSavings2Tx", depositIntoSavings2Tx);
+printTxData("depositIntoSavings3Tx", depositIntoSavings3Tx);
+printBalances();
+failIfGasEqualsGasUsed(depositIntoSavings1Tx, depositIntoSavingsMessage + " - savings.setToken(token)");
+failIfGasEqualsGasUsed(depositIntoSavings2Tx, depositIntoSavingsMessage + " - approve 1 tokens ac3 -> deposit");
+failIfGasEqualsGasUsed(depositIntoSavings3Tx, depositIntoSavingsMessage + " - deposit 1 token ac3");
+printControllerContractDetails();
+printLedgerContractDetails();
+printTokenContractDetails();
+printSavingsContractDetails();
 console.log("RESULT: ");
 
 

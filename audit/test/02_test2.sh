@@ -128,12 +128,12 @@ DIFFS1=`diff $TRSCONTRACTSDIR/$SAVINGSSOL $SAVINGSSOL`
 echo "--- Differences $TRSCONTRACTSDIR/$SAVINGSSOL $SAVINGSSOL ---" | tee -a $TEST2OUTPUT
 echo "$DIFFS1" | tee -a $TEST2OUTPUT
 
-echo "var controllerOutput=`solc --optimize --combined-json abi,bin,interface $CONTROLLERSOL`;" > $CONTROLLERJS
-echo "var ledgerOutput=`solc --optimize --combined-json abi,bin,interface $LEDGERSOL`;" > $LEDGERJS
-echo "var tokenOutput=`solc --optimize --combined-json abi,bin,interface $TOKENSOL`;" > $TOKENJS
-echo "var receiverOutput=`solc --optimize --combined-json abi,bin,interface $RECEIVERSOL`;" > $RECEIVERJS
-echo "var saleOutput=`solc --optimize --combined-json abi,bin,interface $SALESOL`;" > $SALEJS
-echo "var savingsOutput=`solc --optimize --combined-json abi,bin,interface $SAVINGSSOL`;" > $SAVINGSJS
+echo "var controllerOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $CONTROLLERSOL`;" > $CONTROLLERJS
+echo "var ledgerOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $LEDGERSOL`;" > $LEDGERJS
+echo "var tokenOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $TOKENSOL`;" > $TOKENJS
+echo "var receiverOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $RECEIVERSOL`;" > $RECEIVERJS
+echo "var saleOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $SALESOL`;" > $SALEJS
+echo "var savingsOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $SAVINGSSOL`;" > $SAVINGSJS
 
 
 geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee -a $TEST2OUTPUT

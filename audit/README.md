@@ -14,8 +14,9 @@ This audit has been conducted on Nuco's source code in commit
 [4c2dcc9](https://github.com/gonuco/aion.erc.contract/commit/4c2dcc92b4ba404211deb3bf0559eaa8d43b2e84),
 [17cfee9](https://github.com/gonuco/aion.erc.contract/commit/17cfee99792ba31f63e541445e8d6878a169e9c8),
 [09632c2](https://github.com/gonuco/aion.erc.contract/commit/09632c24a322daa37c112c1d6349faa10888cc45),
-[c64525e](https://github.com/gonuco/aion.erc.contract/commit/c64525ee9f071a15e1cbe14f51390cddc3dda90a) and
-[c3e7469](https://github.com/gonuco/aion.erc.contract/commit/c3e7469bacfa60e0acf0328adb5246e88c5ed94f).
+[c64525e](https://github.com/gonuco/aion.erc.contract/commit/c64525ee9f071a15e1cbe14f51390cddc3dda90a),
+[c3e7469](https://github.com/gonuco/aion.erc.contract/commit/c3e7469bacfa60e0acf0328adb5246e88c5ed94f) and
+[a0c0042](https://github.com/gonuco/aion.erc.contract/commit/a0c0042651a88919ed948f73cb6f2976bf9015f2).
 
 Note that the crowdsale contract will collect funds but will not issue tokens immediately. Nuco has an application
 that will collect the crowdsale contract contribution events and will use this to generate the token balances in
@@ -111,6 +112,7 @@ Ice Age (Difficulty Bomb) and switch to the Proof of Stake, time based on block 
   The same applies to the dispersed *Owned* code in *sales/Receiver*, *sales/Sale* and *trs/Savings*
 
   * [x] Developer decided against implementing this item
+  * [x] Implemented for *trs/Savings* in [a0c0042](https://github.com/gonuco/aion.erc.contract/commit/a0c0042651a88919ed948f73cb6f2976bf9015f2)
 
 * **LOW IMPORTANCE** Consider renaming `Pausable.unpause()` to `Pausable.unPause()`
 
