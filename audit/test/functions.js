@@ -407,16 +407,18 @@ function printSavingsContractDetails() {
     var contract = eth.contract(savingsContractAbi).at(savingsContractAddress);
     console.log("RESULT: savings.periods=" + contract.periods());
     console.log("RESULT: savings.t0special=" + contract.t0special());
-    console.log("RESULT: savings.interval=" + contract.interval());
+    console.log("RESULT: savings.intervalSecs=" + contract.intervalSecs());
     console.log("RESULT: savings.owner=" + contract.owner());
     console.log("RESULT: savings.newOwner=" + contract.newOwner());
     console.log("RESULT: savings.locked=" + contract.locked());
-    console.log("RESULT: savings.startblock=" + contract.startblock());
+    console.log("RESULT: savings.startBlockTimestamp=" + contract.startBlockTimestamp() + " " + new Date(contract.startBlockTimestamp()*1000).toUTCString());
     console.log("RESULT: savings.token=" + contract.token());
     console.log("RESULT: savings.totalfv=" + contract.totalfv() + " " + contract.totalfv().shift(-8));
     console.log("RESULT: savings.total=" + contract.total() + " " + contract.total().shift(-8));
+    console.log("RESULT: savings.paused=" + contract.paused());
     console.log("RESULT: savings.mintingNonce=" + contract.mintingNonce());
 
+    /*
     console.log("RESULT: savings.start=" + contract.start() + " " + new Date(contract.start() * 1000).toUTCString());
     console.log("RESULT: savings.end=" + contract.end() + " " + new Date(contract.end() * 1000).toUTCString());
     console.log("RESULT: savings.cap=" + contract.cap() + " " + contract.cap().shift(-18));
@@ -424,6 +426,7 @@ function printSavingsContractDetails() {
     console.log("RESULT: savings.live=" + contract.live());
     console.log("RESULT: savings.r0=" + contract.r0());
     console.log("RESULT: savings.r1=" + contract.r1());
+    */
 
     var latestBlock = eth.blockNumber;
     var i;

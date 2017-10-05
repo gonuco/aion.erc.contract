@@ -95,8 +95,6 @@ printf "ENDTIME           = '$ENDTIME' '$ENDTIME_S'\n" | tee -a $TEST3OUTPUT
 `cp $TOKENCONTRACTSDIR/Pausable.sol .`
 `cp $TOKENCONTRACTSDIR/SafeMath.sol .`
 `cp $TOKENCONTRACTSDIR/TokenReceivable.sol .`
-`cp $SALESCONTRACTSDIR/$RECEIVERSOL .`
-`cp $SALESCONTRACTSDIR/$SALESOL .`
 `cp $TRSCONTRACTSDIR/$SAVINGSSOL .`
 
 # --- Modify dates ---
@@ -116,14 +114,6 @@ DIFFS1=`diff $TOKENCONTRACTSDIR/$TOKENSOL $TOKENSOL`
 echo "--- Differences $TOKENCONTRACTSDIR/$TOKENSOL $TOKENSOL ---" | tee -a $TEST3OUTPUT
 echo "$DIFFS1" | tee -a $TEST3OUTPUT
 
-DIFFS1=`diff $SALESCONTRACTSDIR/$RECEIVERSOL $RECEIVERSOL`
-echo "--- Differences $SALESCONTRACTSDIR/$RECEIVERSOL $RECEIVERSOL ---" | tee -a $TEST3OUTPUT
-echo "$DIFFS1" | tee -a $TEST3OUTPUT
-
-DIFFS1=`diff $SALESCONTRACTSDIR/$SALESOL $SALESOL`
-echo "--- Differences $SALESCONTRACTSDIR/$SALESOL $SALESOL ---" | tee -a $TEST3OUTPUT
-echo "$DIFFS1" | tee -a $TEST3OUTPUT
-
 DIFFS1=`diff $TRSCONTRACTSDIR/$SAVINGSSOL $SAVINGSSOL`
 echo "--- Differences $TRSCONTRACTSDIR/$SAVINGSSOL $SAVINGSSOL ---" | tee -a $TEST3OUTPUT
 echo "$DIFFS1" | tee -a $TEST3OUTPUT
@@ -131,8 +121,6 @@ echo "$DIFFS1" | tee -a $TEST3OUTPUT
 echo "var controllerOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $CONTROLLERSOL`;" > $CONTROLLERJS
 echo "var ledgerOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $LEDGERSOL`;" > $LEDGERJS
 echo "var tokenOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $TOKENSOL`;" > $TOKENJS
-echo "var receiverOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $RECEIVERSOL`;" > $RECEIVERJS
-echo "var saleOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $SALESOL`;" > $SALEJS
 echo "var savingsOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $SAVINGSSOL`;" > $SAVINGSJS
 
 
@@ -140,8 +128,6 @@ geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee -a $TEST3OUTPUT
 loadScript("$CONTROLLERJS");
 loadScript("$LEDGERJS");
 loadScript("$TOKENJS");
-loadScript("$RECEIVERJS");
-loadScript("$SALEJS");
 loadScript("$SAVINGSJS");
 loadScript("functions.js");
 
@@ -151,11 +137,6 @@ var ledgerAbi = JSON.parse(ledgerOutput.contracts["$LEDGERSOL:Ledger"].abi);
 var ledgerBin = "0x" + ledgerOutput.contracts["$LEDGERSOL:Ledger"].bin;
 var tokenAbi = JSON.parse(tokenOutput.contracts["$TOKENSOL:Token"].abi);
 var tokenBin = "0x" + tokenOutput.contracts["$TOKENSOL:Token"].bin;
-
-var receiverAbi = JSON.parse(receiverOutput.contracts["$RECEIVERSOL:Receiver"].abi);
-var receiverBin = "0x" + receiverOutput.contracts["$RECEIVERSOL:Receiver"].bin;
-var saleAbi = JSON.parse(saleOutput.contracts["$SALESOL:Sale"].abi);
-var saleBin = "0x" + saleOutput.contracts["$SALESOL:Sale"].bin;
 var savingsAbi = JSON.parse(savingsOutput.contracts["$SAVINGSSOL:Savings"].abi);
 var savingsBin = "0x" + savingsOutput.contracts["$SAVINGSSOL:Savings"].bin;
 
@@ -165,10 +146,6 @@ var savingsBin = "0x" + savingsOutput.contracts["$SAVINGSSOL:Savings"].bin;
 // console.log("DATA: ledgerBin=" + ledgerBin);
 // console.log("DATA: tokenAbi=" + JSON.stringify(tokenAbi));
 // console.log("DATA: tokenBin=" + tokenBin);
-// console.log("DATA: receiverAbi=" + JSON.stringify(receiverAbi));
-// console.log("DATA: receiverBin=" + receiverBin);
-// console.log("DATA: salesAbi=" + JSON.stringify(salesAbi));
-// console.log("DATA: salesBin=" + salesBin);
 // console.log("DATA: savingsAbi=" + JSON.stringify(savingsAbi));
 // console.log("DATA: savingsBin=" + savingsBin);
 
@@ -249,110 +226,6 @@ var token = tokenContract.new({from: contractOwnerAccount, data: tokenBin, gas: 
   }
 );
 
-if (false) {
-// -----------------------------------------------------------------------------
-var receiver0Message = "Deploy Receiver0 Contract";
-// -----------------------------------------------------------------------------
-console.log("RESULT: " + receiver0Message);
-var receiver0Contract = web3.eth.contract(receiverAbi);
-// console.log(JSON.stringify(receiver0Contract));
-var receiver0Tx = null;
-var receiver0Address = null;
-
-var receiver0 = receiver0Contract.new({from: contractOwnerAccount, data: receiverBin, gas: 6000000},
-  function(e, contract) {
-    if (!e) {
-      if (!contract.address) {
-        receiver0Tx = contract.transactionHash;
-      } else {
-        receiver0Address = contract.address;
-        addAccount(receiver0Address, "Receiver0 Contract");
-        addReceiverContractAbi(receiverAbi);
-        console.log("DATA: receiver0Address=" + receiver0Address);
-      }
-    }
-  }
-);
-}
-
-if (false) {
-// -----------------------------------------------------------------------------
-var receiver1Message = "Deploy Receiver1 Contract";
-// -----------------------------------------------------------------------------
-console.log("RESULT: " + receiver1Message);
-var receiver1Contract = web3.eth.contract(receiverAbi);
-// console.log(JSON.stringify(receiver1Contract));
-var receiver1Tx = null;
-var receiver1Address = null;
-
-var receiver1 = receiver1Contract.new({from: contractOwnerAccount, data: receiverBin, gas: 6000000},
-  function(e, contract) {
-    if (!e) {
-      if (!contract.address) {
-        receiver1Tx = contract.transactionHash;
-      } else {
-        receiver1Address = contract.address;
-        addAccount(receiver1Address, "Receiver1 Contract");
-        addReceiverContractAbi(receiverAbi);
-        console.log("DATA: receiver1Address=" + receiver1Address);
-      }
-    }
-  }
-);
-}
-
-if (false) {
-// -----------------------------------------------------------------------------
-var receiver2Message = "Deploy Receiver2 Contract";
-// -----------------------------------------------------------------------------
-console.log("RESULT: " + receiver2Message);
-var receiver2Contract = web3.eth.contract(receiverAbi);
-// console.log(JSON.stringify(receiver2Contract));
-var receiver2Tx = null;
-var receiver2Address = null;
-
-var receiver2 = receiver2Contract.new({from: contractOwnerAccount, data: receiverBin, gas: 6000000},
-  function(e, contract) {
-    if (!e) {
-      if (!contract.address) {
-        receiver2Tx = contract.transactionHash;
-      } else {
-        receiver2Address = contract.address;
-        addAccount(receiver2Address, "Receiver2 Contract");
-        // addReceiverContractAbi(receiverAbi);
-        console.log("DATA: receiver2Address=" + receiver2Address);
-      }
-    }
-  }
-);
-}
-
-if (false) {
-// -----------------------------------------------------------------------------
-var saleMessage = "Deploy Sale Contract";
-// -----------------------------------------------------------------------------
-console.log("RESULT: " + saleMessage);
-var saleContract = web3.eth.contract(saleAbi);
-// console.log(JSON.stringify(saleContract));
-var saleTx = null;
-var saleAddress = null;
-
-var sale = saleContract.new({from: contractOwnerAccount, data: saleBin, gas: 6000000},
-  function(e, contract) {
-    if (!e) {
-      if (!contract.address) {
-        saleTx = contract.transactionHash;
-      } else {
-        saleAddress = contract.address;
-        addAccount(saleAddress, "Sale Contract");
-        addSaleContractAddressAndAbi(saleAddress, saleAbi);
-        console.log("DATA: saleAddress=" + saleAddress);
-      }
-    }
-  }
-);
-}
-
 // -----------------------------------------------------------------------------
 var savingsMessage = "Deploy Savings Contract";
 // -----------------------------------------------------------------------------
@@ -397,26 +270,6 @@ printBalances();
 failIfGasEqualsGasUsed(tokenTx, tokenMessage);
 printTokenContractDetails();
 console.log("RESULT: ");
-
-if (false) {
-printTxData("receiver0Address=" + receiver0Address, receiver0Tx);
-printTxData("receiver1Address=" + receiver1Address, receiver1Tx);
-printTxData("receiver2Address=" + receiver2Address, receiver2Tx);
-printBalances();
-failIfGasEqualsGasUsed(receiver0Tx, receiver0Message);
-failIfGasEqualsGasUsed(receiver1Tx, receiver1Message);
-failIfGasEqualsGasUsed(receiver2Tx, receiver2Message);
-printReceiverContractDetails(receiver0Address, "Receiver0");
-printReceiverContractDetails(receiver1Address, "Receiver1");
-printReceiverContractDetails(receiver2Address, "Receiver2");
-console.log("RESULT: ");
-
-printTxData("saleAddress=" + saleAddress, saleTx);
-printBalances();
-failIfGasEqualsGasUsed(saleTx, saleMessage);
-printSaleContractDetails();
-console.log("RESULT: ");
-}
 
 printTxData("savingsAddress=" + savingsAddress, savingsTx);
 printBalances();
@@ -464,35 +317,73 @@ var v2 = account4 + "000000000003f28cb71571c7";
 // -----------------------------------------------------------------------------
 console.log("RESULT: " + mintMessage);
 var mint1Tx = ledger.multiMint(0, [v1, v2], {from: contractOwnerAccount, gas: 400000});
+
+// -----------------------------------------------------------------------------
+var setupSavingsMessage = "Setup Savings";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + setupSavingsMessage);
+var setupSavings1Tx = savings.setToken(tokenAddress, {from: contractOwnerAccount, gas: 100000});
+var setupSavings2Tx = savings.init(36, {from: contractOwnerAccount, gas: 100000});
+
 while (txpool.status.pending > 0) {
 }
+
 printTxData("mint1Tx", mint1Tx);
+printTxData("setupSavings1Tx", setupSavings1Tx);
+printTxData("setupSavings2Tx", setupSavings2Tx);
 printBalances();
 failIfGasEqualsGasUsed(mint1Tx, mintMessage + " - ac3 + ac4 11111111.11111111 tokens");
+failIfGasEqualsGasUsed(setupSavings1Tx, setupSavingsMessage + " - setToken(...)");
+failIfGasEqualsGasUsed(setupSavings2Tx, setupSavingsMessage + " - init(36)");
+
+printControllerContractDetails();
+printLedgerContractDetails();
+printTokenContractDetails();
+printSavingsContractDetails();
+console.log("RESULT: ");
+
+
+if (false) {
+// -----------------------------------------------------------------------------
+var transferMessage = "Transfer Tokens";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + transferMessage);
+var transfer1Tx = token.transfer(account6, "100", {from: account3, gas: 100000});
+var transfer2Tx = token.approve(account5,  "3000000", {from: account4, gas: 100000});
+while (txpool.status.pending > 0) {
+}
+var transfer3Tx = token.transferFrom(account4, account7, "3000000", {from: account5, gas: 100000});
+while (txpool.status.pending > 0) {
+}
+printTxData("transfer1Tx", transfer1Tx);
+printTxData("transfer2Tx", transfer2Tx);
+printTxData("transfer3Tx", transfer3Tx);
+printBalances();
+failIfGasEqualsGasUsed(transfer1Tx, transferMessage + " - transfer 0.000001 tokens ac3 -> ac6. CHECK for movement");
+failIfGasEqualsGasUsed(transfer2Tx, transferMessage + " - approve 0.03 tokens ac4 -> ac5");
+failIfGasEqualsGasUsed(transfer3Tx, transferMessage + " - transferFrom 0.03 tokens ac4 -> ac7 by ac5. CHECK for movement");
 printControllerContractDetails();
 printLedgerContractDetails();
 printTokenContractDetails();
 console.log("RESULT: ");
+}
 
 
 // -----------------------------------------------------------------------------
 var depositIntoSavingsMessage = "Deposit Into Savings";
 // -----------------------------------------------------------------------------
 console.log("RESULT: " + depositIntoSavingsMessage);
-var depositIntoSavings1Tx = savings.setToken(tokenAddress, {from: contractOwnerAccount, gas: 100000});
-var depositIntoSavings2Tx = token.approve(savingsAddress, "100000000000000", {from: account3, gas: 100000});
+var depositIntoSavings1Tx = token.approve(savingsAddress, "11111111111", {from: account3, gas: 200000});
 while (txpool.status.pending > 0) {
 }
-var depositIntoSavings3Tx = savings.deposit("100000000000000", {from: account3, gas: 100000});
+var depositIntoSavings2Tx = savings.deposit("11111111111", {from: account3, gas: 200000});
 while (txpool.status.pending > 0) {
 }
 printTxData("depositIntoSavings1Tx", depositIntoSavings1Tx);
 printTxData("depositIntoSavings2Tx", depositIntoSavings2Tx);
-printTxData("depositIntoSavings3Tx", depositIntoSavings3Tx);
 printBalances();
-failIfGasEqualsGasUsed(depositIntoSavings1Tx, depositIntoSavingsMessage + " - savings.setToken(token)");
-failIfGasEqualsGasUsed(depositIntoSavings2Tx, depositIntoSavingsMessage + " - approve 1 tokens ac3 -> deposit");
-failIfGasEqualsGasUsed(depositIntoSavings3Tx, depositIntoSavingsMessage + " - deposit 1 token ac3");
+failIfGasEqualsGasUsed(depositIntoSavings1Tx, depositIntoSavingsMessage + " - approve 1 tokens ac3 -> deposit");
+failIfGasEqualsGasUsed(depositIntoSavings2Tx, depositIntoSavingsMessage + " - deposit 1 token ac3");
 printControllerContractDetails();
 printLedgerContractDetails();
 printTokenContractDetails();

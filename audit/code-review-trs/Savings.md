@@ -81,23 +81,30 @@ contract Savings {
 
     // BK Ok
 	bool public locked;
+	// BK Ok
 	uint public startBlockTimestamp = 0;
 
+    // BK Ok
 	Token public token;
 
 	// face value deposited by an address before locking
+	// BK Ok
 	mapping (address => uint) public deposited;
 
 	// total face value deposited; sum of deposited
+	// BK Ok
 	uint public totalfv;
 
 	// total tokens owned by the contract after locking
+	// BK Ok
 	uint public total;
 
 	// the total value withdrawn
+	// BK Ok
 	mapping (address => uint256) public withdrawn;
 
 	// pause indicator
+	// BK Ok
 	bool public paused;
 
     // BK Ok - Constructor
@@ -106,15 +113,20 @@ contract Savings {
 		owner = msg.sender;
 	}
 
+    // BK ERROR - Anyone can call this function
+    // BK ERROR - There is no corresponding `unPause()` function
 	function pause() {
+	    // BK Ok
 		paused = true;
 	}
 
+    // BK Ok
 	modifier notPaused() { require(!paused); _; }
 
     // BK Ok
 	modifier onlyOwner() { require(msg.sender == owner); _; }
 
+    // BK Ok - Before lock and not started
 	modifier preLock() { require(!locked && startBlockTimestamp == 0); _; }
 
 	/**
@@ -222,7 +234,9 @@ contract Savings {
 	 * Revert under all conditions for fallback, cheaper mistakes
 	 * in the future?
 	 */
+	// BK Ok
 	function() {
+	    // BK Ok
 		revert();
 	}
 
@@ -268,15 +282,22 @@ contract Savings {
 	//
 	// the despositor must have approve()'d the tokens
 	// to be transferred by this contract
+	// BK Ok
 	function deposit(uint tokens) notPaused {
+	    // BK Ok
 		depositTo(msg.sender, tokens);
 	}
 
 
+    // BK Ok
 	function depositTo(address beneficiary, uint tokens) preLock notPaused {
+	    // BK Ok
 		require(token.transferFrom(msg.sender, this, tokens));
+		// BK Ok
 	    deposited[beneficiary] += tokens;
+	    // BK Ok
 		totalfv += tokens;
+		// BK Ok - Log event
 		Deposit(beneficiary, tokens);
 	}
 
@@ -292,7 +313,9 @@ contract Savings {
 
 	// withdraw withdraws tokens to the sender
 	// withdraw can be called at most once per redemption period
+	// BK Ok
 	function withdraw() notPaused returns(bool) {
+	    // BK Ok
 		return withdrawTo(msg.sender);
 	}
 

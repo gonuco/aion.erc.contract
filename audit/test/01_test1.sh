@@ -60,22 +60,22 @@ printf "PASSWORD          = '$PASSWORD'\n" | tee -a $TEST1OUTPUT
 printf "TOKENCONTRACTSDIR = '$TOKENCONTRACTSDIR'\n" | tee -a $TEST1OUTPUT
 printf "SALESCONTRACTSDIR = '$SALESCONTRACTSDIR'\n" | tee -a $TEST1OUTPUT
 printf "TRSCONTRACTSDIR   = '$TRSCONTRACTSDIR'\n" | tee -a $TEST1OUTPUT
-printf "--- Token --- \n" | tee -a $TEST1OUTPUT
+printf "\--- Token --- \n" | tee -a $TEST1OUTPUT
 printf "CONTROLLERSOL     = '$CONTROLLERSOL'\n" | tee -a $TEST1OUTPUT
 printf "CONTROLLERJS      = '$CONTROLLERJS'\n" | tee -a $TEST1OUTPUT
 printf "LEDGERSOL         = '$LEDGERSOL'\n" | tee -a $TEST1OUTPUT
 printf "LEDGERJS          = '$LEDGERJS'\n" | tee -a $TEST1OUTPUT
 printf "TOKENSOL          = '$TOKENSOL'\n" | tee -a $TEST1OUTPUT
 printf "TOKENJS           = '$TOKENJS'\n" | tee -a $TEST1OUTPUT
-printf "--- Sales --- \n" | tee -a $TEST1OUTPUT
+printf "\--- Sales --- \n" | tee -a $TEST1OUTPUT
 printf "RECEIVERSOL       = '$RECEIVERSOL'\n" | tee -a $TEST1OUTPUT
 printf "RECEIVERJS        = '$RECEIVERJS'\n" | tee -a $TEST1OUTPUT
 printf "SALESOL           = '$SALESOL'\n" | tee -a $TEST1OUTPUT
 printf "SALEJS            = '$SALEJS'\n" | tee -a $TEST1OUTPUT
-printf "--- Trs --- \n" | tee -a $TEST1OUTPUT
+printf "\--- Trs --- \n" | tee -a $TEST1OUTPUT
 printf "SAVINGSSOL        = '$SAVINGSSOL'\n" | tee -a $TEST1OUTPUT
 printf "SAVINGSJS         = '$SAVINGSJS'\n" | tee -a $TEST1OUTPUT
-printf "--- End --- \n" | tee -a $TEST1OUTPUT
+printf "\--- End --- \n" | tee -a $TEST1OUTPUT
 printf "DEPLOYMENTDATA    = '$DEPLOYMENTDATA'\n" | tee -a $TEST1OUTPUT
 printf "TEST1OUTPUT       = '$TEST1OUTPUT'\n" | tee -a $TEST1OUTPUT
 printf "TEST1RESULTS      = '$TEST1RESULTS'\n" | tee -a $TEST1OUTPUT

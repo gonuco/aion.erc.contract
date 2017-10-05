@@ -1,6 +1,6 @@
 # Aion Token Contract Audit
 
-Status: Still checking the *trs/Savings* contracts. Crowdsale and token contracts have been completed.
+Status: Checking the revamped *trs/Savings* contracts. Crowdsale and token contracts have been completed.
 
 <br />
 
@@ -79,6 +79,8 @@ Ice Age (Difficulty Bomb) and switch to the Proof of Stake, time based on block 
   * [Token Contract](#token-contract)
   * [Savings Contract](#savings-contract)
 * [Recommendations](#recommendations)
+  * [First Version Recommendations](#first-version-recommendations)
+  * [Savings Second Version Recommendations](#savings-second-version-recommendations)
 * [Potential Vulnerabilities](#potential-vulnerabilities)
 * [Scope](#scope)
 * [Limitations](#limitations)
@@ -95,6 +97,8 @@ Ice Age (Difficulty Bomb) and switch to the Proof of Stake, time based on block 
 <hr />
 
 ## Recommendations
+
+### First Version Recommendations
 
 * **LOW IMPORTANCE** Consider whether the code to check for the [Short Address Attack](https://blog.coinfabrik.com/smart-contract-short-address-attack-mitigation-failure/)
   is required. Here's [OpenZeppelin's Short Address Attack removal](https://github.com/OpenZeppelin/zeppelin-solidity/commit/e33d9bb41be136f12bc734aef1aa6fffbf54fa40)
@@ -145,7 +149,8 @@ Ice Age (Difficulty Bomb) and switch to the Proof of Stake, time based on block 
   can vary a lot, depending on the time between blocks. Use the Unix timestamp and `block.timestamp` instead of `block.number` and the
   withdrawal schedule will be predictable
 
-  * [x] Developer decided against implementing this item
+  * [x] Revamp of *trs/Savings* in [a0c0042](https://github.com/gonuco/aion.erc.contract/commit/a0c0042651a88919ed948f73cb6f2976bf9015f2) to
+    use timestamps
 
 * **LOW IMPORTANCE** There are a few warnings emitted by the compiler as listed below. These warnings can be removed by commenting
   out the parameter names, like `function claimByProof(address /* _claimer */, bytes32[] /* data */, bytes32[] /* proofs */, uint256 /* number */)`:
@@ -173,6 +178,17 @@ Ice Age (Difficulty Bomb) and switch to the Proof of Stake, time based on block 
   * [x] Developer decided against implementing this item
 
 * **LOW IMPORTANCE** The comments in *trs/Savings* refer to `t0multiple` but there is no variable with that name
+
+  * [x] Revamp of *trs/Savings* in [a0c0042](https://github.com/gonuco/aion.erc.contract/commit/a0c0042651a88919ed948f73cb6f2976bf9015f2)
+
+<br />
+
+### Savings Second Version Recommendations
+
+There was a revamp of the to use timestamps instead of block numbers to define periods in the *trs/Savings* contract in
+[a0c0042](https://github.com/gonuco/aion.erc.contract/commit/a0c0042651a88919ed948f73cb6f2976bf9015f2).
+
+* **HIGH IMPORTANCE** `pause()` can be called by anyone. And there is no corresponding `unPause()`
 
 <br />
 
