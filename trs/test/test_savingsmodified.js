@@ -97,6 +97,7 @@ contract("Savings", (accs) => {
       for (let i = 0; i < wrongPeriods; i++) {
         try {
           await s.init(wrongPeriods[i]);
+          await s.finalizeInit();
         } catch (err) {
           // expected error
           // pass
@@ -127,6 +128,7 @@ contract("Savings", (accs) => {
       for (let i = 0; i < periods; i++) {
         const s = await Savings.new();
         await s.init(periods[i]);
+        await s.finalizeInit()
       }
     });
   });
@@ -221,6 +223,7 @@ contract("Savings", (accs) => {
       ]);
 
       await s.init(36);
+      await s.finalizeInit()
 
       try {
         await s.start(getBestBlockTimestamp()).sendTransaction({from: accs[1]});
@@ -264,7 +267,7 @@ contract("Savings", (accs) => {
       // dummy is for increment blocks, this test only works under testrpc
       const _dummy = await DummyMock.deployed();
       const [s, c] = await Promise.all([Savings.new(), deployERC20Mint(accs)]);
-      await Promise.all([s.setToken(c.token.address), s.init(savingPlan), s.lock()]);
+      await Promise.all([s.setToken(c.token.address), s.init(savingPlan), s.finalizeInit(), s.lock()]);
       await s.start(getBestBlockTimestamp());
       const p1 = await s.periodAt(getBestBlockTimestamp() - 10);
       assert.equal(p1.toNumber(), 0);
@@ -281,7 +284,7 @@ contract("Savings", (accs) => {
       const _dummy = await DummyMock.deployed();
 
       const [s, c] = await Promise.all([Savings.new(), deployERC20Mint(accs)]);
-      await Promise.all([s.setToken(c.token.address), s.init(savingPlan), s.lock()]);
+      await Promise.all([s.setToken(c.token.address), s.init(savingPlan), s.finalizeInit(), s.lock()]);
       await s.start(getBestBlockTimestamp());
       const p1 = await s.periodAt(getBestBlockTimestamp() - 10);
       assert.equal(p1.toNumber(), 0);
@@ -347,6 +350,7 @@ contract("Savings", (accs) => {
     it("should return the correct amount available for withdraw", async() => {
       const [s, c] = await Promise.all([Savings.new(), deployERC20Amount(accs, 100000000)]);
       await Promise.all([s.setToken(c.token.address), s.init(36)]);
+      await s.finalizeInit();
 
       await c.token.approve(s.address, 100000000);
 
@@ -381,6 +385,7 @@ contract("Savings", (accs) => {
       const [s, c] = await Promise.all([Savings.new(), deployERC20Amount(accs, 100000000)]);
 
       await Promise.all([s.setToken(c.token.address), s.init(36)]);
+      await s.finalizeInit()
       await c.token.approve(s.address, 100000000);
 
       // everyone deposits
@@ -412,6 +417,7 @@ contract("Savings", (accs) => {
 
       await s.setToken(c.token.address);
       await s.init(36);
+      await s.finalizeInit()
       await c.token.approve(s.address, 100000000);
 
       // everyone deposits
@@ -447,6 +453,7 @@ contract("Savings", (accs) => {
 
       await s.setToken(c.token.address);
       await s.init(36);
+      await s.finalizeInit();
       await c.token.approve(s.address, 100000000);
 
       // everyone deposits
@@ -481,6 +488,7 @@ contract("Savings", (accs) => {
 
       await s.setToken(c.token.address);
       await s.init(36);
+      await s.finalizeInit();
       await c.token.approve(s.address, 100000000);
 
       // everyone deposits
@@ -637,6 +645,7 @@ contract("Savings", (accs) => {
 
       await s.setToken(c.token.address);
       await s.init(36);
+      await s.finalizeInit();
       await c.token.approve(s.address, 100000000);
 
       // everyone deposits
@@ -670,7 +679,8 @@ contract("Savings", (accs) => {
       // does not require any real token interaction
       // assume that we transferred the right amount!
       const s = await Savings.new();
-      s.init(36);
+      await s.init(36);
+      await s.finalizeInit();
       await s.multiMint(0, [util.addressValue(accs[0], 100)]);
       const deposited = await s.deposited(accs[0]);
       const totalfv = await s.totalfv();
@@ -718,6 +728,7 @@ contract("Savings", (accs) => {
     it("should not be able to deposit after pause()", async() => {
       const [s, c] = await Promise.all([Savings.new(), deployERC20Amount(accs, 100000000)]);
       await Promise.all([s.setToken(c.token.address), s.init(36)]);
+      await s.finalizeInit();
 
       await c.token.approve(s.address, 100000000);
 
@@ -740,7 +751,7 @@ contract("Savings", (accs) => {
     it("should not be able to widthdraw after pause()", async() => {
       const [s, c] = await Promise.all([Savings.new(), deployERC20Amount(accs, 100000000)]);
       await Promise.all([s.setToken(c.token.address), s.init(36)]);
-
+      await s.finalizeInit();
       await c.token.approve(s.address, 100000000);
 
       // everyone deposits

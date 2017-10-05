@@ -49,7 +49,7 @@ contract Savings {
 	 */
 	uint public t0special;
 
-	uint constant public intervalSecs = 2592000; // 60 * 60 * 24 * 30;
+	uint constant public intervalSecs = 30 days;
 	uint constant public precision = 10 ** 18;
 
 	event Deposit(address indexed who, uint amount);
@@ -57,6 +57,7 @@ contract Savings {
 	address public owner;
 	address public newOwner;
 
+	bool public inited;
 	bool public locked;
 	uint public startBlockTimestamp = 0;
 
@@ -79,10 +80,6 @@ contract Savings {
 
 	function Savings() {
 		owner = msg.sender;
-	}
-
-	function pause() {
-		paused = true;
 	}
 
 	modifier notPaused() { require(!paused); _; }
@@ -111,14 +108,21 @@ contract Savings {
 	 * Uninitialized state, before init is called. Mainly used as a guard to
 	 * finalize periods and t0special.
 	 */
-	modifier notInitialized() { require(periods == 0 && t0special == 0); _; }
+	modifier notInitialized() { require(!inited); _; }
 
 	/**
 	 * Post initialization state, mainly used to guarantee that
 	 * periods and t0special have been set properly before starting
 	 * the withdrawal process.
 	 */
-	modifier initialized() { require(periods != 0 && t0special != 0); _; }
+	modifier initialized() { require(inited); _; }
+
+	/**
+	 * Pause functionality is intended to be final
+	 */
+	function pause() onlyOwner {
+		paused = true;
+	}
 
 	/**
 	 * Initialization function, should be called after contract deployment. The
@@ -132,6 +136,10 @@ contract Savings {
 		require(_periods != 0 && (_periods % 3) == 0);
 		periods = _periods;
 		t0special = _periods / 3;
+	}
+
+	function finalizeInit() onlyOwner notInitialized {
+		inited = true;
 	}
 
 	function changeOwner(address addr) onlyOwner {
@@ -181,7 +189,6 @@ contract Savings {
 	 * contract, only available before contract is locked
 	 */
 	function sendTokens(address addr, uint amount) onlyOwner preLock {
-		//require(startblock == 0);
 		token.transfer(addr, amount);
 	}
 
