@@ -724,16 +724,16 @@ contract("Savings", (accs) => {
     });
   });
 
-  describe("#pause()", () => {
-    it("should not be able to deposit after pause()", async() => {
+  describe("#nullify()", () => {
+    it("should not be able to deposit after nullify()", async() => {
       const [s, c] = await Promise.all([Savings.new(), deployERC20Amount(accs, 100000000)]);
       await Promise.all([s.setToken(c.token.address), s.init(36)]);
       await s.finalizeInit();
 
       await c.token.approve(s.address, 100000000);
 
-      // pause this contract
-      s.pause();
+      // nullify this contract
+      s.nullify();
 
       // try depositTo()
       try {
@@ -748,7 +748,7 @@ contract("Savings", (accs) => {
       }
     });
 
-    it("should not be able to widthdraw after pause()", async() => {
+    it("should not be able to widthdraw after nullify()", async() => {
       const [s, c] = await Promise.all([Savings.new(), deployERC20Amount(accs, 100000000)]);
       await Promise.all([s.setToken(c.token.address), s.init(36)]);
       await s.finalizeInit();
@@ -765,8 +765,8 @@ contract("Savings", (accs) => {
       await s.lock();
       await s.start(getBestBlockTimestamp());
 
-      // pause this contract
-      s.pause();
+      // nullify this contract
+      s.nullify();
 
       try {
           await s.withdraw();

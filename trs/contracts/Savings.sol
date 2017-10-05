@@ -75,14 +75,13 @@ contract Savings {
 	// the total value withdrawn
 	mapping (address => uint256) public withdrawn;
 
-	// pause indicator
-	bool public paused;
+	bool public nullified;
 
 	function Savings() {
 		owner = msg.sender;
 	}
 
-	modifier notPaused() { require(!paused); _; }
+	modifier notNullified() { require(!nullified); _; }
 
 	modifier onlyOwner() { require(msg.sender == owner); _; }
 
@@ -118,10 +117,10 @@ contract Savings {
 	modifier initialized() { require(inited); _; }
 
 	/**
-	 * Pause functionality is intended to be final
+	 * Nullify functionality is intended to disable the contract.
 	 */
-	function pause() onlyOwner {
-		paused = true;
+	function nullify() onlyOwner {
+		nullified = true;
 	}
 
 	/**
@@ -242,12 +241,12 @@ contract Savings {
 	//
 	// the despositor must have approve()'d the tokens
 	// to be transferred by this contract
-	function deposit(uint tokens) notPaused {
+	function deposit(uint tokens) notNullified {
 		depositTo(msg.sender, tokens);
 	}
 
 
-	function depositTo(address beneficiary, uint tokens) preLock notPaused {
+	function depositTo(address beneficiary, uint tokens) preLock notNullified {
 		require(token.transferFrom(msg.sender, this, tokens));
 	    deposited[beneficiary] += tokens;
 		totalfv += tokens;
@@ -266,7 +265,7 @@ contract Savings {
 
 	// withdraw withdraws tokens to the sender
 	// withdraw can be called at most once per redemption period
-	function withdraw() notPaused returns(bool) {
+	function withdraw() notNullified returns(bool) {
 		return withdrawTo(msg.sender);
 	}
 
@@ -326,7 +325,7 @@ contract Savings {
 	 * Public facing withdrawTo, injects business logic with
 	 * the correct model.
 	 */
-	function withdrawTo(address addr) postStart notPaused returns (bool) {
+	function withdrawTo(address addr) postStart notNullified returns (bool) {
 		uint _d = deposited[addr];
 		uint _w = withdrawn[addr];
 
@@ -348,7 +347,7 @@ contract Savings {
 	}
 
 	// force withdrawal to many addresses
-	function bulkWithdraw(address[] addrs) notPaused {
+	function bulkWithdraw(address[] addrs) notNullified {
 		for (uint i=0; i<addrs.length; i++)
 			withdrawTo(addrs[i]);
 	}
