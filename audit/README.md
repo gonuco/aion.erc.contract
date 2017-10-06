@@ -199,6 +199,8 @@ There was a revamp of the to use timestamps instead of block numbers to define p
 
   * [x] Fixed, renamed to `nullify()`, in [a93b81d](https://github.com/gonuco/aion.erc.contract/commit/a93b81d63ee986d5830a60e7640809ed3d09d213)
 
+* **LOW IMPORTANCE** Add events to log withdrawals to keep track of withdrawals and improve traceability
+
 <br />
 
 <hr />
@@ -333,6 +335,8 @@ Files from [../sales/contracts](../sales/contracts):
   * [x] contract Receiver 
 * [x] [code-review-sales/Sale.md](code-review-sales/Sale.md)
   * [x] contract Sale 
+* [x] [code-review-sales/Token.md](code-review-sales/Token.md)
+  * [x] contract Token 
 
 Files from [../trs/contracts](../trs/contracts):
 
@@ -357,8 +361,6 @@ Files from [../sales/contracts](../sales/contracts):
 
 * [ ] [code-review-sales/Migrations.md](code-review-sales/Migrations.md)
   * [ ] contract Migrations 
-* [ ] [code-review-sales/Token.md](code-review-sales/Token.md)
-  * [ ] contract Token 
 
 Files from [../trs/contracts](../trs/contracts):
 
