@@ -37,8 +37,8 @@ SAVINGSJS=`grep ^SAVINGSJS= settings.txt | sed "s/^.*=//"`
 
 DEPLOYMENTDATA=`grep ^DEPLOYMENTDATA= settings.txt | sed "s/^.*=//"`
 
-TEST3OUTPUT=`grep ^TEST3OUTPUT= settings.txt | sed "s/^.*=//"`
-TEST3RESULTS=`grep ^TEST3RESULTS= settings.txt | sed "s/^.*=//"`
+TEST4OUTPUT=`grep ^TEST4OUTPUT= settings.txt | sed "s/^.*=//"`
+TEST4RESULTS=`grep ^TEST4RESULTS= settings.txt | sed "s/^.*=//"`
 
 CURRENTTIME=`date +%s`
 CURRENTTIMES=`date -r $CURRENTTIME -u`
@@ -54,34 +54,34 @@ STARTTIME_S=`date -r $STARTTIME -u`
 ENDTIME=`echo "$CURRENTTIME+60*5" | bc`
 ENDTIME_S=`date -r $ENDTIME -u`
 
-printf "MODE              = '$MODE'\n" | tee $TEST3OUTPUT
-printf "GETHATTACHPOINT   = '$GETHATTACHPOINT'\n" | tee -a $TEST3OUTPUT
-printf "PASSWORD          = '$PASSWORD'\n" | tee -a $TEST3OUTPUT
-printf "TOKENCONTRACTSDIR = '$TOKENCONTRACTSDIR'\n" | tee -a $TEST3OUTPUT
-printf "SALESCONTRACTSDIR = '$SALESCONTRACTSDIR'\n" | tee -a $TEST3OUTPUT
-printf "TRSCONTRACTSDIR   = '$TRSCONTRACTSDIR'\n" | tee -a $TEST3OUTPUT
-printf "\--- Token --- \n" | tee -a $TEST3OUTPUT
-printf "CONTROLLERSOL     = '$CONTROLLERSOL'\n" | tee -a $TEST3OUTPUT
-printf "CONTROLLERJS      = '$CONTROLLERJS'\n" | tee -a $TEST3OUTPUT
-printf "LEDGERSOL         = '$LEDGERSOL'\n" | tee -a $TEST3OUTPUT
-printf "LEDGERJS          = '$LEDGERJS'\n" | tee -a $TEST3OUTPUT
-printf "TOKENSOL          = '$TOKENSOL'\n" | tee -a $TEST3OUTPUT
-printf "TOKENJS           = '$TOKENJS'\n" | tee -a $TEST3OUTPUT
-printf "\--- Sales --- \n" | tee -a $TEST3OUTPUT
-printf "RECEIVERSOL       = '$RECEIVERSOL'\n" | tee -a $TEST3OUTPUT
-printf "RECEIVERJS        = '$RECEIVERJS'\n" | tee -a $TEST3OUTPUT
-printf "SALESOL           = '$SALESOL'\n" | tee -a $TEST3OUTPUT
-printf "SALEJS            = '$SALEJS'\n" | tee -a $TEST3OUTPUT
-printf "\--- Trs --- \n" | tee -a $TEST3OUTPUT
-printf "SAVINGSSOL        = '$SAVINGSSOL'\n" | tee -a $TEST3OUTPUT
-printf "SAVINGSJS         = '$SAVINGSJS'\n" | tee -a $TEST3OUTPUT
-printf "\--- End --- \n" | tee -a $TEST3OUTPUT
-printf "DEPLOYMENTDATA    = '$DEPLOYMENTDATA'\n" | tee -a $TEST3OUTPUT
-printf "TEST3OUTPUT       = '$TEST3OUTPUT'\n" | tee -a $TEST3OUTPUT
-printf "TEST3RESULTS      = '$TEST3RESULTS'\n" | tee -a $TEST3OUTPUT
-printf "CURRENTTIME       = '$CURRENTTIME' '$CURRENTTIMES'\n" | tee -a $TEST3OUTPUT
-printf "STARTTIME         = '$STARTTIME' '$STARTTIME_S'\n" | tee -a $TEST3OUTPUT
-printf "ENDTIME           = '$ENDTIME' '$ENDTIME_S'\n" | tee -a $TEST3OUTPUT
+printf "MODE              = '$MODE'\n" | tee $TEST4OUTPUT
+printf "GETHATTACHPOINT   = '$GETHATTACHPOINT'\n" | tee -a $TEST4OUTPUT
+printf "PASSWORD          = '$PASSWORD'\n" | tee -a $TEST4OUTPUT
+printf "TOKENCONTRACTSDIR = '$TOKENCONTRACTSDIR'\n" | tee -a $TEST4OUTPUT
+printf "SALESCONTRACTSDIR = '$SALESCONTRACTSDIR'\n" | tee -a $TEST4OUTPUT
+printf "TRSCONTRACTSDIR   = '$TRSCONTRACTSDIR'\n" | tee -a $TEST4OUTPUT
+printf "\--- Token --- \n" | tee -a $TEST4OUTPUT
+printf "CONTROLLERSOL     = '$CONTROLLERSOL'\n" | tee -a $TEST4OUTPUT
+printf "CONTROLLERJS      = '$CONTROLLERJS'\n" | tee -a $TEST4OUTPUT
+printf "LEDGERSOL         = '$LEDGERSOL'\n" | tee -a $TEST4OUTPUT
+printf "LEDGERJS          = '$LEDGERJS'\n" | tee -a $TEST4OUTPUT
+printf "TOKENSOL          = '$TOKENSOL'\n" | tee -a $TEST4OUTPUT
+printf "TOKENJS           = '$TOKENJS'\n" | tee -a $TEST4OUTPUT
+printf "\--- Sales --- \n" | tee -a $TEST4OUTPUT
+printf "RECEIVERSOL       = '$RECEIVERSOL'\n" | tee -a $TEST4OUTPUT
+printf "RECEIVERJS        = '$RECEIVERJS'\n" | tee -a $TEST4OUTPUT
+printf "SALESOL           = '$SALESOL'\n" | tee -a $TEST4OUTPUT
+printf "SALEJS            = '$SALEJS'\n" | tee -a $TEST4OUTPUT
+printf "\--- Trs --- \n" | tee -a $TEST4OUTPUT
+printf "SAVINGSSOL        = '$SAVINGSSOL'\n" | tee -a $TEST4OUTPUT
+printf "SAVINGSJS         = '$SAVINGSJS'\n" | tee -a $TEST4OUTPUT
+printf "\--- End --- \n" | tee -a $TEST4OUTPUT
+printf "DEPLOYMENTDATA    = '$DEPLOYMENTDATA'\n" | tee -a $TEST4OUTPUT
+printf "TEST4OUTPUT       = '$TEST4OUTPUT'\n" | tee -a $TEST4OUTPUT
+printf "TEST4RESULTS      = '$TEST4RESULTS'\n" | tee -a $TEST4OUTPUT
+printf "CURRENTTIME       = '$CURRENTTIME' '$CURRENTTIMES'\n" | tee -a $TEST4OUTPUT
+printf "STARTTIME         = '$STARTTIME' '$STARTTIME_S'\n" | tee -a $TEST4OUTPUT
+printf "ENDTIME           = '$ENDTIME' '$ENDTIME_S'\n" | tee -a $TEST4OUTPUT
 
 # Make copy of SOL file and modify start and end times ---
 `cp $TOKENCONTRACTSDIR/$CONTROLLERSOL .`
@@ -103,20 +103,20 @@ printf "ENDTIME           = '$ENDTIME' '$ENDTIME_S'\n" | tee -a $TEST3OUTPUT
 #`perl -pi -e "s/CAP \= 84417 ether;.*$/CAP \= 100 ether;/" $DAOCASINOTOKENTEMPSOL`
 
 DIFFS1=`diff $TOKENCONTRACTSDIR/$CONTROLLERSOL $CONTROLLERSOL`
-echo "--- Differences $TOKENCONTRACTSDIR/$CONTROLLERSOL $CONTROLLERSOL ---" | tee -a $TEST3OUTPUT
-echo "$DIFFS1" | tee -a $TEST3OUTPUT
+echo "--- Differences $TOKENCONTRACTSDIR/$CONTROLLERSOL $CONTROLLERSOL ---" | tee -a $TEST4OUTPUT
+echo "$DIFFS1" | tee -a $TEST4OUTPUT
 
 DIFFS1=`diff $TOKENCONTRACTSDIR/$LEDGERSOL $LEDGERSOL`
-echo "--- Differences $TOKENCONTRACTSDIR/$LEDGERSOL $LEDGERSOL ---" | tee -a $TEST3OUTPUT
-echo "$DIFFS1" | tee -a $TEST3OUTPUT
+echo "--- Differences $TOKENCONTRACTSDIR/$LEDGERSOL $LEDGERSOL ---" | tee -a $TEST4OUTPUT
+echo "$DIFFS1" | tee -a $TEST4OUTPUT
 
 DIFFS1=`diff $TOKENCONTRACTSDIR/$TOKENSOL $TOKENSOL`
-echo "--- Differences $TOKENCONTRACTSDIR/$TOKENSOL $TOKENSOL ---" | tee -a $TEST3OUTPUT
-echo "$DIFFS1" | tee -a $TEST3OUTPUT
+echo "--- Differences $TOKENCONTRACTSDIR/$TOKENSOL $TOKENSOL ---" | tee -a $TEST4OUTPUT
+echo "$DIFFS1" | tee -a $TEST4OUTPUT
 
 DIFFS1=`diff $TRSCONTRACTSDIR/$SAVINGSSOL $SAVINGSSOL`
-echo "--- Differences $TRSCONTRACTSDIR/$SAVINGSSOL $SAVINGSSOL ---" | tee -a $TEST3OUTPUT
-echo "$DIFFS1" | tee -a $TEST3OUTPUT
+echo "--- Differences $TRSCONTRACTSDIR/$SAVINGSSOL $SAVINGSSOL ---" | tee -a $TEST4OUTPUT
+echo "$DIFFS1" | tee -a $TEST4OUTPUT
 
 echo "var controllerOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $CONTROLLERSOL`;" > $CONTROLLERJS
 echo "var ledgerOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $LEDGERSOL`;" > $LEDGERJS
@@ -124,7 +124,7 @@ echo "var tokenOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface 
 echo "var savingsOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $SAVINGSSOL`;" > $SAVINGSJS
 
 
-geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee -a $TEST3OUTPUT
+geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee -a $TEST4OUTPUT
 loadScript("$CONTROLLERJS");
 loadScript("$LEDGERJS");
 loadScript("$TOKENJS");
@@ -324,7 +324,7 @@ var setupSavingsMessage = "Setup Savings";
 // -----------------------------------------------------------------------------
 console.log("RESULT: " + setupSavingsMessage);
 var setupSavings1Tx = savings.setToken(tokenAddress, {from: contractOwnerAccount, gas: 100000});
-var setupSavings2Tx = savings.init(36, {from: contractOwnerAccount, gas: 100000});
+var setupSavings2Tx = savings.init(12, {from: contractOwnerAccount, gas: 100000});
 
 while (txpool.status.pending > 0) {
 }
@@ -415,18 +415,18 @@ printSavingsContractDetails();
 console.log("RESULT: ");
 
 
-console.log("RESULT: Printing out periodAt(...), availableForWithdrawalAt(...) and _withdrawTo(...) for the next 4 years, every 10 days");
+console.log("RESULT: Printing out periodAt(...), availableForWithdrawalAt(...) and _withdrawTo(...) for the next 400 days, every 10 days");
 var today = $CURRENTTIME;
 var oneDay = 60 * 60 * 24;
 var i;
-for (i = today; i < parseInt(today) + oneDay * 365 * 4; i = parseInt(i) + oneDay * 10) {
+for (i = today; i < parseInt(today) + oneDay * 400; i = parseInt(i) + oneDay * 10) {
   console.log("RESULT: " + i + " " + new Date(i * 1000).toUTCString() + " " + savings.periodAt(i) + ", " + 
     savings.availableForWithdrawalAt(i) + ", " + savings._withdrawTo("1000000000000", "0", i));
 }
 
 
 EOF
-grep "DATA: " $TEST3OUTPUT | sed "s/DATA: //" > $DEPLOYMENTDATA
+grep "DATA: " $TEST4OUTPUT | sed "s/DATA: //" > $DEPLOYMENTDATA
 cat $DEPLOYMENTDATA
-grep "RESULT: " $TEST3OUTPUT | sed "s/RESULT: //" > $TEST3RESULTS
-cat $TEST3RESULTS
+grep "RESULT: " $TEST4OUTPUT | sed "s/RESULT: //" > $TEST4RESULTS
+cat $TEST4RESULTS

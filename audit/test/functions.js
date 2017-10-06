@@ -422,12 +422,19 @@ function printSavingsContractDetails() {
     var latestBlock = eth.blockNumber;
     var i;
 
-    var depositEvent = contract.Deposit({}, { fromBlock: saleFromBlock, toBlock: latestBlock });
+    var depositEvent = contract.Deposit({}, { fromBlock: savingsFromBlock, toBlock: latestBlock });
     i = 0;
     depositEvent.watch(function (error, result) {
       console.log("RESULT: Deposit " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
     });
     depositEvent.stopWatching();
+
+    var withdrawsEvent = contract.Withdraws({}, { fromBlock: savingsFromBlock, toBlock: latestBlock });
+    i = 0;
+    withdrawsEvent.watch(function (error, result) {
+      console.log("RESULT: Withdraws " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    withdrawsEvent.stopWatching();
 
     savingsFromBlock = latestBlock + 1;
   }

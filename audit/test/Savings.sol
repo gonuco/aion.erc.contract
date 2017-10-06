@@ -49,9 +49,14 @@ contract Savings {
 	 */
 	uint public t0special;
 
-	uint constant public intervalSecs = 30 days;
+	uint constant public intervalSecs = 30 seconds;
 	uint constant public precision = 10 ** 18;
 
+
+	/**
+	 * Events
+	 */
+	event Withdraws(address indexed who, uint amount);
 	event Deposit(address indexed who, uint amount);
 
 	address public owner;
@@ -343,6 +348,8 @@ contract Savings {
 		require(token.transfer(addr, diff));
 
 		withdrawn[addr] += diff;
+		
+		Withdraws(addr, diff);
 		return true;
 	}
 

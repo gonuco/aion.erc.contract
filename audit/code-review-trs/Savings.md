@@ -71,7 +71,11 @@ contract Savings {
 	// BK Ok
 	uint constant public precision = 10 ** 18;
 
-    // BK Ok - Event
+	/**
+	 * Events
+	 */
+    // BK Next 2 Ok - Events
+	event Withdraws(address indexed who, uint amount);
 	event Deposit(address indexed who, uint amount);
 
     // BK Ok
@@ -126,23 +130,27 @@ contract Savings {
 	/**
 	 * Lock called, deposits no longer available.
 	 */
+	// BK Ok - Note that this is not used
 	modifier postLock() { require(locked); _; }
 
 	/**
 	 * Prestart, state is after lock, before start
 	 */
+	// BK Ok
 	modifier preStart() { require(locked && startBlockTimestamp == 0); _; }
 
 	/**
 	 * Start called, the savings contract is now finalized, and withdrawals
 	 * are now permitted.
 	 */
+	// BK Ok
 	modifier postStart() { require(locked && startBlockTimestamp != 0); _; }
 
 	/**
 	 * Uninitialized state, before init is called. Mainly used as a guard to
 	 * finalize periods and t0special.
 	 */
+	// BK Ok
 	modifier notInitialized() { require(!inited); _; }
 
 	/**
@@ -150,12 +158,16 @@ contract Savings {
 	 * periods and t0special have been set properly before starting
 	 * the withdrawal process.
 	 */
+	// BK Ok
 	modifier initialized() { require(inited); _; }
 
 	/**
 	 * Nullify functionality is intended to disable the contract.
 	 */
+	// BK NOTE - This function will disable all withdrawals and cannot be undone
+	// BK Ok - Only owner can execute
 	function nullify() onlyOwner {
+	    // BK Ok
 		nullified = true;
 	}
 
@@ -167,13 +179,19 @@ contract Savings {
 	 * periods and t0special are finalized, and effectively invariant, after
 	 * init is called for the first time.
 	 */
+	// BK Ok - Only owner can execute once at the start
 	function init(uint _periods) onlyOwner notInitialized {
+	    // BK Ok
 		require(_periods != 0 && (_periods % 3) == 0);
+		// BK Ok
 		periods = _periods;
+		// BK Ok
 		t0special = _periods / 3;
 	}
 
+    // BK Ok - Only owner can execute once at the start
 	function finalizeInit() onlyOwner notInitialized {
+	    // BK Ok
 		inited = true;
 	}
 
@@ -191,7 +209,9 @@ contract Savings {
 		owner = newOwner;
 	}
 
+    // BK Ok - Only owner can execute
 	function setToken(address tok) onlyOwner {
+	    // BK Ok
 		token = Token(tok);
 	}
 
@@ -210,8 +230,11 @@ contract Savings {
 	 * after lock(), once all of the bonus tokens are send to this contract,
 	 * and multiMint has been called.
 	 */
+	// BK Ok - Only owner can execute once at the start
 	function start(uint _startBlockTimestamp) onlyOwner initialized preStart {
+	    // BK Ok
 		startBlockTimestamp = _startBlockTimestamp;
+		// BK Ok
 		total = token.balanceOf(this);
 	}
 
@@ -219,7 +242,9 @@ contract Savings {
 	 * Check withdrawal is live, useful for checking whether
 	 * the savings contract is "live", withdrawal enabled, started.
 	 */
+	// BK Ok - Constant function
 	function isStarted() constant returns(bool) {
+	    // BK Ok
 		return locked && startBlockTimestamp != 0;
 	}
 
@@ -230,7 +255,9 @@ contract Savings {
 	 * Used to refund users who accidentaly transferred tokens to this
 	 * contract, only available before contract is locked
 	 */
+	// BK Ok - Only owner can execute, before contract locked
 	function sendTokens(address addr, uint amount) onlyOwner preLock {
+	    // BK Ok
 		token.transfer(addr, amount);
 	}
 
@@ -258,27 +285,36 @@ contract Savings {
 	 * up to the user to manually check that the contract is in
 	 * postStart state.
 	 */
+	// BK Ok - Constant function
 	function periodAt(uint _blockTimestamp) constant returns(uint) {
 		/**
 		 * Lower bound, consider period 0 to be the time between
 		 * start() and startBlockTimestamp
 		 */
+		// BK Ok
 		if (startBlockTimestamp > _blockTimestamp)
+		    // BK Ok
 			return 0;
 
 		/**
 		 * Calculate the appropriate period, and set an upper bound of
 		 * periods - 1.
 		 */
+		// BK Ok
 		uint p = ((_blockTimestamp - startBlockTimestamp) / intervalSecs) + 1;
+		// BK Ok
 		if (p > periods)
+		    // BK Ok
 			p = periods;
+		// BK Ok
 		return p;
 	}
 
 	// what withdrawal period are we in?
 	// returns the period number from [0, periods)
+	// BK OK - Constant function
 	function period() constant returns(uint) {
+	    // BK Ok
 		return periodAt(block.timestamp);
 	}
 
@@ -306,18 +342,24 @@ contract Savings {
 	}
 
 	// convenience function for owner: deposit on behalf of many
+	// BK Ok
 	function bulkDepositTo(uint256[] bits) onlyOwner {
+	    // BK Ok
 		uint256 lomask = (1 << 96) - 1;
+		// BK Ok
 		for (uint i=0; i<bits.length; i++) {
+		    // BK Ok
 			address a = address(bits[i]>>96);
+            // BK Ok
 			uint val = bits[i]&lomask;
+            // BK Ok
 			depositTo(a, val);
 		}
 	}
 
 	// withdraw withdraws tokens to the sender
 	// withdraw can be called at most once per redemption period
-	// BK Ok
+	// BK Ok - Anyone can call this
 	function withdraw() notNullified returns(bool) {
 	    // BK Ok
 		return withdrawTo(msg.sender);
@@ -329,11 +371,13 @@ contract Savings {
 	 * Will output invalid data until the postStart state. It is up to the user
 	 * to manually confirm contract is in postStart state.
 	 */
+	// BK Ok - Constant function
 	function availableForWithdrawalAt(uint256 blockTimestamp) constant returns (uint256) {
 		/**
 		 * Calculate the total withdrawable, giving a numerator with range:
 		 * [0.25 * 10 ** 18, 1 * 10 ** 18]
 		 */
+		// BK Ok
 		return ((t0special + periodAt(blockTimestamp)) * precision) / (t0special + periods);
 	}
 
@@ -346,7 +390,9 @@ contract Savings {
 	 * invalid outputs unless in postStart state. It is up to user to manually check
 	 * that the correct state is given (isStart() == true)
 	 */
+	// BK Ok - Constant function
 	function _withdrawTo(uint _deposit, uint _withdrawn, uint _blockTimestamp) constant returns (uint) {
+	    // BK Ok
 		uint256 fraction = availableForWithdrawalAt(_blockTimestamp);
 
 		/**
@@ -366,12 +412,16 @@ contract Savings {
 		 *
 		 * The maximum for a uint256 is = 1.15 * (10 ** 77)
 		 */
+		// BK Ok
 		uint256 withdrawable = ((_deposit * fraction * total) / totalfv) / precision;
 
 		// check that we can withdraw something
+        // BK Ok
 		if (withdrawable > _withdrawn) {
+            // BK Ok
 			return withdrawable - _withdrawn;
 		}
+        // BK Ok
 		return 0;
 	}
 
@@ -379,30 +429,46 @@ contract Savings {
 	 * Public facing withdrawTo, injects business logic with
 	 * the correct model.
 	 */
+    // BK Ok
 	function withdrawTo(address addr) postStart notNullified returns (bool) {
+        // BK Ok
 		uint _d = deposited[addr];
+        // BK Ok
 		uint _w = withdrawn[addr];
 
+        // BK Ok
 		uint diff = _withdrawTo(_d, _w, block.timestamp);
 
 		// no withdrawal could be made
+        // BK Ok
 		if (diff == 0) {
+            // BK Ok
 			return false;
 		}
 
 		// check that we cannot withdraw more than max
+        // BK Ok
 		require((diff + _w) <= ((_d * total) / totalfv));
 
 		// transfer and increment
+        // BK Ok
 		require(token.transfer(addr, diff));
 
+        // BK Ok
 		withdrawn[addr] += diff;
+		
+        // BK Ok - Log event
+		Withdraws(addr, diff);
+        // BK Ok
 		return true;
 	}
 
 	// force withdrawal to many addresses
+    // BK Ok
 	function bulkWithdraw(address[] addrs) notNullified {
+        // BK Ok
 		for (uint i=0; i<addrs.length; i++)
+            // BK Ok
 			withdrawTo(addrs[i]);
 	}
 
@@ -411,20 +477,33 @@ contract Savings {
 	//
 	// Note: the function signature here is known to New Alchemy's
 	// tooling, which is why it is arguably misnamed.
+    // BK Ok
 	uint public mintingNonce;
+    // BK Ok
 	function multiMint(uint nonce, uint256[] bits) onlyOwner preLock {
 
+        // BK Ok
 		if (nonce != mintingNonce) return;
+        // BK Ok
 		mintingNonce += 1;
+        // BK Ok
 		uint256 lomask = (1 << 96) - 1;
+        // BK Ok
 		uint sum = 0;
+        // BK Ok
 		for (uint i=0; i<bits.length; i++) {
+            // BK Ok
 			address a = address(bits[i]>>96);
+            // BK Ok
 			uint value = bits[i]&lomask;
+            // BK Ok
 			deposited[a] += value;
+            // BK Ok
 			sum += value;
+            // BK Ok
 			Deposit(a, value);
 		}
+        // BK Ok
 		totalfv += sum;
 	}
 }
