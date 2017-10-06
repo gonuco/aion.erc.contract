@@ -1,0 +1,1279 @@
+MODE              = 'test'
+GETHATTACHPOINT   = 'ipc:./testchain/geth.ipc'
+PASSWORD          = 'testtest'
+TOKENCONTRACTSDIR = '../../token/contracts'
+SALESCONTRACTSDIR = '../../sales/contracts'
+TRSCONTRACTSDIR   = '../../trs/contracts'
+\--- Token --- 
+CONTROLLERSOL     = 'Controller.sol'
+CONTROLLERJS      = 'Controller.js'
+LEDGERSOL         = 'Ledger.sol'
+LEDGERJS          = 'Ledger.js'
+TOKENSOL          = 'Token.sol'
+TOKENJS           = 'Token.js'
+\--- Sales --- 
+RECEIVERSOL       = 'Receiver.sol'
+RECEIVERJS        = 'Receiver.js'
+SALESOL           = 'Sale.sol'
+SALEJS            = 'Sale.js'
+\--- Trs --- 
+SAVINGSSOL        = 'Savings.sol'
+SAVINGSJS         = 'Savings.js'
+\--- End --- 
+DEPLOYMENTDATA    = 'deploymentData.txt'
+TEST1OUTPUT       = 'test1output.txt'
+TEST1RESULTS      = 'test1results.txt'
+CURRENTTIME       = '1507247765' 'Thu  5 Oct 2017 23:56:05 UTC'
+STARTTIME         = '1507247840' 'Thu  5 Oct 2017 23:57:20 UTC'
+ENDTIME           = '1507248065' 'Fri  6 Oct 2017 00:01:05 UTC'
+--- Differences ../../token/contracts/Controller.sol Controller.sol ---
+
+--- Differences ../../token/contracts/Ledger.sol Ledger.sol ---
+
+--- Differences ../../token/contracts/Token.sol Token.sol ---
+
+--- Differences ../../sales/contracts/Receiver.sol Receiver.sol ---
+
+--- Differences ../../sales/contracts/Sale.sol Sale.sol ---
+11c11
+<     uint public constant SOFTCAP_TIME = 4 hours;
+---
+>     uint public constant SOFTCAP_TIME = 33 seconds;
+--- Differences ../../trs/contracts/Savings.sol Savings.sol ---
+
+Welcome to the Geth JavaScript console!
+
+instance: Geth/v1.7.1-stable-05101641/darwin-amd64/go1.9
+coinbase: 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e
+at block: 204 (Fri, 06 Oct 2017 10:56:07 AEDT)
+ datadir: /Users/bok/Projects/AionTokenContractAudit/audit/test/testchain
+ modules: admin:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0
+
+> 
+true
+> 
+true
+> 
+true
+> 
+true
+> 
+true
+> 
+true
+> 
+true
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                          Token Name
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       10.000000000000000000           0.000000000000000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433        0.000000000000000000           0.000000000000000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Multisig
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.000000000000000000 Account #6
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.000000000000000000 Account #7
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Account #8
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:                                                                                     0.000000000000000000 Total Token Balances
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Deploy Controller Contract
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+... 
+...... 
+......... 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+......... 
+...... 
+... 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Deploy Ledger Contract
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+... 
+...... 
+......... 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+......... 
+...... 
+... 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Deploy Token Contract
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+... 
+...... 
+......... 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+......... 
+...... 
+... 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Deploy Receiver0 Contract
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+... 
+...... 
+......... 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+......... 
+...... 
+... 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Deploy Receiver1 Contract
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+... 
+...... 
+......... 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+......... 
+...... 
+... 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Deploy Receiver2 Contract
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+... 
+...... 
+......... 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+......... 
+...... 
+... 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Deploy Sale Contract
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+... 
+...... 
+......... 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+......... 
+...... 
+... 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Deploy Savings Contract
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+... 
+...... 
+......... 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+......... 
+...... 
+... 
+undefined
+> 
+> 
+... 
+undefined
+> 
+> 
+DATA: controllerAddress=0x8947c758dd866ee1c2256bd09182ef44ee825a5d
+DATA: ledgerAddress=0x8d81072d03ab6c02276501b9d3efd8e67612d52d
+DATA: tokenAddress=0xef0d0100978e1af7719b63ab70dbe94cb965f4be
+DATA: receiver0Address=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf
+DATA: receiver1Address=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+DATA: receiver2Address=0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2
+DATA: saleAddress=0x8970bbfd1a54ae581064ab34e7910dab7e86172f
+DATA: savingsAddress=0x6b8bba219f069b3dd5920e6d6958071eb9b8bc50
+RESULT: controllerAddress=0x8947c758dd866ee1c2256bd09182ef44ee825a5d gas=6000000 gasUsed=1242997 costETH=0.022373946 costUSD=8.51082531894 @ ETH/USD=380.39 gasPrice=18000000000 block=208 txIx=0 txId=0x43d8d79494584daff64903328d74735c64398b38f4fab9dbffe929d652a3a802
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                          Token Name
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       25.155941110000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.155941110000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.00000000 Account #3
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.00000000 Account #4
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.00000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.00000000 Account #6
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.00000000 Account #7
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.00000000 Account #8
+RESULT:  9 0x8947c758dd866ee1c2256bd09182ef44ee825a5d        0.000000000000000000           0.00000000 Controller Contract
+RESULT: 10 0x8d81072d03ab6c02276501b9d3efd8e67612d52d        0.000000000000000000           0.00000000 Ledger Contract
+RESULT: 11 0xef0d0100978e1af7719b63ab70dbe94cb965f4be        0.000000000000000000           0.00000000 Token Contract
+RESULT: 12 0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf        0.000000000000000000           0.00000000 Receiver0 Contract
+RESULT: 13 0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf        0.000000000000000000           0.00000000 Receiver1 Contract
+RESULT: 14 0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2        0.000000000000000000           0.00000000 Receiver2 Contract
+RESULT: 15 0x8970bbfd1a54ae581064ab34e7910dab7e86172f        0.000000000000000000           0.00000000 Sale Contract
+RESULT: 16 0x6b8bba219f069b3dd5920e6d6958071eb9b8bc50        0.000000000000000000           0.00000000 Savings Contract
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:                                                                                     0.00000000 Total Token Balances
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: PASS Deploy Controller Contract
+1
+> 
+RESULT: controllerContractAddress=0x8947c758dd866ee1c2256bd09182ef44ee825a5d
+RESULT: controller.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: controller.ledger=0x0000000000000000000000000000000000000000
+RESULT: controller.token=0x0000000000000000000000000000000000000000
+RESULT: controller.burnAddress=0x0000000000000000000000000000000000000000
+RESULT: finalizable.finalized=false
+RESULT: controller.totalSupply=0
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+RESULT: ledgerAddress=0x8d81072d03ab6c02276501b9d3efd8e67612d52d gas=6000000 gasUsed=1130456 costETH=0.020348208 costUSD=7.74025484112 @ ETH/USD=380.39 gasPrice=18000000000 block=208 txIx=1 txId=0xfa9f19740afaee6b7b1f620514d3610625f1b472e097cd1efb2c1adc3f964d5b
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                          Token Name
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       30.155941110000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.155941110000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.00000000 Account #3
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.00000000 Account #4
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.00000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.00000000 Account #6
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.00000000 Account #7
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.00000000 Account #8
+RESULT:  9 0x8947c758dd866ee1c2256bd09182ef44ee825a5d        0.000000000000000000           0.00000000 Controller Contract
+RESULT: 10 0x8d81072d03ab6c02276501b9d3efd8e67612d52d        0.000000000000000000           0.00000000 Ledger Contract
+RESULT: 11 0xef0d0100978e1af7719b63ab70dbe94cb965f4be        0.000000000000000000           0.00000000 Token Contract
+RESULT: 12 0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf        0.000000000000000000           0.00000000 Receiver0 Contract
+RESULT: 13 0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf        0.000000000000000000           0.00000000 Receiver1 Contract
+RESULT: 14 0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2        0.000000000000000000           0.00000000 Receiver2 Contract
+RESULT: 15 0x8970bbfd1a54ae581064ab34e7910dab7e86172f        0.000000000000000000           0.00000000 Sale Contract
+RESULT: 16 0x6b8bba219f069b3dd5920e6d6958071eb9b8bc50        0.000000000000000000           0.00000000 Savings Contract
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:                                                                                     0.00000000 Total Token Balances
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: PASS Deploy Ledger Contract
+1
+> 
+RESULT: ledgerContractAddress=0x8d81072d03ab6c02276501b9d3efd8e67612d52d
+RESULT: ledger.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: ledger.controller=0x0000000000000000000000000000000000000000
+RESULT: ledger.totalSupply=0
+RESULT: ledger.mintingNonce=0
+RESULT: ledger.mintingStopped=false
+RESULT: ledger.burnAddress=0x0000000000000000000000000000000000000000
+RESULT: finalizable.finalized=false
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+RESULT: tokenAddress=0xef0d0100978e1af7719b63ab70dbe94cb965f4be gas=6000000 gasUsed=1933601 costETH=0.034804818 costUSD=13.23940471902 @ ETH/USD=380.39 gasPrice=18000000000 block=208 txIx=2 txId=0x9099dd829e4bb2b74787f43512fe31e8aca655f615d10bfebd2cd032cdb8e3cd
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                          Token Name
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       30.155941110000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.155941110000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.00000000 Account #3
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.00000000 Account #4
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.00000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.00000000 Account #6
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.00000000 Account #7
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.00000000 Account #8
+RESULT:  9 0x8947c758dd866ee1c2256bd09182ef44ee825a5d        0.000000000000000000           0.00000000 Controller Contract
+RESULT: 10 0x8d81072d03ab6c02276501b9d3efd8e67612d52d        0.000000000000000000           0.00000000 Ledger Contract
+RESULT: 11 0xef0d0100978e1af7719b63ab70dbe94cb965f4be        0.000000000000000000           0.00000000 Token Contract
+RESULT: 12 0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf        0.000000000000000000           0.00000000 Receiver0 Contract
+RESULT: 13 0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf        0.000000000000000000           0.00000000 Receiver1 Contract
+RESULT: 14 0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2        0.000000000000000000           0.00000000 Receiver2 Contract
+RESULT: 15 0x8970bbfd1a54ae581064ab34e7910dab7e86172f        0.000000000000000000           0.00000000 Sale Contract
+RESULT: 16 0x6b8bba219f069b3dd5920e6d6958071eb9b8bc50        0.000000000000000000           0.00000000 Savings Contract
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:                                                                                     0.00000000 Total Token Balances
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: PASS Deploy Token Contract
+1
+> 
+RESULT: tokenContractAddress=0xef0d0100978e1af7719b63ab70dbe94cb965f4be
+RESULT: token.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: token.name=FixMeBeforeDeploying
+RESULT: token.decimals=8
+RESULT: token.symbol=FIXME
+RESULT: token.controller=0x0000000000000000000000000000000000000000
+RESULT: token.motd=
+RESULT: token.burnAddress=0x0000000000000000000000000000000000000000
+RESULT: token.burnable=false
+RESULT: token.totalSupply=0
+RESULT: finalizable.finalized=false
+RESULT: pausable.paused=false
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+RESULT: receiver0Address=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf gas=6000000 gasUsed=682620 costETH=0.01228716 costUSD=4.6739127924 @ ETH/USD=380.39 gasPrice=18000000000 block=208 txIx=3 txId=0xa8b2e76f54844a7b8b9ec985d7db58cf1c96badb2ad534220a6a017be8848d2e
+undefined
+> 
+RESULT: receiver1Address=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf gas=6000000 gasUsed=682620 costETH=0.01228716 costUSD=4.6739127924 @ ETH/USD=380.39 gasPrice=18000000000 block=208 txIx=4 txId=0xa1e91dda680989e4ec1d05658be4add7186113d38d814d5bddb294c0bf9ae5ae
+undefined
+> 
+RESULT: receiver2Address=0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2 gas=6000000 gasUsed=682620 costETH=0.01228716 costUSD=4.6739127924 @ ETH/USD=380.39 gasPrice=18000000000 block=208 txIx=5 txId=0xbc37c03145c9036f6573073d14569b160089a5c38dbf9e0233cd957c8bc48b3d
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                          Token Name
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       30.155941110000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.155941110000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.00000000 Account #3
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.00000000 Account #4
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.00000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.00000000 Account #6
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.00000000 Account #7
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.00000000 Account #8
+RESULT:  9 0x8947c758dd866ee1c2256bd09182ef44ee825a5d        0.000000000000000000           0.00000000 Controller Contract
+RESULT: 10 0x8d81072d03ab6c02276501b9d3efd8e67612d52d        0.000000000000000000           0.00000000 Ledger Contract
+RESULT: 11 0xef0d0100978e1af7719b63ab70dbe94cb965f4be        0.000000000000000000           0.00000000 Token Contract
+RESULT: 12 0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf        0.000000000000000000           0.00000000 Receiver0 Contract
+RESULT: 13 0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf        0.000000000000000000           0.00000000 Receiver1 Contract
+RESULT: 14 0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2        0.000000000000000000           0.00000000 Receiver2 Contract
+RESULT: 15 0x8970bbfd1a54ae581064ab34e7910dab7e86172f        0.000000000000000000           0.00000000 Sale Contract
+RESULT: 16 0x6b8bba219f069b3dd5920e6d6958071eb9b8bc50        0.000000000000000000           0.00000000 Savings Contract
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:                                                                                     0.00000000 Total Token Balances
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: PASS Deploy Receiver0 Contract
+1
+> 
+RESULT: PASS Deploy Receiver1 Contract
+1
+> 
+RESULT: PASS Deploy Receiver2 Contract
+1
+> 
+RESULT: receiverContractAddress=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf
+RESULT: receiver=Receiver0
+RESULT: receiver.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: receiver.newOwner=0x0000000000000000000000000000000000000000
+RESULT: receiver.notice=
+RESULT: receiver.sale=0x0000000000000000000000000000000000000000
+RESULT: receiver.live=false
+undefined
+> 
+RESULT: receiverContractAddress=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+RESULT: receiver=Receiver1
+RESULT: receiver.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: receiver.newOwner=0x0000000000000000000000000000000000000000
+RESULT: receiver.notice=
+RESULT: receiver.sale=0x0000000000000000000000000000000000000000
+RESULT: receiver.live=false
+undefined
+> 
+RESULT: receiverContractAddress=0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2
+RESULT: receiver=Receiver2
+RESULT: receiver.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: receiver.newOwner=0x0000000000000000000000000000000000000000
+RESULT: receiver.notice=
+RESULT: receiver.sale=0x0000000000000000000000000000000000000000
+RESULT: receiver.live=false
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+RESULT: saleAddress=0x8970bbfd1a54ae581064ab34e7910dab7e86172f gas=6000000 gasUsed=1005537 costETH=0.018099666 costUSD=6.88493194974 @ ETH/USD=380.39 gasPrice=18000000000 block=208 txIx=6 txId=0x206b32d623426f4657e7c906bed18d203d3ee1b3efe7082ee787179030ba9163
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                          Token Name
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       40.155941110000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.155941110000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.00000000 Account #3
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.00000000 Account #4
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.00000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.00000000 Account #6
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.00000000 Account #7
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.00000000 Account #8
+RESULT:  9 0x8947c758dd866ee1c2256bd09182ef44ee825a5d        0.000000000000000000           0.00000000 Controller Contract
+RESULT: 10 0x8d81072d03ab6c02276501b9d3efd8e67612d52d        0.000000000000000000           0.00000000 Ledger Contract
+RESULT: 11 0xef0d0100978e1af7719b63ab70dbe94cb965f4be        0.000000000000000000           0.00000000 Token Contract
+RESULT: 12 0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf        0.000000000000000000           0.00000000 Receiver0 Contract
+RESULT: 13 0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf        0.000000000000000000           0.00000000 Receiver1 Contract
+RESULT: 14 0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2        0.000000000000000000           0.00000000 Receiver2 Contract
+RESULT: 15 0x8970bbfd1a54ae581064ab34e7910dab7e86172f        0.000000000000000000           0.00000000 Sale Contract
+RESULT: 16 0x6b8bba219f069b3dd5920e6d6958071eb9b8bc50        0.000000000000000000           0.00000000 Savings Contract
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:                                                                                     0.00000000 Total Token Balances
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: PASS Deploy Sale Contract
+1
+> 
+RESULT: saleContractAddress=0x8970bbfd1a54ae581064ab34e7910dab7e86172f
+RESULT: sale.SOFTCAP_TIME=33
+RESULT: sale.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: sale.newOwner=0x0000000000000000000000000000000000000000
+RESULT: sale.notice=
+RESULT: sale.start=0 Thu, 01 Jan 1970 00:00:00 UTC
+RESULT: sale.end=0 Thu, 01 Jan 1970 00:00:00 UTC
+RESULT: sale.cap=0 0
+RESULT: sale.softcap=0 0
+RESULT: sale.live=false
+RESULT: sale.r0=0x0000000000000000000000000000000000000000
+RESULT: sale.r1=0x0000000000000000000000000000000000000000
+RESULT: sale.r2=0x0000000000000000000000000000000000000000
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+RESULT: savingsAddress=0x6b8bba219f069b3dd5920e6d6958071eb9b8bc50 gas=6000000 gasUsed=1302944 costETH=0.023452992 costUSD=8.92128362688 @ ETH/USD=380.39 gasPrice=18000000000 block=208 txIx=7 txId=0xfc5c9f93aaf4eb174778e509e02beacbd6ae8c8bc134ccaf3b6098127c5fab4a
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                          Token Name
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       40.155941110000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.155941110000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.00000000 Account #3
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.00000000 Account #4
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.00000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.00000000 Account #6
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.00000000 Account #7
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.00000000 Account #8
+RESULT:  9 0x8947c758dd866ee1c2256bd09182ef44ee825a5d        0.000000000000000000           0.00000000 Controller Contract
+RESULT: 10 0x8d81072d03ab6c02276501b9d3efd8e67612d52d        0.000000000000000000           0.00000000 Ledger Contract
+RESULT: 11 0xef0d0100978e1af7719b63ab70dbe94cb965f4be        0.000000000000000000           0.00000000 Token Contract
+RESULT: 12 0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf        0.000000000000000000           0.00000000 Receiver0 Contract
+RESULT: 13 0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf        0.000000000000000000           0.00000000 Receiver1 Contract
+RESULT: 14 0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2        0.000000000000000000           0.00000000 Receiver2 Contract
+RESULT: 15 0x8970bbfd1a54ae581064ab34e7910dab7e86172f        0.000000000000000000           0.00000000 Sale Contract
+RESULT: 16 0x6b8bba219f069b3dd5920e6d6958071eb9b8bc50        0.000000000000000000           0.00000000 Savings Contract
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:                                                                                     0.00000000 Total Token Balances
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: PASS Deploy Savings Contract
+1
+> 
+RESULT: savingsContractAddress=0x6b8bba219f069b3dd5920e6d6958071eb9b8bc50
+RESULT: savings.periods=0
+RESULT: savings.t0special=0
+RESULT: savings.intervalSecs=2592000
+RESULT: savings.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: savings.newOwner=0x0000000000000000000000000000000000000000
+RESULT: savings.locked=false
+RESULT: savings.startBlockTimestamp=0 Thu, 01 Jan 1970 00:00:00 UTC
+RESULT: savings.token=0x0000000000000000000000000000000000000000
+RESULT: savings.totalfv=0 0
+RESULT: savings.total=0 0
+RESULT: savings.nullified=false
+RESULT: savings.mintingNonce=0
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Stitch Receivers And Sale Contracts
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+RESULT: stitchReceiversAndSaleMessage1Tx gas=400000 gasUsed=43099 costETH=0.000775782 costUSD=0.29509971498 @ ETH/USD=380.39 gasPrice=18000000000 block=217 txIx=0 txId=0xe8ffb730e01934ece15d6436628e33eb8e3242e9fbd3e7523fb6b3190facddbc
+undefined
+> 
+RESULT: stitchReceiversAndSaleMessage2Tx gas=400000 gasUsed=43099 costETH=0.000775782 costUSD=0.29509971498 @ ETH/USD=380.39 gasPrice=18000000000 block=217 txIx=1 txId=0x130d6c2684758eed6c0a04aee87ea60e2b24629ca898a910febb8dd15767edbd
+undefined
+> 
+RESULT: stitchReceiversAndSaleMessage3Tx gas=400000 gasUsed=43099 costETH=0.000775782 costUSD=0.29509971498 @ ETH/USD=380.39 gasPrice=18000000000 block=217 txIx=2 txId=0x8687d5d1a5fe7a72852abfcef5aa75c9501b1f68e2b7d5f9001f4dfc7a6ff0c6
+undefined
+> 
+RESULT: stitchReceiversAndSaleMessage4Tx gas=400000 gasUsed=86249 costETH=0.001552482 costUSD=0.59054862798 @ ETH/USD=380.39 gasPrice=18000000000 block=217 txIx=3 txId=0xd050ed3ae423f49a934c5d05c8c0fee32e94f9b4394315c60c4b1170bbcb9f55
+undefined
+> 
+RESULT: stitchReceiversAndSaleMessage5Tx gas=400000 gasUsed=103705 costETH=0.00186669 costUSD=0.7100702091 @ ETH/USD=380.39 gasPrice=18000000000 block=217 txIx=4 txId=0xff86a217a5379f3c1fa121bc11c87c4a861fa5c8a3a8bfd4dd45f91e182c6964
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                          Token Name
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       65.161687628000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.161687628000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.00000000 Account #3
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.00000000 Account #4
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.00000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.00000000 Account #6
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.00000000 Account #7
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.00000000 Account #8
+RESULT:  9 0x8947c758dd866ee1c2256bd09182ef44ee825a5d        0.000000000000000000           0.00000000 Controller Contract
+RESULT: 10 0x8d81072d03ab6c02276501b9d3efd8e67612d52d        0.000000000000000000           0.00000000 Ledger Contract
+RESULT: 11 0xef0d0100978e1af7719b63ab70dbe94cb965f4be        0.000000000000000000           0.00000000 Token Contract
+RESULT: 12 0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf        0.000000000000000000           0.00000000 Receiver0 Contract
+RESULT: 13 0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf        0.000000000000000000           0.00000000 Receiver1 Contract
+RESULT: 14 0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2        0.000000000000000000           0.00000000 Receiver2 Contract
+RESULT: 15 0x8970bbfd1a54ae581064ab34e7910dab7e86172f        0.000000000000000000           0.00000000 Sale Contract
+RESULT: 16 0x6b8bba219f069b3dd5920e6d6958071eb9b8bc50        0.000000000000000000           0.00000000 Savings Contract
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:                                                                                     0.00000000 Total Token Balances
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: PASS Stitch Receivers And Sale Contracts - receiver0.setSale(sale)
+1
+> 
+RESULT: PASS Stitch Receivers And Sale Contracts - receiver1.setSale(sale)
+1
+> 
+RESULT: PASS Stitch Receivers And Sale Contracts - receiver2.setSale(sale)
+1
+> 
+RESULT: PASS Stitch Receivers And Sale Contracts - sale.setReceivers(receiver*)
+1
+> 
+RESULT: PASS Stitch Receivers And Sale Contracts - sale.init(*)
+1
+> 
+RESULT: receiverContractAddress=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf
+RESULT: receiver=Receiver0
+RESULT: receiver.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: receiver.newOwner=0x0000000000000000000000000000000000000000
+RESULT: receiver.notice=
+RESULT: receiver.sale=0x8970bbfd1a54ae581064ab34e7910dab7e86172f
+RESULT: receiver.live=false
+undefined
+> 
+RESULT: receiverContractAddress=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+RESULT: receiver=Receiver1
+RESULT: receiver.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: receiver.newOwner=0x0000000000000000000000000000000000000000
+RESULT: receiver.notice=
+RESULT: receiver.sale=0x8970bbfd1a54ae581064ab34e7910dab7e86172f
+RESULT: receiver.live=false
+undefined
+> 
+RESULT: receiverContractAddress=0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2
+RESULT: receiver=Receiver2
+RESULT: receiver.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: receiver.newOwner=0x0000000000000000000000000000000000000000
+RESULT: receiver.notice=
+RESULT: receiver.sale=0x8970bbfd1a54ae581064ab34e7910dab7e86172f
+RESULT: receiver.live=false
+undefined
+> 
+RESULT: saleContractAddress=0x8970bbfd1a54ae581064ab34e7910dab7e86172f
+RESULT: sale.SOFTCAP_TIME=33
+RESULT: sale.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: sale.newOwner=0x0000000000000000000000000000000000000000
+RESULT: sale.notice=
+RESULT: sale.start=1507247840 Thu, 05 Oct 2017 23:57:20 UTC
+RESULT: sale.end=1507248065 Fri, 06 Oct 2017 00:01:05 UTC
+RESULT: sale.cap=100000000000000000000 100
+RESULT: sale.softcap=50000000000000000000 50
+RESULT: sale.live=false
+RESULT: sale.r0=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf
+RESULT: sale.r1=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+RESULT: sale.r2=0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Waiting until startTime at 1507247840 Fri, 06 Oct 2017 10:57:20 AEDT currentDate=Fri, 06 Oct 2017 10:56:56 AEDT
+undefined
+> 
+... 
+undefined
+> 
+RESULT: Waited until startTime at 1507247840 Fri, 06 Oct 2017 10:57:20 AEDT currentDate=Fri, 06 Oct 2017 10:57:20 AEDT
+undefined
+> 
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Send Valid Contribution - 40 ETH From Account3, 50 ETH From Account6
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+RESULT: sendValidContribution1Tx gas=400000 gasUsed=39840 costETH=0.00071712 costUSD=0.2727852768 @ ETH/USD=380.39 gasPrice=18000000000 block=225 txIx=0 txId=0xdf3e8a08132a66c7747df8c5392a05db3e62e316468f5f7b9d10e6bf689a2810
+undefined
+> 
+RESULT: sendValidContribution2Tx gas=400000 gasUsed=35295 costETH=0.00063531 costUSD=0.2416655709 @ ETH/USD=380.39 gasPrice=18000000000 block=225 txIx=1 txId=0x49dd8c2a46b66e8930be46be3839cd9a8cb347b001671d457f2c1a741b158115
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                          Token Name
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      105.163040058000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.161687628000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0      -40.000717120000000000           0.00000000 Account #3
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844      -50.000635310000000000           0.00000000 Account #4
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.00000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.00000000 Account #6
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.00000000 Account #7
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.00000000 Account #8
+RESULT:  9 0x8947c758dd866ee1c2256bd09182ef44ee825a5d        0.000000000000000000           0.00000000 Controller Contract
+RESULT: 10 0x8d81072d03ab6c02276501b9d3efd8e67612d52d        0.000000000000000000           0.00000000 Ledger Contract
+RESULT: 11 0xef0d0100978e1af7719b63ab70dbe94cb965f4be        0.000000000000000000           0.00000000 Token Contract
+RESULT: 12 0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf        0.000000000000000000           0.00000000 Receiver0 Contract
+RESULT: 13 0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf        0.000000000000000000           0.00000000 Receiver1 Contract
+RESULT: 14 0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2        0.000000000000000000           0.00000000 Receiver2 Contract
+RESULT: 15 0x8970bbfd1a54ae581064ab34e7910dab7e86172f       90.000000000000000000           0.00000000 Sale Contract
+RESULT: 16 0x6b8bba219f069b3dd5920e6d6958071eb9b8bc50        0.000000000000000000           0.00000000 Savings Contract
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:                                                                                     0.00000000 Total Token Balances
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: PASS Send Valid Contribution - 40 ETH From Account3, 50 ETH From Account6
+1
+> 
+RESULT: PASS Send Valid Contribution - 40 ETH From Account3, 50 ETH From Account6
+1
+> 
+RESULT: receiverContractAddress=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf
+RESULT: receiver=Receiver0
+RESULT: receiver.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: receiver.newOwner=0x0000000000000000000000000000000000000000
+RESULT: receiver.notice=
+RESULT: receiver.sale=0x8970bbfd1a54ae581064ab34e7910dab7e86172f
+RESULT: receiver.live=true
+RESULT: StartSale 0 #225 {}
+RESULT: EtherIn 0 #225 {"amount":"40000000000000000000","from":"0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0"}
+undefined
+> 
+RESULT: receiverContractAddress=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+RESULT: receiver=Receiver1
+RESULT: receiver.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: receiver.newOwner=0x0000000000000000000000000000000000000000
+RESULT: receiver.notice=
+RESULT: receiver.sale=0x8970bbfd1a54ae581064ab34e7910dab7e86172f
+RESULT: receiver.live=true
+RESULT: StartSale 0 #225 {}
+RESULT: EtherIn 0 #225 {"amount":"50000000000000000000","from":"0xa44a08d3f6933c69212114bb66e2df1813651844"}
+undefined
+> 
+RESULT: receiverContractAddress=0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2
+RESULT: receiver=Receiver2
+RESULT: receiver.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: receiver.newOwner=0x0000000000000000000000000000000000000000
+RESULT: receiver.notice=
+RESULT: receiver.sale=0x8970bbfd1a54ae581064ab34e7910dab7e86172f
+RESULT: receiver.live=true
+RESULT: StartSale 0 #225 {}
+undefined
+> 
+RESULT: saleContractAddress=0x8970bbfd1a54ae581064ab34e7910dab7e86172f
+RESULT: sale.SOFTCAP_TIME=33
+RESULT: sale.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: sale.newOwner=0x0000000000000000000000000000000000000000
+RESULT: sale.notice=
+RESULT: sale.start=1507247840 Thu, 05 Oct 2017 23:57:20 UTC
+RESULT: sale.end=1507247873 Thu, 05 Oct 2017 23:57:53 UTC
+RESULT: sale.cap=100000000000000000000 100
+RESULT: sale.softcap=50000000000000000000 50
+RESULT: sale.live=true
+RESULT: sale.r0=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf
+RESULT: sale.r1=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+RESULT: sale.r2=0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Blow The Cap
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+RESULT: sendValidContribution3Tx gas=400000 gasUsed=40104 costETH=0.000721872 costUSD=0.27459289008 @ ETH/USD=380.39 gasPrice=18000000000 block=227 txIx=0 txId=0x536a44b3b4aa33a7b9cc848a09b6cf0e15d084ce6bafca6a74db77124579cd0e
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                          Token Name
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      115.163761930000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.161687628000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0      -40.000717120000000000           0.00000000 Account #3
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844      -50.000635310000000000           0.00000000 Account #4
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea -4000000.000721872000000000           0.00000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.00000000 Account #6
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.00000000 Account #7
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.00000000 Account #8
+RESULT:  9 0x8947c758dd866ee1c2256bd09182ef44ee825a5d        0.000000000000000000           0.00000000 Controller Contract
+RESULT: 10 0x8d81072d03ab6c02276501b9d3efd8e67612d52d        0.000000000000000000           0.00000000 Ledger Contract
+RESULT: 11 0xef0d0100978e1af7719b63ab70dbe94cb965f4be        0.000000000000000000           0.00000000 Token Contract
+RESULT: 12 0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf        0.000000000000000000           0.00000000 Receiver0 Contract
+RESULT: 13 0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf        0.000000000000000000           0.00000000 Receiver1 Contract
+RESULT: 14 0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2        0.000000000000000000           0.00000000 Receiver2 Contract
+RESULT: 15 0x8970bbfd1a54ae581064ab34e7910dab7e86172f  4000090.000000000000000000           0.00000000 Sale Contract
+RESULT: 16 0x6b8bba219f069b3dd5920e6d6958071eb9b8bc50        0.000000000000000000           0.00000000 Savings Contract
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:                                                                                     0.00000000 Total Token Balances
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: PASS Blow The Cap
+1
+> 
+RESULT: receiverContractAddress=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf
+RESULT: receiver=Receiver0
+RESULT: receiver.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: receiver.newOwner=0x0000000000000000000000000000000000000000
+RESULT: receiver.notice=
+RESULT: receiver.sale=0x8970bbfd1a54ae581064ab34e7910dab7e86172f
+RESULT: receiver.live=false
+RESULT: EndSale 0 #227 {}
+RESULT: EtherIn 0 #227 {"amount":"4e+24","from":"0xa55a151eb00fded1634d27d1127b4be4627079ea"}
+undefined
+> 
+RESULT: receiverContractAddress=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+RESULT: receiver=Receiver1
+RESULT: receiver.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: receiver.newOwner=0x0000000000000000000000000000000000000000
+RESULT: receiver.notice=
+RESULT: receiver.sale=0x8970bbfd1a54ae581064ab34e7910dab7e86172f
+RESULT: receiver.live=false
+RESULT: EndSale 0 #227 {}
+undefined
+> 
+RESULT: receiverContractAddress=0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2
+RESULT: receiver=Receiver2
+RESULT: receiver.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: receiver.newOwner=0x0000000000000000000000000000000000000000
+RESULT: receiver.notice=
+RESULT: receiver.sale=0x8970bbfd1a54ae581064ab34e7910dab7e86172f
+RESULT: receiver.live=false
+RESULT: EndSale 0 #227 {}
+undefined
+> 
+RESULT: saleContractAddress=0x8970bbfd1a54ae581064ab34e7910dab7e86172f
+RESULT: sale.SOFTCAP_TIME=33
+RESULT: sale.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: sale.newOwner=0x0000000000000000000000000000000000000000
+RESULT: sale.notice=
+RESULT: sale.start=1507247840 Thu, 05 Oct 2017 23:57:20 UTC
+RESULT: sale.end=1507247873 Thu, 05 Oct 2017 23:57:53 UTC
+RESULT: sale.cap=100000000000000000000 100
+RESULT: sale.softcap=50000000000000000000 50
+RESULT: sale.live=false
+RESULT: sale.r0=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf
+RESULT: sale.r1=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+RESULT: sale.r2=0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Withdraw Some
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+RESULT: withdrawSomeTx gas=400000 gasUsed=29417 costETH=0.000529506 costUSD=0.20141878734 @ ETH/USD=380.39 gasPrice=18000000000 block=229 txIx=0 txId=0xf71b50e7a9e5e9358cf28f15455ccf0d53226b83d8ac64db9db2790ecc37ca26
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                          Token Name
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      125.164291436000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433      122.837782866000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0      -40.000717120000000000           0.00000000 Account #3
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844      -50.000635310000000000           0.00000000 Account #4
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea -4000000.000721872000000000           0.00000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.00000000 Account #6
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.00000000 Account #7
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.00000000 Account #8
+RESULT:  9 0x8947c758dd866ee1c2256bd09182ef44ee825a5d        0.000000000000000000           0.00000000 Controller Contract
+RESULT: 10 0x8d81072d03ab6c02276501b9d3efd8e67612d52d        0.000000000000000000           0.00000000 Ledger Contract
+RESULT: 11 0xef0d0100978e1af7719b63ab70dbe94cb965f4be        0.000000000000000000           0.00000000 Token Contract
+RESULT: 12 0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf        0.000000000000000000           0.00000000 Receiver0 Contract
+RESULT: 13 0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf        0.000000000000000000           0.00000000 Receiver1 Contract
+RESULT: 14 0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2        0.000000000000000000           0.00000000 Receiver2 Contract
+RESULT: 15 0x8970bbfd1a54ae581064ab34e7910dab7e86172f  3999967.000000000000000000           0.00000000 Sale Contract
+RESULT: 16 0x6b8bba219f069b3dd5920e6d6958071eb9b8bc50        0.000000000000000000           0.00000000 Savings Contract
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:                                                                                     0.00000000 Total Token Balances
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: PASS Withdraw Some
+1
+> 
+RESULT: receiverContractAddress=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf
+RESULT: receiver=Receiver0
+RESULT: receiver.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: receiver.newOwner=0x0000000000000000000000000000000000000000
+RESULT: receiver.notice=
+RESULT: receiver.sale=0x8970bbfd1a54ae581064ab34e7910dab7e86172f
+RESULT: receiver.live=false
+undefined
+> 
+RESULT: receiverContractAddress=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+RESULT: receiver=Receiver1
+RESULT: receiver.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: receiver.newOwner=0x0000000000000000000000000000000000000000
+RESULT: receiver.notice=
+RESULT: receiver.sale=0x8970bbfd1a54ae581064ab34e7910dab7e86172f
+RESULT: receiver.live=false
+undefined
+> 
+RESULT: receiverContractAddress=0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2
+RESULT: receiver=Receiver2
+RESULT: receiver.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: receiver.newOwner=0x0000000000000000000000000000000000000000
+RESULT: receiver.notice=
+RESULT: receiver.sale=0x8970bbfd1a54ae581064ab34e7910dab7e86172f
+RESULT: receiver.live=false
+undefined
+> 
+RESULT: saleContractAddress=0x8970bbfd1a54ae581064ab34e7910dab7e86172f
+RESULT: sale.SOFTCAP_TIME=33
+RESULT: sale.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: sale.newOwner=0x0000000000000000000000000000000000000000
+RESULT: sale.notice=
+RESULT: sale.start=1507247840 Thu, 05 Oct 2017 23:57:20 UTC
+RESULT: sale.end=1507247873 Thu, 05 Oct 2017 23:57:53 UTC
+RESULT: sale.cap=100000000000000000000 100
+RESULT: sale.softcap=50000000000000000000 50
+RESULT: sale.live=false
+RESULT: sale.r0=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf
+RESULT: sale.r1=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+RESULT: sale.r2=0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Withdraw
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+RESULT: withdrawTx gas=400000 gasUsed=28504 costETH=0.000513072 costUSD=0.19516745808 @ ETH/USD=380.39 gasPrice=18000000000 block=232 txIx=0 txId=0x4240dfdac430762a5c0fff543ac6fb924abc3e8056a78f3791cf116a6087e6a0
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                          Token Name
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      140.164804508000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433  4000089.837269794000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0      -40.000717120000000000           0.00000000 Account #3
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844      -50.000635310000000000           0.00000000 Account #4
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea -4000000.000721872000000000           0.00000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.00000000 Account #6
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.00000000 Account #7
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.00000000 Account #8
+RESULT:  9 0x8947c758dd866ee1c2256bd09182ef44ee825a5d        0.000000000000000000           0.00000000 Controller Contract
+RESULT: 10 0x8d81072d03ab6c02276501b9d3efd8e67612d52d        0.000000000000000000           0.00000000 Ledger Contract
+RESULT: 11 0xef0d0100978e1af7719b63ab70dbe94cb965f4be        0.000000000000000000           0.00000000 Token Contract
+RESULT: 12 0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf        0.000000000000000000           0.00000000 Receiver0 Contract
+RESULT: 13 0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf        0.000000000000000000           0.00000000 Receiver1 Contract
+RESULT: 14 0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2        0.000000000000000000           0.00000000 Receiver2 Contract
+RESULT: 15 0x8970bbfd1a54ae581064ab34e7910dab7e86172f        0.000000000000000000           0.00000000 Sale Contract
+RESULT: 16 0x6b8bba219f069b3dd5920e6d6958071eb9b8bc50        0.000000000000000000           0.00000000 Savings Contract
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:                                                                                     0.00000000 Total Token Balances
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: PASS Withdraw
+1
+> 
+RESULT: receiverContractAddress=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf
+RESULT: receiver=Receiver0
+RESULT: receiver.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: receiver.newOwner=0x0000000000000000000000000000000000000000
+RESULT: receiver.notice=
+RESULT: receiver.sale=0x8970bbfd1a54ae581064ab34e7910dab7e86172f
+RESULT: receiver.live=false
+undefined
+> 
+RESULT: receiverContractAddress=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+RESULT: receiver=Receiver1
+RESULT: receiver.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: receiver.newOwner=0x0000000000000000000000000000000000000000
+RESULT: receiver.notice=
+RESULT: receiver.sale=0x8970bbfd1a54ae581064ab34e7910dab7e86172f
+RESULT: receiver.live=false
+undefined
+> 
+RESULT: receiverContractAddress=0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2
+RESULT: receiver=Receiver2
+RESULT: receiver.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: receiver.newOwner=0x0000000000000000000000000000000000000000
+RESULT: receiver.notice=
+RESULT: receiver.sale=0x8970bbfd1a54ae581064ab34e7910dab7e86172f
+RESULT: receiver.live=false
+undefined
+> 
+RESULT: saleContractAddress=0x8970bbfd1a54ae581064ab34e7910dab7e86172f
+RESULT: sale.SOFTCAP_TIME=33
+RESULT: sale.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: sale.newOwner=0x0000000000000000000000000000000000000000
+RESULT: sale.notice=
+RESULT: sale.start=1507247840 Thu, 05 Oct 2017 23:57:20 UTC
+RESULT: sale.end=1507247873 Thu, 05 Oct 2017 23:57:53 UTC
+RESULT: sale.cap=100000000000000000000 100
+RESULT: sale.softcap=50000000000000000000 50
+RESULT: sale.live=false
+RESULT: sale.r0=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf
+RESULT: sale.r1=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+RESULT: sale.r2=0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+> 
