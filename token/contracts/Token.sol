@@ -9,9 +9,9 @@ import './Controller.sol';
 
 contract Token is Finalizable, TokenReceivable, SafeMath, EventDefinitions, Pausable {
     // Set these appropriately before you deploy
-    string constant public name = "FixMeBeforeDeploying";
+    string constant public name = "AION";
     uint8 constant public decimals = 8;
-    string constant public symbol = "FIXME";
+    string constant public symbol = "AION";
     Controller public controller;
     string public motd;
     event Motd(string message);
