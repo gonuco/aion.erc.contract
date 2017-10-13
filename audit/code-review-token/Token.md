@@ -22,9 +22,9 @@ import './Controller.sol';
 contract Token is Finalizable, TokenReceivable, SafeMath, EventDefinitions, Pausable {
     // Set these appropriately before you deploy
     // BK Next 3 Ok
-    string constant public name = "FixMeBeforeDeploying";
+    string constant public name = "AION";
     uint8 constant public decimals = 8;
-    string constant public symbol = "FIXME";
+    string constant public symbol = "AION";
     // BK Ok
     Controller public controller;
     // BK Next 2 Ok

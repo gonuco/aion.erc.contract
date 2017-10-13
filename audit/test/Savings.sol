@@ -49,7 +49,7 @@ contract Savings {
 	 */
 	uint public t0special;
 
-	uint constant public intervalSecs = 30 seconds;
+	uint constant public intervalSecs = 30 days;
 	uint constant public precision = 10 ** 18;
 
 
