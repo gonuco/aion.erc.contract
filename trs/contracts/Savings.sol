@@ -1,4 +1,3 @@
-// Copyright New Alchemy Limited, 2017. All rights reserved.
 pragma solidity >=0.4.10;
 
 contract Token {
@@ -7,6 +6,7 @@ contract Token {
 	function balanceOf(address addr) constant returns(uint);
 }
 
+import {Owned} from '../../standard/contracts/Owned.sol';
 
 /**
  * Savings is a contract that releases Tokens on a predefined
@@ -30,11 +30,10 @@ contract Token {
  * As an exception, tokens transferred to this contract before locking are the
  * bonus tokens that are distributed.
  */
-contract Savings {
+contract Savings is Owned {
 	/**
 	 * Periods is the total monthly withdrawable amount, not counting the
-	 * special withdrawal. Periods MUST be divisible by 3, as
-	 * t0special = periods / 3.
+	 * special withdrawal.
 	 */
 	uint public periods;
 
@@ -59,9 +58,6 @@ contract Savings {
 	event Withdraws(address indexed who, uint amount);
 	event Deposit(address indexed who, uint amount);
 
-	address public owner;
-	address public newOwner;
-
 	bool public inited;
 	bool public locked;
 	uint public startBlockTimestamp = 0;
@@ -74,7 +70,13 @@ contract Savings {
 	// total face value deposited; sum of deposited
 	uint public totalfv;
 
-	// total tokens owned by the contract after locking
+	// the total remaining value
+	uint public remainder;
+
+	/**
+	 * Total tokens owned by the contract after locking, and possibly
+	 * updated by the foundation after subsequent sales.
+	 */
 	uint public total;
 
 	// the total value withdrawn
@@ -82,13 +84,7 @@ contract Savings {
 
 	bool public nullified;
 
-	function Savings() {
-		owner = msg.sender;
-	}
-
 	modifier notNullified() { require(!nullified); _; }
-
-	modifier onlyOwner() { require(msg.sender == owner); _; }
 
 	modifier preLock() { require(!locked && startBlockTimestamp == 0); _; }
 
@@ -122,6 +118,14 @@ contract Savings {
 	modifier initialized() { require(inited); _; }
 
 	/**
+	 * Revert under all conditions for fallback, cheaper mistakes
+	 * in the future?
+	 */
+	function() {
+		revert();
+	}
+
+	/**
 	 * Nullify functionality is intended to disable the contract.
 	 */
 	function nullify() onlyOwner {
@@ -136,23 +140,14 @@ contract Savings {
 	 * periods and t0special are finalized, and effectively invariant, after
 	 * init is called for the first time.
 	 */
-	function init(uint _periods) onlyOwner notInitialized {
-		require(_periods != 0 && (_periods % 3) == 0);
+	function init(uint _periods, uint _t0special) onlyOwner notInitialized {
+		require(_periods != 0);
 		periods = _periods;
-		t0special = _periods / 3;
+		t0special = _t0special;
 	}
 
 	function finalizeInit() onlyOwner notInitialized {
 		inited = true;
-	}
-
-	function changeOwner(address addr) onlyOwner {
-		newOwner = addr;
-	}
-
-	function acceptOwnership() {
-		require(msg.sender == newOwner);
-		owner = newOwner;
 	}
 
 	function setToken(address tok) onlyOwner {
@@ -174,7 +169,9 @@ contract Savings {
 	 */
 	function start(uint _startBlockTimestamp) onlyOwner initialized preStart {
 		startBlockTimestamp = _startBlockTimestamp;
-		total = token.balanceOf(this);
+		uint256 tokenBalance = token.balanceOf(this);
+		total = tokenBalance;
+		remainder = tokenBalance;
 	}
 
 	/**
@@ -192,16 +189,25 @@ contract Savings {
 	 * Used to refund users who accidentaly transferred tokens to this
 	 * contract, only available before contract is locked
 	 */
-	function sendTokens(address addr, uint amount) onlyOwner preLock {
+	function refundTokens(address addr, uint amount) onlyOwner preLock {
 		token.transfer(addr, amount);
 	}
 
+
 	/**
-	 * Revert under all conditions for fallback, cheaper mistakes
-	 * in the future?
+	 * Update the total balance, to be called in case of subsequent sales. Updates
+	 * the total recorded balance of the contract by the difference in expected
+	 * remainder and the current balance. This means any positive difference will
+	 * be "recorded" into the contract, and distributed within the remaining
+	 * months of the TRS.
 	 */
-	function() {
-		revert();
+	function updateTotal() onlyOwner postLock {
+		uint current = token.balanceOf(this);
+		require(current >= remainder); // for sanity
+
+		uint difference = (current - remainder);
+		total += difference;
+		remainder = current;
 	}
 
 	/**
@@ -246,12 +252,12 @@ contract Savings {
 	//
 	// the despositor must have approve()'d the tokens
 	// to be transferred by this contract
-	function deposit(uint tokens) notNullified {
+	function deposit(uint tokens) onlyOwner notNullified {
 		depositTo(msg.sender, tokens);
 	}
 
 
-	function depositTo(address beneficiary, uint tokens) preLock notNullified {
+	function depositTo(address beneficiary, uint tokens) onlyOwner preLock notNullified {
 		require(token.transferFrom(msg.sender, this, tokens));
 	    deposited[beneficiary] += tokens;
 		totalfv += tokens;
@@ -297,7 +303,7 @@ contract Savings {
 	 * invalid outputs unless in postStart state. It is up to user to manually check
 	 * that the correct state is given (isStart() == true)
 	 */
-	function _withdrawTo(uint _deposit, uint _withdrawn, uint _blockTimestamp) constant returns (uint) {
+	function _withdrawTo(uint _deposit, uint _withdrawn, uint _blockTimestamp, uint _total) constant returns (uint) {
 		uint256 fraction = availableForWithdrawalAt(_blockTimestamp);
 
 		/**
@@ -317,7 +323,7 @@ contract Savings {
 		 *
 		 * The maximum for a uint256 is = 1.15 * (10 ** 77)
 		 */
-		uint256 withdrawable = ((_deposit * fraction * total) / totalfv) / precision;
+		uint256 withdrawable = ((_deposit * fraction * _total) / totalfv) / precision;
 
 		// check that we can withdraw something
 		if (withdrawable > _withdrawn) {
@@ -334,7 +340,7 @@ contract Savings {
 		uint _d = deposited[addr];
 		uint _w = withdrawn[addr];
 
-		uint diff = _withdrawTo(_d, _w, block.timestamp);
+		uint diff = _withdrawTo(_d, _w, block.timestamp, total);
 
 		// no withdrawal could be made
 		if (diff == 0) {
@@ -348,7 +354,7 @@ contract Savings {
 		require(token.transfer(addr, diff));
 
 		withdrawn[addr] += diff;
-		
+		remainder -= diff;
 		Withdraws(addr, diff);
 		return true;
 	}

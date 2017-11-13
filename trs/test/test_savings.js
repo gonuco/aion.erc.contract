@@ -4,6 +4,9 @@ const Controller = artifacts.require("ControllerMock.sol");
 const Ledger = artifacts.require("LedgerMock.sol");
 const DummyMock = artifacts.require("DummyMock.sol");
 
+const assert = require('chai').assert;
+const BN = require('bn.js');
+
 // TODO: swap to own utility once complete
 const util = require('erc-utils');
 const BigNumber = web3.BigNumber;
@@ -12,6 +15,13 @@ function getBestBlockTimestamp(){
   return web3.eth.getBlock(web3.eth.blockNumber).timestamp;
 }
 
+/**
+ * Truffle is still using web3 0.4.12 internally, which defaults to BigNumber.js,
+ * convert to BN.js until web3 is updated.
+ */
+const toBN = (bignum) => {
+  return new BN(bignum.toString(), 10);
+}
 
 // simpler version of the util
 // this should ideally be consolidated with `erc-utils`
@@ -84,54 +94,18 @@ contract("Savings", (accs) => {
   });
 
   describe("init()", () => {
-    it("should not set a period that is not a factor of 3", async () => {
-      const s = await Savings.new();
-
-      // go through a list of values that should not work
-      // between 0 - 36
-      const wrongPeriods = [
-        0, 1, 2, 4, 5, 7, 10, 11, 13, 14, 16, 17, 18,
-        19, 20, 22, 23, 25, 26, 28, 29, 31, 32, 34, 35
-      ];
-
-      for (let i = 0; i < wrongPeriods; i++) {
-        try {
-          await s.init(wrongPeriods[i]);
-          await s.finalizeInit();
-        } catch (err) {
-          // expected error
-          // pass
-          continue;
-        }
-        // if we made it here it means it went through, something is wrong
-        assert.fail();
-      }
-
-    });
-
     it("should not be able to set if not owner", async() => {
       const s = await Savings.new();
       const period = 36;
+      const periodSpecial = 12;
       try {
-        await s.init.sendTransaction(period, {from: accs[1]});
+        await s.init.sendTransaction(period, periodSpecial, {from: accs[1]});
       } catch (err) {
         return;
       }
       assert.fail();
     });
-
-    it("should be able to set a period that is a factor of 3", async() => {
-      const periods = [
-        3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36
-      ];
-
-      for (let i = 0; i < periods; i++) {
-        const s = await Savings.new();
-        await s.init(periods[i]);
-        await s.finalizeInit()
-      }
-    });
-  });
+ });
 
   describe("#changeOwner()", () => {
     it("should not be able to changeOwner, when not the owner", async () => {
@@ -222,7 +196,7 @@ contract("Savings", (accs) => {
         s.lock()
       ]);
 
-      await s.init(36);
+      await s.init(36, 12);
       await s.finalizeInit()
 
       try {
@@ -236,38 +210,15 @@ contract("Savings", (accs) => {
     });
   });
 
-  // describe("#period()", () => {
-  //   it("should return the correct period", async () => {
-  //     // dummy is for increment blocks, this test only works under testrpc
-  //     const _dummy = await DummyMock.deployed();
-
-  //     const [s, c] = await Promise.all([Savings.new(), deployERC20Mint(accs)]);
-  //     await s.setToken(c.token.address);
-  //     await s.lock();
-  //     await s.start(0);
-
-  //     // lets say everyone deposits 10 tokens
-  //     const p1 = await s.period();
-
-  //     assert.equal(p1.toNumber(), 0);
-
-  //     for (let per = 1; per < 36; per++) {
-  //       for (let i = 0; i < 10; i++)
-  //         await _dummy.increment.sendTransaction({from: accs[0], gasPrice: 1});
-
-  //       const p2 = await s.period();
-  //       assert.equal(p2.toNumber(), per);
-  //     }
-  //   });
-  // });
   describe("#periodAt()", () => {
     
     it("should return the correct period with plan 12", async () => {
       const savingPlan = 12;
+      const savingPlanSpecial = 4;
       // dummy is for increment blocks, this test only works under testrpc
       const _dummy = await DummyMock.deployed();
       const [s, c] = await Promise.all([Savings.new(), deployERC20Mint(accs)]);
-      await Promise.all([s.setToken(c.token.address), s.init(savingPlan), s.finalizeInit(), s.lock()]);
+      await Promise.all([s.setToken(c.token.address), s.init(savingPlan, savingPlanSpecial), s.finalizeInit(), s.lock()]);
       await s.start(getBestBlockTimestamp());
       const p1 = await s.periodAt(getBestBlockTimestamp() - 10);
       assert.equal(p1.toNumber(), 0);
@@ -280,11 +231,12 @@ contract("Savings", (accs) => {
 
     it("should return the correct period with plan 36", async () => {
       const savingPlan = 36;
+      const savingPlanSpecial = 12;
       // dummy is for increment blocks, this test only works under testrpc
       const _dummy = await DummyMock.deployed();
 
       const [s, c] = await Promise.all([Savings.new(), deployERC20Mint(accs)]);
-      await Promise.all([s.setToken(c.token.address), s.init(savingPlan), s.finalizeInit(), s.lock()]);
+      await Promise.all([s.setToken(c.token.address), s.init(savingPlan, savingPlanSpecial), s.finalizeInit(), s.lock()]);
       await s.start(getBestBlockTimestamp());
       const p1 = await s.periodAt(getBestBlockTimestamp() - 10);
       assert.equal(p1.toNumber(), 0);
@@ -349,7 +301,7 @@ contract("Savings", (accs) => {
   describe("#availableForWithdrawalAt()", () => {
     it("should return the correct amount available for withdraw", async() => {
       const [s, c] = await Promise.all([Savings.new(), deployERC20Amount(accs, 100000000)]);
-      await Promise.all([s.setToken(c.token.address), s.init(36)]);
+      await Promise.all([s.setToken(c.token.address), s.init(36, 12)]);
       await s.finalizeInit();
 
       await c.token.approve(s.address, 100000000);
@@ -384,7 +336,7 @@ contract("Savings", (accs) => {
     it("should be able to instantly withdraw 25% after start", async() => {
       const [s, c] = await Promise.all([Savings.new(), deployERC20Amount(accs, 100000000)]);
 
-      await Promise.all([s.setToken(c.token.address), s.init(36)]);
+      await Promise.all([s.setToken(c.token.address), s.init(36, 12)]);
       await s.finalizeInit()
       await c.token.approve(s.address, 100000000);
 
@@ -416,7 +368,7 @@ contract("Savings", (accs) => {
       const expected = 2708333;
 
       await s.setToken(c.token.address);
-      await s.init(36);
+      await s.init(36, 12);
       await s.finalizeInit()
       await c.token.approve(s.address, 100000000);
 
@@ -452,7 +404,7 @@ contract("Savings", (accs) => {
       const expected = 10000000;
 
       await s.setToken(c.token.address);
-      await s.init(36);
+      await s.init(36, 12);
       await s.finalizeInit();
       await c.token.approve(s.address, 100000000);
 
@@ -487,7 +439,7 @@ contract("Savings", (accs) => {
       const expectedMonthly = 208333;
 
       await s.setToken(c.token.address);
-      await s.init(36);
+      await s.init(36, 12);
       await s.finalizeInit();
       await c.token.approve(s.address, 100000000);
 
@@ -516,123 +468,6 @@ contract("Savings", (accs) => {
 
     });
     
-    // this test case has been tested on previous one
-    // it("should not allow repeated withdrawals of special payments", async () => {
-    //   // dummy is for increment blocks, this test only works under testrpc
-    //   const _dummy = await DummyMock.deployed();
-    //   const [s, c] = await Promise.all([Savings.new(), deployERC20Amount(accs, 100000000)]);
-    //   const expectedSpecial = 2500000;
-
-    //   await s.setToken(c.token.address);
-    //   await s.init(36);
-    //   await c.token.approve(s.address, 100000000);
-
-    //   // everyone deposits
-    //   let bulkDepositToList = [];
-    //   for (let i = 0; i < 10; i++) {
-    //     bulkDepositToList.push(util.addressValue(accs[i], 10000000));
-    //   }
-    //   // bulk depositTo
-    //   const tx = await s.bulkDepositTo(bulkDepositToList);
-
-    //   // lets assume case b == d, then each use should be getting 2.5mil instantly (no roundoffs)
-    //   // lets assume the case of one particular user acc[0]
-    //   await s.lock();
-    //   await s.start(getBestBlockTimestamp());
-
-    //   await s.withdraw(); // 1 tx
-    //   const newBalance = await c.token.balanceOf(accs[0]);
-    //   assert.equal(newBalance.toNumber(), expectedSpecial);
-
-    //   // no events are emitted for withdrawal, so we cant really confirm
-    //   // just confirm through balance
-    //   await s.withdraw();
-
-    //   const newerBalance = await c.token.balanceOf(accs[0]);
-    //   assert.equal(newerBalance.toNumber(), expectedSpecial);
-    // });
-
-    // duplicated 
-    // it("should not allow repeated withdrawals of monthly payments", async () => {
-    //   // dummy is for increment blocks, this test only works under testrpc
-    //   const _dummy = await DummyMock.deployed();
-    //   const [s, c] = await Promise.all([Savings.new(), deployERC20Amount(accs, 100000000)]);
-    //   const expectedSpecial = 2500000;
-    //   const expectedMonthly = 208333;
-
-    //   await s.setToken(c.token.address);
-    //   await s.init(36);
-    //   await c.token.approve(s.address, 100000000);
-
-    //   // everyone deposits
-    //   let bulkDepositToList = [];
-    //   for (let i = 0; i < 10; i++) {
-    //     bulkDepositToList.push(util.addressValue(accs[i], 10000000));
-    //   }
-    //   // bulk depositTo
-    //   const tx = await s.bulkDepositTo(bulkDepositToList);
-
-    //   // lets assume case b == d, then each use should be getting 2.5mil instantly (no roundoffs)
-    //   // lets assume the case of one particular user acc[0]
-    //   await s.lock();
-    //   await s.start(getBestBlockTimestamp());
-
-    //   await s.withdraw(); // 1 tx
-    //   const newBalance = await c.token.balanceOf(accs[0]);
-    //   assert.equal(newBalance.toNumber(), expectedSpecial + expectedMonthly);
-
-    //   // no events are emitted for withdrawal, so we cant really confirm
-    //   // just confirm through balance
-    //   await s.withdraw();
-
-    //   const newerBalance = await c.token.balanceOf(accs[0]);
-    //   assert.equal(newerBalance.toNumber(), expectedSpecial + expectedMonthly);
-    // });
-
-    // has been commented before, based on current logic: first period [n n + 2592000 - 1)
-    // there is no way to test only withdraw special 25%
-    // it("should allow a user to withdraw special, then withdraw tokens on a monthly schedule", async () => {
-    //   // dummy is for increment blocks, this test only works under testrpc
-    //   const _dummy = await DummyMock.deployed();
-    //   const [s, c] = await Promise.all([Savings.new(), deployERC20Amount(accs, 100000000)]);
-    //   const expectedSpecial = 2500000;
-    //   const expectedMonthly = 208333;
-
-    //   await s.setToken(c.token.address);
-    //   await s.init(36);
-    //   await c.token.approve(s.address, 100000000);
-
-    //   // everyone deposits
-    //   let bulkDepositToList = [];
-    //   for (let i = 0; i < 10; i++) {
-    //     bulkDepositToList.push(util.addressValue(accs[i], 10000000));
-    //   }
-    //   // bulk depositTo
-    //   const tx = await s.bulkDepositTo(bulkDepositToList);
-
-    //   // lets assume case b == d, then each use should be getting 2.5mil instantly (no roundoffs)
-    //   // lets assume the case of one particular user acc[0]
-    //   await s.lock();
-    //   await s.start(getBestBlockTimestamp());
-
-    //   await s.withdraw(); // 1 tx
-    //   const newBalance = await c.token.balanceOf(accs[0]);
-    //   assert.equal(newBalance.toNumber(), expectedSpecial);
-
-    //   let totalValue = expectedSpecial;
-    //   for (let i = 0; i < 36; i++) {
-    //     for (let j = 0; j < 9; j++) {
-    //       await _dummy.increment.sendTransaction({from: accs[0], gasPrice: 1});
-    //     }
-
-    //     await s.withdraw();
-    //     totalValue += expectedMonthly;
-
-    //     const balance = await c.token.balanceOf(accs[0]);
-    //     console.log("totalValue: " + totalValue.toString() + " balance: " + balance.toString())
-    //     assert.equal(balance, totalValue);
-    //   }
-    // });
   });
 
   describe("#bulkWithdrawTo()", () => {
@@ -644,7 +479,7 @@ contract("Savings", (accs) => {
       const expectedMonthly = 208333;
 
       await s.setToken(c.token.address);
-      await s.init(36);
+      await s.init(36, 12);
       await s.finalizeInit();
       await c.token.approve(s.address, 100000000);
 
@@ -679,7 +514,7 @@ contract("Savings", (accs) => {
       // does not require any real token interaction
       // assume that we transferred the right amount!
       const s = await Savings.new();
-      await s.init(36);
+      await s.init(36, 12);
       await s.finalizeInit();
       await s.multiMint(0, [util.addressValue(accs[0], 100)]);
       const deposited = await s.deposited(accs[0]);
@@ -727,7 +562,7 @@ contract("Savings", (accs) => {
   describe("#nullify()", () => {
     it("should not be able to deposit after nullify()", async() => {
       const [s, c] = await Promise.all([Savings.new(), deployERC20Amount(accs, 100000000)]);
-      await Promise.all([s.setToken(c.token.address), s.init(36)]);
+      await Promise.all([s.setToken(c.token.address), s.init(36, 12)]);
       await s.finalizeInit();
 
       await c.token.approve(s.address, 100000000);
@@ -750,7 +585,7 @@ contract("Savings", (accs) => {
 
     it("should not be able to widthdraw after nullify()", async() => {
       const [s, c] = await Promise.all([Savings.new(), deployERC20Amount(accs, 100000000)]);
-      await Promise.all([s.setToken(c.token.address), s.init(36)]);
+      await Promise.all([s.setToken(c.token.address), s.init(36, 12)]);
       await s.finalizeInit();
       await c.token.approve(s.address, 100000000);
 
@@ -770,14 +605,63 @@ contract("Savings", (accs) => {
 
       try {
           await s.withdraw();
-          fail("should have reverted");
+          assert.fail("should have reverted");
       } catch(e) {
       }
       try {
           await s.withdrawTo(acc[1]);
-          fail("should have reverted");
+          assert.fail("should have reverted");
       } catch(e) {
       }
+    });
+  });
+
+  describe("#updateTotal()", async () => {
+    it("should calculate totals before and after an update", async () => {
+      const [s, c] = await Promise.all([Savings.new(), deployERC20Amount(accs, 100000000)]);
+      await Promise.all([s.setToken(c.token.address), s.init(36, 12)]);
+      await s.finalizeInit();
+      await c.token.approve(s.address, 100000000);
+
+      const month = 60 * 60 * 24 * 30;
+
+      // everyone deposits
+      let bulkDepositToList = [];
+      for (let i = 0; i < 10; i++) {
+        bulkDepositToList.push(util.addressValue(accs[i], 10000000));
+      }
+      // bulk depositTo
+      const tx = await s.bulkDepositTo(bulkDepositToList);
+
+      console.log("savings tokens (pre-transfer):");
+      console.log((await c.token.balanceOf(s.address)).toNumber());
+
+      await s.lock();
+
+      const start = getBestBlockTimestamp();
+      await s.start(getBestBlockTimestamp());
+
+      // check that remainder is already set
+      assert.equal((await s.remainder()).toNumber(), 100000000);
+
+      const total = await s.total();
+
+      assert.equal(total.toNumber(), 100000000);
+      await c.token.transfer.sendTransaction(s.address, 100000000, {from: accs[1]});
+
+      console.log("user 1 (post-transfer):");
+      console.log((await c.token.balanceOf(accs[1])).toNumber());
+
+      console.log("savings tokens (post-transfer):");
+      console.log((await c.token.balanceOf(s.address)).toNumber());
+
+      assert.equal((await s.total()).toNumber(), 100000000);
+      
+      console.log("remainder:");
+      console.log((await s.remainder()).toNumber());
+
+      await s.updateTotal();
+      assert.equal((await s.total()).toNumber(), 200000000);
     });
   });
 

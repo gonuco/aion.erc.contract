@@ -8,12 +8,15 @@
     "test": "test"
   },
   "dependencies": {
-    "solidity-coverage": "^0.2.2",
     "erc-utils": "file:../utils"
   },
   "scripts": {
     "test": "mocha"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "bn.js": "^4.11.8",
+    "chai": "^4.1.2"
+  }
 }
