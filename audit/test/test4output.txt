@@ -1,0 +1,984 @@
+MODE              = 'test'
+GETHATTACHPOINT   = 'ipc:./testchain/geth.ipc'
+PASSWORD          = 'testtest'
+TOKENCONTRACTSDIR = '../../token/contracts'
+SALESCONTRACTSDIR = '../../sales/contracts'
+TRSCONTRACTSDIR   = '../../trs/contracts'
+\--- Token --- 
+CONTROLLERSOL     = 'Controller.sol'
+CONTROLLERJS      = 'Controller.js'
+LEDGERSOL         = 'Ledger.sol'
+LEDGERJS          = 'Ledger.js'
+TOKENSOL          = 'Token.sol'
+TOKENJS           = 'Token.js'
+\--- Sales --- 
+RECEIVERSOL       = 'Receiver.sol'
+RECEIVERJS        = 'Receiver.js'
+SALESOL           = 'Sale.sol'
+SALEJS            = 'Sale.js'
+\--- Trs --- 
+SAVINGSSOL        = 'Savings.sol'
+SAVINGSJS         = 'Savings.js'
+\--- End --- 
+DEPLOYMENTDATA    = 'deploymentData.txt'
+TEST4OUTPUT       = 'test4output.txt'
+TEST4RESULTS      = 'test4results.txt'
+CURRENTTIME       = '1507857269' 'Fri 13 Oct 2017 01:14:29 UTC'
+STARTTIME         = '1507857344' 'Fri 13 Oct 2017 01:15:44 UTC'
+ENDTIME           = '1507857569' 'Fri 13 Oct 2017 01:19:29 UTC'
+--- Differences ../../token/contracts/Controller.sol Controller.sol ---
+
+--- Differences ../../token/contracts/Ledger.sol Ledger.sol ---
+
+--- Differences ../../token/contracts/Token.sol Token.sol ---
+
+--- Differences ../../trs/contracts/Savings.sol Savings.sol ---
+
+Welcome to the Geth JavaScript console!
+
+instance: Geth/v1.7.1-stable-05101641/darwin-amd64/go1.9
+coinbase: 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e
+at block: 362 (Fri, 13 Oct 2017 12:14:24 AEDT)
+ datadir: /Users/bok/Projects/AionTokenContractAudit/audit/test/testchain
+ modules: admin:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0
+
+> 
+true
+> 
+true
+> 
+true
+> 
+true
+> 
+true
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+> 
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                          Token Name
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       20.000000000000000000           0.000000000000000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433        0.000000000000000000           0.000000000000000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Multisig
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.000000000000000000 Account #6
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.000000000000000000 Account #7
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Account #8
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:                                                                                     0.000000000000000000 Total Token Balances
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Deploy Controller Contract
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+... 
+...... 
+......... 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+......... 
+...... 
+... 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Deploy Ledger Contract
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+... 
+...... 
+......... 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+......... 
+...... 
+... 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Deploy Token Contract
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+... 
+...... 
+......... 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+......... 
+...... 
+... 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Deploy Savings Contract
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+... 
+...... 
+......... 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+......... 
+...... 
+... 
+undefined
+> 
+> 
+... 
+undefined
+> 
+> 
+DATA: controllerAddress=0xef0d0100978e1af7719b63ab70dbe94cb965f4be
+DATA: ledgerAddress=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf
+DATA: tokenAddress=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+DATA: savingsAddress=0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2
+RESULT: controllerAddress=0xef0d0100978e1af7719b63ab70dbe94cb965f4be gas=6000000 gasUsed=1242997 costETH=0.022373946 costUSD=8.51082531894 @ ETH/USD=380.39 gasPrice=18000000000 block=368 txIx=0 txId=0x1b59b7748890f2d6eebd29e8217cb7ae33d94a92f774c0f50c0c742aff806c9b
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                          Token Name
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       30.101216286000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.101216286000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.00000000 Account #3
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.00000000 Account #4
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.00000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.00000000 Account #6
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.00000000 Account #7
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.00000000 Account #8
+RESULT:  9 0xef0d0100978e1af7719b63ab70dbe94cb965f4be        0.000000000000000000           0.00000000 Controller Contract
+RESULT: 10 0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf        0.000000000000000000           0.00000000 Ledger Contract
+RESULT: 11 0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf        0.000000000000000000           0.00000000 Token Contract
+RESULT: 12 0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2        0.000000000000000000           0.00000000 Savings Contract
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:                                                                                     0.00000000 Total Token Balances
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: PASS Deploy Controller Contract
+1
+> 
+RESULT: controllerContractAddress=0xef0d0100978e1af7719b63ab70dbe94cb965f4be
+RESULT: controller.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: controller.ledger=0x0000000000000000000000000000000000000000
+RESULT: controller.token=0x0000000000000000000000000000000000000000
+RESULT: controller.burnAddress=0x0000000000000000000000000000000000000000
+RESULT: finalizable.finalized=false
+RESULT: controller.totalSupply=0
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+RESULT: ledgerAddress=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf gas=6000000 gasUsed=1130392 costETH=0.020347056 costUSD=7.73981663184 @ ETH/USD=380.39 gasPrice=18000000000 block=368 txIx=1 txId=0xdd3503dbe2c49cbdc26914debdcdb8d32c804544299cbb1bd87968cd503e428b
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                          Token Name
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       30.101216286000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.101216286000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.00000000 Account #3
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.00000000 Account #4
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.00000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.00000000 Account #6
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.00000000 Account #7
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.00000000 Account #8
+RESULT:  9 0xef0d0100978e1af7719b63ab70dbe94cb965f4be        0.000000000000000000           0.00000000 Controller Contract
+RESULT: 10 0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf        0.000000000000000000           0.00000000 Ledger Contract
+RESULT: 11 0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf        0.000000000000000000           0.00000000 Token Contract
+RESULT: 12 0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2        0.000000000000000000           0.00000000 Savings Contract
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:                                                                                     0.00000000 Total Token Balances
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: PASS Deploy Ledger Contract
+1
+> 
+RESULT: ledgerContractAddress=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf
+RESULT: ledger.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: ledger.controller=0x0000000000000000000000000000000000000000
+RESULT: ledger.totalSupply=0
+RESULT: ledger.mintingNonce=0
+RESULT: ledger.mintingStopped=false
+RESULT: ledger.burnAddress=0x0000000000000000000000000000000000000000
+RESULT: finalizable.finalized=false
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+RESULT: tokenAddress=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf gas=6000000 gasUsed=1932513 costETH=0.034785234 costUSD=13.23195516126 @ ETH/USD=380.39 gasPrice=18000000000 block=368 txIx=2 txId=0x055a7c8aad174809c950689ab8b3786601c257065cbc85f90d1adff3044efbdd
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                          Token Name
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       35.101216286000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.101216286000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.00000000 Account #3
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.00000000 Account #4
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.00000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.00000000 Account #6
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.00000000 Account #7
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.00000000 Account #8
+RESULT:  9 0xef0d0100978e1af7719b63ab70dbe94cb965f4be        0.000000000000000000           0.00000000 Controller Contract
+RESULT: 10 0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf        0.000000000000000000           0.00000000 Ledger Contract
+RESULT: 11 0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf        0.000000000000000000           0.00000000 Token Contract
+RESULT: 12 0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2        0.000000000000000000           0.00000000 Savings Contract
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:                                                                                     0.00000000 Total Token Balances
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: PASS Deploy Token Contract
+1
+> 
+RESULT: tokenContractAddress=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+RESULT: token.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: token.name=AION
+RESULT: token.decimals=8
+RESULT: token.symbol=AION
+RESULT: token.controller=0x0000000000000000000000000000000000000000
+RESULT: token.motd=
+RESULT: token.burnAddress=0x0000000000000000000000000000000000000000
+RESULT: token.burnable=false
+RESULT: token.totalSupply=0
+RESULT: finalizable.finalized=false
+RESULT: pausable.paused=false
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+RESULT: savingsAddress=0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2 gas=6000000 gasUsed=1317225 costETH=0.02371005 costUSD=9.0190659195 @ ETH/USD=380.39 gasPrice=18000000000 block=368 txIx=3 txId=0xf5b217d6d7fbb775c8075405d1f61c52bf7a86a7423df45d46929fba2dda3c27
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                          Token Name
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       35.101216286000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.101216286000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.00000000 Account #3
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.00000000 Account #4
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.00000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.00000000 Account #6
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.00000000 Account #7
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.00000000 Account #8
+RESULT:  9 0xef0d0100978e1af7719b63ab70dbe94cb965f4be        0.000000000000000000           0.00000000 Controller Contract
+RESULT: 10 0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf        0.000000000000000000           0.00000000 Ledger Contract
+RESULT: 11 0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf        0.000000000000000000           0.00000000 Token Contract
+RESULT: 12 0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2        0.000000000000000000           0.00000000 Savings Contract
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:                                                                                     0.00000000 Total Token Balances
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: PASS Deploy Savings Contract
+1
+> 
+RESULT: savingsContractAddress=0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2
+RESULT: savings.periods=0
+RESULT: savings.t0special=0
+RESULT: savings.intervalSecs=2592000
+RESULT: savings.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: savings.newOwner=0x0000000000000000000000000000000000000000
+RESULT: savings.inited=false
+RESULT: savings.locked=false
+RESULT: savings.startBlockTimestamp=0 Thu, 01 Jan 1970 00:00:00 UTC
+RESULT: savings.token=0x0000000000000000000000000000000000000000
+RESULT: savings.totalfv=0 0
+RESULT: savings.total=0 0
+RESULT: savings.nullified=false
+RESULT: savings.mintingNonce=0
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Stitch Controller, Ledger And Token Contracts
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+RESULT: stitchContracts1Tx gas=400000 gasUsed=43098 costETH=0.000775764 costUSD=0.29509286796 @ ETH/USD=380.39 gasPrice=18000000000 block=371 txIx=0 txId=0xdc9550a54a06b25c07e0acbcf5404b9b52b68fbd82a2294115bd95e25d8a5a68
+undefined
+> 
+RESULT: stitchContracts2Tx gas=400000 gasUsed=43186 costETH=0.000777348 costUSD=0.29569540572 @ ETH/USD=380.39 gasPrice=18000000000 block=371 txIx=1 txId=0x588ee6764ef8cd12c2eb781defcdbf90ef1d4495afba1d4b20d8b5531ab4679f
+undefined
+> 
+RESULT: stitchContracts3Tx gas=400000 gasUsed=43673 costETH=0.000786114 costUSD=0.29902990446 @ ETH/USD=380.39 gasPrice=18000000000 block=371 txIx=2 txId=0x161ea06da39784e5a2e33de72f54ab8869f1779929d8902a0da611e09a810bfd
+undefined
+> 
+RESULT: stitchContracts4Tx gas=400000 gasUsed=43385 costETH=0.00078093 costUSD=0.2970579627 @ ETH/USD=380.39 gasPrice=18000000000 block=371 txIx=3 txId=0xed0bc7867ace2f39e0744292429f8d6de6f098328124fdbd203fa8ae8f891f7e
+undefined
+> 
+RESULT: stitchContracts5Tx gas=400000 gasUsed=84953 costETH=0.001529154 costUSD=0.58167489006 @ ETH/USD=380.39 gasPrice=18000000000 block=373 txIx=0 txId=0x94a525e35732967aa16582cfaa11fafcc9a3b97821cba320aa3099a489302659
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                          Token Name
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       55.105865596000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.105865596000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.00000000 Account #3
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.00000000 Account #4
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.00000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.00000000 Account #6
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.00000000 Account #7
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.00000000 Account #8
+RESULT:  9 0xef0d0100978e1af7719b63ab70dbe94cb965f4be        0.000000000000000000           0.00000000 Controller Contract
+RESULT: 10 0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf        0.000000000000000000           0.00000000 Ledger Contract
+RESULT: 11 0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf        0.000000000000000000           0.00000000 Token Contract
+RESULT: 12 0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2        0.000000000000000000           0.00000000 Savings Contract
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:                                                                                     0.00000000 Total Token Balances
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: PASS Stitch Controller, Ledger And Token Contracts - controller.setToken(...)
+1
+> 
+RESULT: PASS Stitch Controller, Ledger And Token Contracts - controller.setLedger(...)
+1
+> 
+RESULT: PASS Stitch Controller, Ledger And Token Contracts - token.setController(...)
+1
+> 
+RESULT: PASS Stitch Controller, Ledger And Token Contracts - ledger.setController(...)
+1
+> 
+RESULT: PASS Stitch Controller, Ledger And Token Contracts - controller.setBurnAddress(...)
+1
+> 
+RESULT: controllerContractAddress=0xef0d0100978e1af7719b63ab70dbe94cb965f4be
+RESULT: controller.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: controller.ledger=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf
+RESULT: controller.token=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+RESULT: controller.burnAddress=0x1111111111111111111111111111111111111111
+RESULT: finalizable.finalized=false
+RESULT: controller.totalSupply=0
+undefined
+> 
+RESULT: ledgerContractAddress=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf
+RESULT: ledger.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: ledger.controller=0xef0d0100978e1af7719b63ab70dbe94cb965f4be
+RESULT: ledger.totalSupply=0
+RESULT: ledger.mintingNonce=0
+RESULT: ledger.mintingStopped=false
+RESULT: ledger.burnAddress=0x1111111111111111111111111111111111111111
+RESULT: finalizable.finalized=false
+undefined
+> 
+RESULT: tokenContractAddress=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+RESULT: token.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: token.name=AION
+RESULT: token.decimals=8
+RESULT: token.symbol=AION
+RESULT: token.controller=0xef0d0100978e1af7719b63ab70dbe94cb965f4be
+RESULT: token.motd=
+RESULT: token.burnAddress=0x1111111111111111111111111111111111111111
+RESULT: token.burnable=false
+RESULT: token.totalSupply=0
+RESULT: finalizable.finalized=false
+RESULT: pausable.paused=false
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Mint Tokens
+undefined
+> 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Setup Savings
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+... 
+undefined
+> 
+> 
+RESULT: mint1Tx gas=400000 gasUsed=116215 costETH=0.00209187 costUSD=0.7957264293 @ ETH/USD=380.39 gasPrice=18000000000 block=376 txIx=0 txId=0xc0adf147be5cce7cb8e8186dd34d5a81ac2b76c0b08af3bc54a3bbd5a736b864
+undefined
+> 
+RESULT: setupSavings1Tx gas=100000 gasUsed=43120 costETH=0.00077616 costUSD=0.2952435024 @ ETH/USD=380.39 gasPrice=18000000000 block=376 txIx=1 txId=0x139572f19d9e0c718f60de57de946fd8c516cfffc0f3c17223b73a3b32cbcfb2
+undefined
+> 
+RESULT: setupSavings2Tx gas=100000 gasUsed=62445 costETH=0.00112401 costUSD=0.4275621639 @ ETH/USD=380.39 gasPrice=18000000000 block=376 txIx=2 txId=0x4cabc6219afabdc666ca86af00645599ba5ed816206049a8bc7398dd3ad71f67
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                          Token Name
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       70.109857636000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.109857636000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000    11111111.11111111 Account #3
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000    11111111.11111111 Account #4
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.00000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.00000000 Account #6
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.00000000 Account #7
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.00000000 Account #8
+RESULT:  9 0xef0d0100978e1af7719b63ab70dbe94cb965f4be        0.000000000000000000           0.00000000 Controller Contract
+RESULT: 10 0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf        0.000000000000000000           0.00000000 Ledger Contract
+RESULT: 11 0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf        0.000000000000000000           0.00000000 Token Contract
+RESULT: 12 0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2        0.000000000000000000           0.00000000 Savings Contract
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:                                                                              22222222.22222222 Total Token Balances
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: PASS Mint Tokens - ac3 + ac4 11111111.11111111 tokens
+1
+> 
+RESULT: PASS Setup Savings - setToken(...)
+1
+> 
+RESULT: PASS Setup Savings - init(36)
+1
+> 
+> 
+RESULT: controllerContractAddress=0xef0d0100978e1af7719b63ab70dbe94cb965f4be
+RESULT: controller.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: controller.ledger=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf
+RESULT: controller.token=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+RESULT: controller.burnAddress=0x1111111111111111111111111111111111111111
+RESULT: finalizable.finalized=false
+RESULT: controller.totalSupply=22222222.22222222
+undefined
+> 
+RESULT: ledgerContractAddress=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf
+RESULT: ledger.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: ledger.controller=0xef0d0100978e1af7719b63ab70dbe94cb965f4be
+RESULT: ledger.totalSupply=22222222.22222222
+RESULT: ledger.mintingNonce=1
+RESULT: ledger.mintingStopped=false
+RESULT: ledger.burnAddress=0x1111111111111111111111111111111111111111
+RESULT: finalizable.finalized=false
+undefined
+> 
+RESULT: tokenContractAddress=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+RESULT: token.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: token.name=AION
+RESULT: token.decimals=8
+RESULT: token.symbol=AION
+RESULT: token.controller=0xef0d0100978e1af7719b63ab70dbe94cb965f4be
+RESULT: token.motd=
+RESULT: token.burnAddress=0x1111111111111111111111111111111111111111
+RESULT: token.burnable=false
+RESULT: token.totalSupply=22222222.22222222
+RESULT: finalizable.finalized=false
+RESULT: pausable.paused=false
+RESULT: Transfer 0 #376: from=0x0000000000000000000000000000000000000000 to=0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0 value=11111111.11111111
+RESULT: Transfer 1 #376: from=0x0000000000000000000000000000000000000000 to=0xa44a08d3f6933c69212114bb66e2df1813651844 value=11111111.11111111
+undefined
+> 
+RESULT: savingsContractAddress=0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2
+RESULT: savings.periods=12
+RESULT: savings.t0special=4
+RESULT: savings.intervalSecs=2592000
+RESULT: savings.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: savings.newOwner=0x0000000000000000000000000000000000000000
+RESULT: savings.inited=false
+RESULT: savings.locked=false
+RESULT: savings.startBlockTimestamp=0 Thu, 01 Jan 1970 00:00:00 UTC
+RESULT: savings.token=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+RESULT: savings.totalfv=0 0
+RESULT: savings.total=0 0
+RESULT: savings.nullified=false
+RESULT: savings.mintingNonce=0
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+> 
+... 
+... 
+... 
+... 
+... 
+... 
+... 
+...... 
+... 
+... 
+...... 
+... 
+... 
+... 
+... 
+... 
+... 
+... 
+... 
+... 
+... 
+... 
+... 
+undefined
+> 
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Deposit Into Savings
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+RESULT: depositIntoSavings1Tx gas=200000 gasUsed=48524 costETH=0.000873432 costUSD=0.33224479848 @ ETH/USD=380.39 gasPrice=18000000000 block=378 txIx=0 txId=0x5300dabbc2005b8657862dbcefcdd41e3a953b121624f666a3e5b626a7162fe9
+undefined
+> 
+RESULT: depositIntoSavings2Tx gas=200000 gasUsed=85353 costETH=0.001536354 costUSD=0.58441369806 @ ETH/USD=380.39 gasPrice=18000000000 block=380 txIx=0 txId=0xa44808a1ad8fa909332ac115d58ba46fc100449beb7901c4e0815e1e5a66fc14
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                          Token Name
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       90.112267422000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.109857636000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0       -0.002409786000000000    11101111.11111111 Account #3
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000    11111111.11111111 Account #4
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.00000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.00000000 Account #6
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.00000000 Account #7
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.00000000 Account #8
+RESULT:  9 0xef0d0100978e1af7719b63ab70dbe94cb965f4be        0.000000000000000000           0.00000000 Controller Contract
+RESULT: 10 0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf        0.000000000000000000           0.00000000 Ledger Contract
+RESULT: 11 0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf        0.000000000000000000           0.00000000 Token Contract
+RESULT: 12 0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2        0.000000000000000000       10000.00000000 Savings Contract
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:                                                                              22222222.22222222 Total Token Balances
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: PASS Deposit Into Savings - approve 1 tokens ac3 -> deposit
+1
+> 
+RESULT: PASS Deposit Into Savings - deposit 1 token ac3
+1
+> 
+RESULT: controllerContractAddress=0xef0d0100978e1af7719b63ab70dbe94cb965f4be
+RESULT: controller.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: controller.ledger=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf
+RESULT: controller.token=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+RESULT: controller.burnAddress=0x1111111111111111111111111111111111111111
+RESULT: finalizable.finalized=false
+RESULT: controller.totalSupply=22222222.22222222
+undefined
+> 
+RESULT: ledgerContractAddress=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf
+RESULT: ledger.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: ledger.controller=0xef0d0100978e1af7719b63ab70dbe94cb965f4be
+RESULT: ledger.totalSupply=22222222.22222222
+RESULT: ledger.mintingNonce=1
+RESULT: ledger.mintingStopped=false
+RESULT: ledger.burnAddress=0x1111111111111111111111111111111111111111
+RESULT: finalizable.finalized=false
+undefined
+> 
+RESULT: tokenContractAddress=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+RESULT: token.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: token.name=AION
+RESULT: token.decimals=8
+RESULT: token.symbol=AION
+RESULT: token.controller=0xef0d0100978e1af7719b63ab70dbe94cb965f4be
+RESULT: token.motd=
+RESULT: token.burnAddress=0x1111111111111111111111111111111111111111
+RESULT: token.burnable=false
+RESULT: token.totalSupply=22222222.22222222
+RESULT: finalizable.finalized=false
+RESULT: pausable.paused=false
+RESULT: Approval 0 #378 owner=0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0 spender=0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2 value=10000
+RESULT: Transfer 0 #380: from=0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0 to=0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2 value=10000
+undefined
+> 
+RESULT: savingsContractAddress=0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2
+RESULT: savings.periods=12
+RESULT: savings.t0special=4
+RESULT: savings.intervalSecs=2592000
+RESULT: savings.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: savings.newOwner=0x0000000000000000000000000000000000000000
+RESULT: savings.inited=false
+RESULT: savings.locked=false
+RESULT: savings.startBlockTimestamp=0 Thu, 01 Jan 1970 00:00:00 UTC
+RESULT: savings.token=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+RESULT: savings.totalfv=1000000000000 10000
+RESULT: savings.total=0 0
+RESULT: savings.nullified=false
+RESULT: savings.mintingNonce=0
+RESULT: Deposit 0 #380 {"amount":"1000000000000","who":"0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0"}
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Start Savings
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+RESULT: startSavings1Tx gas=100000 gasUsed=42317 costETH=0.000761706 costUSD=0.28974534534 @ ETH/USD=380.39 gasPrice=18000000000 block=383 txIx=0 txId=0xa75924c90e45993ac58033324a6c57941b001c6a6b4f2def9650e83e73cc82f7
+undefined
+> 
+RESULT: startSavings2Tx gas=100000 gasUsed=26966 costETH=0.000485388 costUSD=0.18463674132 @ ETH/USD=380.39 gasPrice=18000000000 block=383 txIx=1 txId=0x090fd4bbb2c4cc6d4df85fb883f50e99d31c3155117532a18c4a126c55992116
+undefined
+> 
+RESULT: startSavings3Tx gas=100000 gasUsed=65237 costETH=0.001174266 costUSD=0.44667904374 @ ETH/USD=380.39 gasPrice=18000000000 block=383 txIx=2 txId=0xd63d158d3f144e455dbc6406630ca9f2ec4f6eedde51779aed9086c9e16978b8
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                          Token Name
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      105.114688782000000000           0.00000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.112278996000000000           0.00000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.00000000 Account #2 - Multisig
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0       -0.002409786000000000    11101111.11111111 Account #3
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000    11111111.11111111 Account #4
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.00000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.00000000 Account #6
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.00000000 Account #7
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.00000000 Account #8
+RESULT:  9 0xef0d0100978e1af7719b63ab70dbe94cb965f4be        0.000000000000000000           0.00000000 Controller Contract
+RESULT: 10 0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf        0.000000000000000000           0.00000000 Ledger Contract
+RESULT: 11 0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf        0.000000000000000000           0.00000000 Token Contract
+RESULT: 12 0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2        0.000000000000000000       10000.00000000 Savings Contract
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:                                                                              22222222.22222222 Total Token Balances
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: PASS Setup Savings - lock()
+1
+> 
+RESULT: PASS Setup Savings - finalizeInit()
+1
+> 
+RESULT: PASS Setup Savings - start(1507857344 Fri 13 Oct 2017 01:15:44 UTC)
+1
+> 
+RESULT: controllerContractAddress=0xef0d0100978e1af7719b63ab70dbe94cb965f4be
+RESULT: controller.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: controller.ledger=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf
+RESULT: controller.token=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+RESULT: controller.burnAddress=0x1111111111111111111111111111111111111111
+RESULT: finalizable.finalized=false
+RESULT: controller.totalSupply=22222222.22222222
+undefined
+> 
+RESULT: ledgerContractAddress=0x3dbf612ea46d98c13ec5c8a537f2ad63c466efdf
+RESULT: ledger.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: ledger.controller=0xef0d0100978e1af7719b63ab70dbe94cb965f4be
+RESULT: ledger.totalSupply=22222222.22222222
+RESULT: ledger.mintingNonce=1
+RESULT: ledger.mintingStopped=false
+RESULT: ledger.burnAddress=0x1111111111111111111111111111111111111111
+RESULT: finalizable.finalized=false
+undefined
+> 
+RESULT: tokenContractAddress=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+RESULT: token.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: token.name=AION
+RESULT: token.decimals=8
+RESULT: token.symbol=AION
+RESULT: token.controller=0xef0d0100978e1af7719b63ab70dbe94cb965f4be
+RESULT: token.motd=
+RESULT: token.burnAddress=0x1111111111111111111111111111111111111111
+RESULT: token.burnable=false
+RESULT: token.totalSupply=22222222.22222222
+RESULT: finalizable.finalized=false
+RESULT: pausable.paused=false
+undefined
+> 
+RESULT: savingsContractAddress=0xd8c26d3fda0ce1666fbac2f3d9e30626c50798d2
+RESULT: savings.periods=12
+RESULT: savings.t0special=4
+RESULT: savings.intervalSecs=2592000
+RESULT: savings.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: savings.newOwner=0x0000000000000000000000000000000000000000
+RESULT: savings.inited=true
+RESULT: savings.locked=true
+RESULT: savings.startBlockTimestamp=1507857344 Fri, 13 Oct 2017 01:15:44 UTC
+RESULT: savings.token=0x1d7961dd2bee2c9bd13a9bd8e8b6405ef79e22bf
+RESULT: savings.totalfv=1000000000000 10000
+RESULT: savings.total=1000000000000 10000
+RESULT: savings.nullified=false
+RESULT: savings.mintingNonce=0
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+> 
+RESULT: Printing out periodAt(...), availableForWithdrawalAt(...) and _withdrawTo(...) for the next 400 days, every 10 days
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+...... 
+... 
+RESULT: 1507857269 Fri, 13 Oct 2017 01:14:29 UTC 0, 250000000000000000, 250000000000
+RESULT: 1508721269 Mon, 23 Oct 2017 01:14:29 UTC 1, 312500000000000000, 312500000000
+RESULT: 1509585269 Thu, 02 Nov 2017 01:14:29 UTC 1, 312500000000000000, 312500000000
+RESULT: 1510449269 Sun, 12 Nov 2017 01:14:29 UTC 1, 312500000000000000, 312500000000
+RESULT: 1511313269 Wed, 22 Nov 2017 01:14:29 UTC 2, 375000000000000000, 375000000000
+RESULT: 1512177269 Sat, 02 Dec 2017 01:14:29 UTC 2, 375000000000000000, 375000000000
+RESULT: 1513041269 Tue, 12 Dec 2017 01:14:29 UTC 2, 375000000000000000, 375000000000
+RESULT: 1513905269 Fri, 22 Dec 2017 01:14:29 UTC 3, 437500000000000000, 437500000000
+RESULT: 1514769269 Mon, 01 Jan 2018 01:14:29 UTC 3, 437500000000000000, 437500000000
+RESULT: 1515633269 Thu, 11 Jan 2018 01:14:29 UTC 3, 437500000000000000, 437500000000
+RESULT: 1516497269 Sun, 21 Jan 2018 01:14:29 UTC 4, 500000000000000000, 500000000000
+RESULT: 1517361269 Wed, 31 Jan 2018 01:14:29 UTC 4, 500000000000000000, 500000000000
+RESULT: 1518225269 Sat, 10 Feb 2018 01:14:29 UTC 4, 500000000000000000, 500000000000
+RESULT: 1519089269 Tue, 20 Feb 2018 01:14:29 UTC 5, 562500000000000000, 562500000000
+RESULT: 1519953269 Fri, 02 Mar 2018 01:14:29 UTC 5, 562500000000000000, 562500000000
+RESULT: 1520817269 Mon, 12 Mar 2018 01:14:29 UTC 5, 562500000000000000, 562500000000
+RESULT: 1521681269 Thu, 22 Mar 2018 01:14:29 UTC 6, 625000000000000000, 625000000000
+RESULT: 1522545269 Sun, 01 Apr 2018 01:14:29 UTC 6, 625000000000000000, 625000000000
+RESULT: 1523409269 Wed, 11 Apr 2018 01:14:29 UTC 6, 625000000000000000, 625000000000
+RESULT: 1524273269 Sat, 21 Apr 2018 01:14:29 UTC 7, 687500000000000000, 687500000000
+RESULT: 1525137269 Tue, 01 May 2018 01:14:29 UTC 7, 687500000000000000, 687500000000
+RESULT: 1526001269 Fri, 11 May 2018 01:14:29 UTC 7, 687500000000000000, 687500000000
+RESULT: 1526865269 Mon, 21 May 2018 01:14:29 UTC 8, 750000000000000000, 750000000000
+RESULT: 1527729269 Thu, 31 May 2018 01:14:29 UTC 8, 750000000000000000, 750000000000
+RESULT: 1528593269 Sun, 10 Jun 2018 01:14:29 UTC 8, 750000000000000000, 750000000000
+RESULT: 1529457269 Wed, 20 Jun 2018 01:14:29 UTC 9, 812500000000000000, 812500000000
+RESULT: 1530321269 Sat, 30 Jun 2018 01:14:29 UTC 9, 812500000000000000, 812500000000
+RESULT: 1531185269 Tue, 10 Jul 2018 01:14:29 UTC 9, 812500000000000000, 812500000000
+RESULT: 1532049269 Fri, 20 Jul 2018 01:14:29 UTC 10, 875000000000000000, 875000000000
+RESULT: 1532913269 Mon, 30 Jul 2018 01:14:29 UTC 10, 875000000000000000, 875000000000
+RESULT: 1533777269 Thu, 09 Aug 2018 01:14:29 UTC 10, 875000000000000000, 875000000000
+RESULT: 1534641269 Sun, 19 Aug 2018 01:14:29 UTC 11, 937500000000000000, 937500000000
+RESULT: 1535505269 Wed, 29 Aug 2018 01:14:29 UTC 11, 937500000000000000, 937500000000
+RESULT: 1536369269 Sat, 08 Sep 2018 01:14:29 UTC 11, 937500000000000000, 937500000000
+RESULT: 1537233269 Tue, 18 Sep 2018 01:14:29 UTC 12, 1000000000000000000, 1000000000000
+RESULT: 1538097269 Fri, 28 Sep 2018 01:14:29 UTC 12, 1000000000000000000, 1000000000000
+RESULT: 1538961269 Mon, 08 Oct 2018 01:14:29 UTC 12, 1000000000000000000, 1000000000000
+RESULT: 1539825269 Thu, 18 Oct 2018 01:14:29 UTC 12, 1000000000000000000, 1000000000000
+RESULT: 1540689269 Sun, 28 Oct 2018 01:14:29 UTC 12, 1000000000000000000, 1000000000000
+RESULT: 1541553269 Wed, 07 Nov 2018 01:14:29 UTC 12, 1000000000000000000, 1000000000000
+undefined
+> 
+> 
+> 
