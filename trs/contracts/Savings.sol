@@ -1,3 +1,4 @@
+// Copyright New Alchemy Limited, 2017. All rights reserved.
 pragma solidity >=0.4.10;
 
 contract Token {
