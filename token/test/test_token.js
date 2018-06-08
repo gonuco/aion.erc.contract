@@ -51,9 +51,9 @@ contract('Token', (accs) => {
 
       Promise.all(params).then((params) => {
         console.log()
-        assert.equal(params[0], 'FixMeBeforeDeploying');
+        assert.equal(params[0], 'AION');
         assert.equal(params[1], 8);
-        assert.equal(params[2], 'FIXME');
+        assert.equal(params[2], 'AION');
         assert.equal(params[3], '0x0000000000000000000000000000000000000000');
         assert.equal(params[4], '');
         assert.equal(params[5], '0x0000000000000000000000000000000000000000');
@@ -381,34 +381,6 @@ contract('Token', (accs) => {
    * Payload Size Test Suite
    */
 
-  it("should be able to reject a transfer (2w + 4b) with an incorrect data payload", (done) => {
-    util.deployAll().then((c) => {
-      c.ledger.multiMint(0, [util.addressValue(accs[0], 100)]).then((txid) => {
-        return c.token.transfer(accs[1], 1);
-      }).then((txid) => {
-        // first transfer one token (valid)
-        // mainly for us to generate the correct inputs
-        let tx = web3.eth.getTransaction(txid.tx);
-        util.transactionMined(txid.tx).then((tx) => {
-          // the offset we are looking for is the end of the address
-          // 16*2 + 20*2 (plus the 0x means we are just in the correct position)
-          console.log(tx.tx.input);
-          const input = tx.tx.input.substring(0, 72) + tx.tx.input.substring(74);
-          console.log(input);
-          return input;
-        }).then((modifiedInput) => {
-          return c.token.sendTransaction({from: accs[0], data: modifiedInput});
-        }).then((res) => {
-          assert.fail("should not accept invalid payload (payloadSize modifier)");
-          done();
-        }, (err) => {
-          done();
-        });
-      });
-
-    });
-  });
-
   it("should accept a payload size that is too large", (done) => {
     util.deployAll().then((c) => {
       c.ledger.multiMint(0, [util.addressValue(accs[0], 100)]).then((txid) => {
@@ -432,31 +404,6 @@ contract('Token', (accs) => {
           assert.fail(err);
           done();
         });
-      });
-    });
-
-  });
-
-  it("should be able to reject approve (4b + 2w) of smaller payload size", (done) => {
-    util.deployAll().then((c) => {
-
-      let expectedInput = null;
-
-      c.ledger.multiMint(0, [util.addressValue(accs[0], 100)]).then((txid) => {
-        return c.token.approve(accs[1], 100);
-      }).then((txid) => {
-        const input = web3.eth.getTransaction(txid).input;
-        expectedInput = input.substring(0, 8 + 64) + input.substring(8 + 64 + 2);
-      }).then(() => {
-        // disable the approve so we can approve again after
-        return c.token.approve(accs[1], 0);
-      }).then((txid) => {
-        return c.sendTransaction({from: accs[0], data: expectedInput});
-      }).then((res) => {
-        assert.fail("did not expect malformed input to succeed");
-        done();
-      }, (err) => {
-        done();
       });
     });
   });
@@ -485,30 +432,6 @@ contract('Token', (accs) => {
     });
   });
 
-
-  it("should be able to reject a transferFrom (4b + 3w) of smaller payload size", (done) => {
-    util.deployAll().then((c) => {
-      c.ledger.multiMint(0, [util.addressValue(accs[0], 100)]).then((txid) => {
-        return c.token.approve(accs[1], 100);
-      }).then((txid) => {
-        return c.token.transferFrom.sendTransaction(accs[0], accs[1], 1, {from: accs[1]});
-      }).then((txid) => {
-        const tx = web3.eth.getTransaction(txid);
-        const outTx = tx.input.substring(0, 8 + 128) + tx.input.substring(8 + 128 + 2);
-        console.log(tx.input);
-        console.log(outTx);
-        return outTx;
-      }).then((modifiedInput) => {
-        return c.token.sendTransaction({from: accs[1], data: modifiedInput});
-      }).then((res) => {
-        assert.fail("did not expect transaction with wrong payload to go through");
-        done();
-      }, (err) => {
-        done();
-      });
-    });
-  });
-
   it("should be able to accept a transferFrom (4b + 3w + 1b) longer payload", (done) => {
     util.deployAll().then((c) => {
       c.ledger.multiMint(0, [util.addressValue(accs[0], 100)]).then((txid) => {
@@ -527,45 +450,6 @@ contract('Token', (accs) => {
         done();
       }, (err) => {
         assert.fail(err);
-        done();
-      });
-    });
-  });
-
-  it("should be able to reject increaseApproval (4b + 2w) of smaller payload size", (done) => {
-    util.deployAll().then((c) => {
-      c.ledger.multiMint(0, [util.addressValue(accs[0], 100)]).then((txid) => {
-        return c.token.increaseApproval(accs[1], 1);
-      }).then((txid) => {
-        const input = web3.eth.getTransaction(txid.tx);
-        return input.substring(0, 8 + 64) + input.substring(8 + 64 + 2);
-      }).then((modifiedInput) => {
-        return c.token.sendTransaction({from: accs[0], input: modifiedInput});
-      }).then((res) => {
-        assert.fail("did not expect transaction with wrong payload to go through");
-        done();
-      }, (err) => {
-        done();
-      });
-    });
-  });
-
-
-  it("should be able to reject decreaseApproval (4b + 2w) of smaller payload size", (done) => {
-    util.deployAll().then((c) => {
-      c.ledger.multiMint(0, [util.addressValue(accs[0], 100)]).then((txid) => {
-        return c.token.approve(accs[1], 50);
-      }).then((txid) => {
-        return c.token.decreaseApproval(accs[1], 1);
-      }).then((txid) => {
-        const input = web3.eth.getTransaction(txid.tx);
-        return input.substring(0, 8 + 64) + input.substring(8 + 64 + 2);
-      }).then((modifiedInput) => {
-        return c.token.sendTransaction({from: accs[0], input: modifiedInput});
-      }).then((res) => {
-        assert.fail("did not expect transaction with wrong payload to go through");
-        done();
-      }, (err) => {
         done();
       });
     });
